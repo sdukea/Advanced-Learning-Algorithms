@@ -49,10 +49,18 @@
 # this means the neuron's preferred pattern/internal scoring template matches the image's
 # neuron 1 says "I like most of the centre-column pixels to be bright"
 # and the image also seems to have bright/1 for all of the centre-column pixels
-# let's think term by term
 
 # z3_1 = w1x1 + w2x2 + ... + w4x4 + .. w4x12 + .. w4x20 + ... w64x64
-# 
+# the feature values in each of the terms either contribute postively or negatively
+# i.e. if feature is valued higher/bright, and if the weight is also higher/gives larger importance
+# then that term's value will be larger
+# like neuron 3 seems to be assigned with larger weights/higher importance for features x4, x12, x20, 
+# x28, x44 and x64 whose values are also bright/higher
+
+# and if, for one neuron, a lot of the weight-pixel/weight-feature terms seems to be larger/matches
+# pattern/higher, then the value z for that neuron will be larger
+# signifying the fact that this image vector x matches the pixel preference pattern/model of this 
+# neuron
 
 # z1_1 -> neuron 1
 # z2_1 -> neuron 2
