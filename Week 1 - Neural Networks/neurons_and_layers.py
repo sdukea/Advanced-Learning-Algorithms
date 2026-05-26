@@ -100,4 +100,16 @@
 # in the image – vertical edges, horizontal edges and so on
 
 # and it seems that hidden layer 1 sees EDGES - each neuron in layer 1 is an edge detector
-# neuron 1, based on its pixel preference pattern, may detect 
+# neuron 1, based on its pixel preference pattern, may detect vertical edges
+# neuron 2 might detect slanting edges based on its pixel prefernce pattern
+# but neurons in the first hidden layer are basic and simple – juniors
+
+# the second hidden layer are now senior detectives
+# they don't care about 64 pixel intensity values now – only the 25 features/pixel preference 
+# patterns given by the previous hidden layer 1 by the 25 neurons/jr. detectives
+
+# so, again, weights/parameters are initialized randomly for hidden layer 2 as well
+# so each senior detective has their own feature preference pattern now – because they are now
+# looking at a more richer set of information now
+
+# so neuron 1/senior det. 1 (out of 15 of them in h.l. 2) might say:
