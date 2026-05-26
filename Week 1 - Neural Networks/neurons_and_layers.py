@@ -26,7 +26,7 @@
 # but because every neuron starts with DIFFERENT random weights (for each pixel in image)
 # each neuron initially "cares" about different parts/patterns of the image
 
-# because weights assigned to each feature value/pixel intensity value determines that feature's
+# because weights assigned to each pixel intensity value determines that pixel's
 # importance (pixel's importance)
 # randomly, one neuron might have larger weights for pixels 23, 45, 2, 6, 63 and 5 (example)
 # and this neuron seems to 'care' about this pixel pattern
@@ -35,29 +35,31 @@
 
 # one neuron may be very good at detecting lines maybe - another may detect horizontal lines and
 # another might detect loops
-# and all of this depends on the random initialization of parameters and their weights for each
-# neuron - because its random for each neuron, they specialize in different pixel patterns
+# and all of this depends on the random initialization of parameters/weights and their size for each
+# neuron - because its random for each neuron and they specialize in different pixel patterns/roles
 
 # so, each neuron outputs ONE value corresponding to:
 # how much does this image (vector x) match this MY pixel preference pattern?
-# say image vector x is an image 1 – somewhere around the centre of the image, the pixel values/
-# features all have a value of 1
-# say features x4, x12, x20, x28, x36, x44, x64 are all valued 1
+# say image vector x is an image 1 – somewhere around the centre of the image, the pixel values all 
+# have a value of 1
+# say pixels x4, x12, x20, x28, x36, x44, x64 are all valued 1
 # now say neuron 3 has been randomly assigned, by chance, larger weights for most of these
-# features – every feature except x36 has been assigned a larger weight value
+# pixels – every pixel except x36 has been assigned a larger weight value
 # |
 # this means the neuron's preferred pattern/internal scoring template matches the image's
 # neuron 1 says "I like most of the centre-column pixels to be bright"
 # and the image also seems to have bright/1 for all of the centre-column pixels
 
 # z3_1 = w1x1 + w2x2 + ... + w4x4 + .. w4x12 + .. w4x20 + ... w64x64
-# the feature values in each of the terms either contribute postively or negatively
-# i.e. if feature is valued higher/bright, and if the weight is also higher/gives larger importance
+# the pixel values in each of the terms either contribute postively or negatively
+# i.e. if pixel is valued higher/bright, and if the weight is also higher/gives larger importance
 # then that term's value will be larger
-# like neuron 3 seems to be assigned with larger weights/higher importance for features x4, x12, x20, 
+# like neuron 3 seems to be assigned with larger weights/higher importance for pixels x4, x12, x20, 
 # x28, x44 and x64 whose values are also bright/higher
+# (+large)*(+large) = higher value for this term
+#   weight  pixel
 
-# and if, for one neuron, a lot of the weight-pixel/weight-feature terms seems to be larger/matches
+# and if, for one neuron, a lot of the weight-pixel terms seems to be larger/matches
 # pattern/higher, then the value z for that neuron will be larger
 # signifying the fact that this image vector x matches the pixel preference pattern/model of this 
 # neuron
@@ -69,3 +71,33 @@
 # z25_1 -> neuron 25
 
 # this output is that ONE value for each neuron that answers the question (line 42)
+# if its high, the pixel preference pattern seems to match the input (vector image x)
+# if its low, low match between pattern and input
+
+# now, you apply an activation function – a sigmoid function (in this case)
+# to squish the value of z (which can be very high positives/high negatives) between 0 and 1
+# this is activation level
+
+# now, take the second hidden layer with 15 neurons
+# it does not look at the image vector x/pixel intensity values anymore
+# it inputs the activation vector, consisting of 25 different activations, from hidden layer 1
+
+# to understand this intuitively:
+# the first hidden layer consists of 25 different junior detectives
+# each jr. detective looks at the pixels and with its own pixel preference pattern/role of investi-
+# gation (neuron 1/jr. detective 1 might look at fingerprints/this kind of edge and neuron 2/jr.
+# detective 2 might look at forensics/this other kind of edge and so on for other 25 detect./neur.)
+
+# now the first hidden layer passes RICHER information to the second hidden layer
+# it does not see pixel intensity values anymore. instead, they listen to the junior detective
+# scores on each part of the investigation/pixel pattern validation with image
+
+# hidden layer 2 operates on a higher level
+# BASED ON THE INCOMING RICHER INFORMATION, these neurons in the hidden layer form opinions
+# themselves
+
+# we know that the pixel preferences of each neuron in hidden layer 1 are some kind of features
+# in the image – vertical edges, horizontal edges and so on
+
+# and it seems that hidden layer 1 sees EDGES - each neuron in layer 1 is an edge detector
+# neuron 1, based on its pixel preference pattern, may detect 
