@@ -231,4 +231,34 @@
 # then:
 # "this resembles a domestic crime" -> RICK info/high-level feature
 
-# and so 
+# and so on for the 15 other senior detectives
+
+# and activation feat. a_2 that has more RICHER information/HIGH-LEVEL structures/features
+
+# Next, the output layer recieves all these 15 RICHER activations/RICHER info
+
+# and random weights are assigned for this as well
+
+# this output layer consists of one neuron
+
+# this neuron is like the chief investigator/detective
+
+# Suppose the chief investigator receives these reports:
+
+# Evidence Pattern (or)
+# high-level features	        Strength (from prev. layer)        Weight (initialized now)
+# burglary evidence	            0.95                               +8
+# domestic dispute evidence	    0.40                               +6
+# forced entry evidence	        0.91                               -4
+# hit-and-run evidence	        0.10                               -7
+# ...
+
+# image 15 of these high level features – strenghts/feature activation and their weights
+
+# now, this chief detective has his/her own pattern of concluding/finalizing/predicting the 
+# exact murder type
+
+# it computes z1_3 by taking all the activations from the previous layer and with the weights 
+# it has been randomly initialized, it prefers some high-level structure/feature over others
+
+# NOTE: these are high-level features,
