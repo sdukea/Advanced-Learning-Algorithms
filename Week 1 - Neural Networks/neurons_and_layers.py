@@ -266,6 +266,18 @@
 # that neural network - it is the richest of information
 
 # so the output layer DOES NOT PRODUCE MORE RICHER INFORMATION because we've already closed the
-# loop on processing information required to produce an output/prediction
+# loop on processing the information required to NOW PRODUCE an output/prediction
 
-# and so the output layer only EVALUATES all the activations f
+# and so the output layer only does the OUTPUT PRODUCTION part - predicting whether the image
+# is zero or 1 or predicting what murder it is
+
+# because the activations from the previous layer - the hidden layer 2 - is already the highest
+# level of features/information/activations we could possibly have
+
+# that's why hidden layer 2 already sees patterns such as burglary, domestic dispute and so on
+# these high-level features ARE THE HIGHEST LEVEL OF INFORMATION the neural network can predict
+# by being before the output layer -
+# and you can see for yourself as well – we've already reached features that seem to describe the
+# exact crime
+
+# and now, we can only expect to predict 
