@@ -16,7 +16,8 @@
 # neuron 1 (from h.l. 1) might have a set of parameters w1..w64 and b while neuron 2 also
 # has a set of parameters w1...w64 but different ones - randomly assigned to each neuron
 # why?
-# say you have 25 detectives trying to solve a murder case
+# say you have 25 detectives trying to solve a murder case and task is: predict if crimial is
+# a PROFESSIONAL or NOT
 # each detectives sees the murder - but ALL OF THEM do not look for the same evidences/answers -
 # they have different viewpoints/way of thinking.
 # one detective might look for fingerprints, while another looks at blood and another might decode
@@ -141,7 +142,7 @@
 # say, a_1 =[0.95,0.10,0.87,0.98,…]
 # 25 values here
 
-# now, neuron 1 in hl 2 might be randomly assigned with a higher weight for the activation
+# now, neuron 1 in h.l. 2 might be randomly assigned with a higher weight for the activation
 # feature 1, 3, 4, 23, and 17
 
 # from activation vector, consisting of low-level features, we see that
@@ -219,7 +220,7 @@
 # via weights assigned (15 of these)
 
 # then senior detective may conclude:
-# "this resembles a burglary" -> RICH info/high-level feature
+# "this resembles a burglary-crime-like" -> RICH info/high-level feature
 
 # senior detective 2 may think:
 
@@ -229,7 +230,7 @@
 # via weights assigned (15 of these)
 
 # then:
-# "this resembles a domestic crime" -> RICK info/high-level feature
+# "this resembles a domestic-crime behaviour" -> RICK info/high-level feature
 
 # and so on for the 15 other senior detectives
 
@@ -247,16 +248,16 @@
 
 # Evidence Pattern (or)
 # high-level features	        Strength (from prev. layer)        Weight (initialized now)
-# burglary evidence	            0.95                               +8
-# domestic dispute evidence	    0.40                               +6
-# forced entry evidence	        0.91                               -4
-# hit-and-run evidence	        0.10                               -7
+# burglary-crime like           0.95                               +8
+# panic-driven behaviour	    0.40                               +6
+# careful-cleanup behaviour     0.91                               -4
+# domestic-dispute-pattern      0.10                               -7
 # ...
 
 # image 15 of these high level features – strenghts/feature activation and their weights
 
-# now, this chief detective has his/her own pattern of concluding/finalizing/predicting the 
-# exact murder type
+# now, this chief detective has his/her own pattern of concluding/finalizing/predicting whether
+# this was a PROFESSIONAL criminal or NOT
 
 # it computes z1_3 by taking all the activations/strengts from the previous layer and with the weights 
 # it has been randomly initialized, it prefers some high-level structure/feature over others
@@ -269,15 +270,17 @@
 # loop on processing the information required to NOW PRODUCE an output/prediction
 
 # and so the output layer only does the OUTPUT PRODUCTION part - predicting whether the image
-# is zero or 1 or predicting what murder it is
+# is zero or 1 or predicting whether this is a PROFESSIONAL criminal or NOT/AMATEUR
 
 # because the activations from the previous layer - the hidden layer 2 - is already the highest
 # level of features/information/activations we could possibly have
 
-# that's why hidden layer 2 already sees patterns such as burglary, domestic dispute and so on
+# that's why hidden layer 2 already sees patterns such as burglary-crime-like, domestic-dispute 
+# behaviour and so on...
 # these high-level features ARE THE HIGHEST LEVEL OF INFORMATION the neural network can predict
 # by being before the output layer -
 # and you can see for yourself as well – we've already reached features that seem to describe the
 # exact crime
 
-# and now, we can only expect to predict 
+# and now, we can only expect to predict the output - not produce an even more richer set of 
+# features as we've already reached
