@@ -115,8 +115,7 @@
 # h.l. 1 -> sees pixel intensity values -> owns a specific pixel preference pattern per neuron
 # h.l.2 -> sees feature activations -> owns a specific feature activation pattern per neuron
 
-# suppose h.l. 1 outputs activation vector a_1, consisting of 25 values/activations
-# a_1 =[0.95,0.10,0.87,0.03,…]
+# so, h.l. 1 outputs activation vector a_1, consisting of 25 values/activations
 
 # each senior detective neuron in the second hidden layer does not look at pixel values now;
 # they are looking at strenghts of detected low-level patterns/evidences from previous layer/
@@ -132,11 +131,104 @@
 
 # again, each neuron in h.l.2 is randomly assigned weights
 # neuron 1 in h.l.2 might recieve a random collection of weights w1 to w25
-# (you have 25 weights because the input activation vector has 25 values, one for each neuron in 
-# the previous h.l.1)
+# (you have 25 weights because the input activation vector has 25 values - one for each of the
+# 25 neurons neuron in the previous h.l.1)
 # neuron 2 might recieve a random collection of weights w1 to w25
-# and so on for the other neurons (13 left) the h.l.2
+# and so on for the other neurons (15 in total) the h.l.2
 
 # and just like before, each neuron has a specific activation preference now
 
-# neuron 1 (in h.l.2) might have higher weight for 
+# say, a_1 =[0.95,0.10,0.87,0.98,…]
+# 25 values here
+
+# now, neuron 1 in hl 2 might be randomly assigned with a higher weight for the activation
+# feature 1, 3, 4, 23, and 17
+
+# from activation vector, consisting of low-level features, we see that
+# there is a higher strenghth of 0.95 for feature 1/some kind of edge detector
+
+# and even a higher strength of 0.87 for feature 3/some other kind of edge detector
+
+# and even a higher strengh of 0.98 for feature 4/some other kind of edge detector
+
+# so, neuron 1's activation/strength of low-level feature preference matches MOST of the incoming 
+# strenghts of the input activation vector (from h.l.1) as well
+
+# this means neuron 1 activates strongly - will generate a higher value
+# (if there are more weight-feature matches in total – in the total of z1_2)
+# i.e. THAT value which corresponds to the question in line 42:
+# how much does the activations/low-level feature detections match MY preference?
+
+# and this repeats for every neuron in hl 2
+
+# and each neuron activates strongly/weakly based on match between the weights assigned to it
+# randomly and the feature strength values from previous hl 1)
+
+# and the output of this hl 2 => a_2
+
+# this is the activation vector that is MORE RICHER than the info/activation vector of a1
+
+# because hl 2 now combines LOW-LEVEL FEATURES as input to detect SHAPES/LARGER CONCEPTS
+
+# if a neuron in the hl 2 prefers:
+# vertical edge -> high/strong weight/importance
+# slant edge -> low/smaller weight/importance
+# loop edge -> high/strong weight/importance
+# horizontal edge -> zero/no weight/importance
+
+# and if it matches the input EDGES/LOW-LEVEL FEATURES, then
+
+# this neuron in the hl 2 is actually trying to combine EDGES to see SHAPES
+
+# if junior detectives give reports/strenghts of their clues/evidences/features i.e.
+# detective 1: (neuron 1)
+# looks for fingerprints (pixel preference pattern - vertical edges maybe)
+# returns report (evaluation of pattern and image vector x)
+
+# detective 2: (neuron 2)
+# looks for blood stains
+# returns report (evaluation of pattern and image vector x)
+
+# detective 3: (neuron 3)
+# looks for shoe prints
+# returns report (evaluation of pattern and image vector x)
+
+# detective 4: (neuron 4)
+# looks for broken windows
+# returns report (evaluation of pattern and image vector x)
+
+# detective 5: (neuron 5)
+# looks for tire marks
+# returns report (evaluation of pattern and image vector x)
+
+# then hl 2 recieves these reports/activation strenghts of each clue/feature like:
+# fingerprints strongly detected -> 0.95
+# blood weakly detected -> 0.10
+# shoe prints strongly detected -> 0.91
+
+# and they make RICHER reports
+# i.e.
+
+# senior detectives detect COMBINATIONS of CLUES/EVIDENCE/FEATURES produced by the prev. hl 1 
+# of junior detectives
+
+# if for sen. det. 1:
+# fingerprints -> strong
+# shoe prints -> strong
+# broken window -> strong
+# via weights assigned (15 of these)
+
+# then senior detective may conclude:
+# "this resembles a burglary" -> RICH info/high-level feature
+
+# senior detective 2 may think:
+
+# if:
+# blood stains -> strong
+# no forced entry -> strong
+# via weights assigned (15 of these)
+
+# then:
+# "this resembles a domestic crime" -> RICK info/high-level feature
+
+# and so 
