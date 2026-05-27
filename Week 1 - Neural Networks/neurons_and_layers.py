@@ -258,7 +258,14 @@
 # now, this chief detective has his/her own pattern of concluding/finalizing/predicting the 
 # exact murder type
 
-# it computes z1_3 by taking all the activations from the previous layer and with the weights 
+# it computes z1_3 by taking all the activations/strengts from the previous layer and with the weights 
 # it has been randomly initialized, it prefers some high-level structure/feature over others
 
-# NOTE: these are high-level features,
+# now, NOTE (analogy from 3b1b neural network video):
+# the layer BEFORE the output layer outputs the HIGHEST LEVEL OF FEATURE INFORMATION/ACTIVATIONS in
+# that neural network - it is the richest of information
+
+# so the output layer DOES NOT PRODUCE MORE RICHER INFORMATION because we've already closed the
+# loop on processing information required to produce an output/prediction
+
+# and so the output layer only EVALUATES all the activations f
