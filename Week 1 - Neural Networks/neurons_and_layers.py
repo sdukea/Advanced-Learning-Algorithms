@@ -109,7 +109,34 @@
 # patterns given by the previous hidden layer 1 by the 25 neurons/jr. detectives
 
 # so, again, weights/parameters are initialized randomly for hidden layer 2 as well
-# so each senior detective has their own feature preference pattern now – because they are now
-# looking at a more richer set of information now
+# so each senior detective has their own feature preference/activation pattern now – because they 
+# are now looking at a more richer set of information now
 
-# so neuron 1/senior det. 1 (out of 15 of them in h.l. 2) might say:
+# h.l. 1 -> sees pixel intensity values -> owns a specific pixel preference pattern per neuron
+# h.l.2 -> sees feature activations -> owns a specific feature activation pattern per neuron
+
+# suppose h.l. 1 outputs activation vector a_1, consisting of 25 values/activations
+# a_1 =[0.95,0.10,0.87,0.03,…]
+
+# each senior detective neuron in the second hidden layer does not look at pixel values now;
+# they are looking at strenghts of detected low-level patterns/evidences from previous layer/
+# junior detectives
+
+# just like how hidden layer 1 sees the strenghts of pixels, hidden layer 2 sees strenght of
+# low-level patterns (edges/low-level murder evidences such as fingerprints and so on)
+# |
+# hidden layer 2 sees low-level FEATURES - the input to hidden layer 2 are features
+
+# for h.l.2, activations from layer 1 are its features
+# for h.l.1, pixel intensity values from input vector x are its features (called it pixels before)
+
+# again, each neuron in h.l.2 is randomly assigned weights
+# neuron 1 in h.l.2 might recieve a random collection of weights w1 to w25
+# (you have 25 weights because the input activation vector has 25 values, one for each neuron in 
+# the previous h.l.1)
+# neuron 2 might recieve a random collection of weights w1 to w25
+# and so on for the other neurons (13 left) the h.l.2
+
+# and just like before, each neuron has a specific activation preference now
+
+# neuron 1 (in h.l.2) might have higher weight for 
