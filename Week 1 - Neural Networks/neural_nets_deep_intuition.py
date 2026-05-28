@@ -248,19 +248,17 @@
 
 # Evidence Pattern (or)
 # high-level features	        Strength (from prev. layer)        Weight (initialized now)
-# burglary-crime like           0.95                               +8
-# panic-driven behaviour	    0.40                               +6
-# careful-cleanup behaviour     0.91                               -4
-# domestic-dispute-pattern      0.10                               -7
+# organized behaviour           0.95                               +8
+# panic-driven behaviour	    0.40                               -8
+# careful-cleanup behaviour     0.91                               +6
+# burglary-crime-like           0.10                               +4
+# domestic-crime-behaviour      0.05                               -5
 # ...
 
 # image 15 of these high level features – strenghts/feature activation and their weights
 
 # now, this chief detective has his/her own pattern of concluding/finalizing/predicting whether
 # this was a PROFESSIONAL criminal or NOT
-
-# it computes z1_3 by taking all the activations/strengts from the previous layer and with the weights 
-# it has been randomly initialized, it prefers some high-level structure/feature over others
 
 # now, NOTE (analogy from 3b1b neural network video):
 # the layer BEFORE the output layer outputs the HIGHEST LEVEL OF FEATURE INFORMATION/ACTIVATIONS in
@@ -275,7 +273,7 @@
 # because the activations from the previous layer - the hidden layer 2 - is already the highest
 # level of features/information/activations we could possibly have
 
-# that's why hidden layer 2 already sees patterns such as burglary-crime-like, domestic-dispute 
+# that's why hidden layer 2 already sees patterns such as burglary-crime-like, organized
 # behaviour and so on...
 # these high-level features ARE THE HIGHEST LEVEL OF INFORMATION the neural network can predict
 # by being before the output layer -
@@ -283,4 +281,33 @@
 # exact crime
 
 # and now, we can only expect to predict the output - not produce an even more richer set of 
-# features as we've already reached
+# features 
+
+# our only concern is the scalar output (in our case) = z1_3
+
+# now, we know that the output layer recieves 15 activations, each corresponding to a higher/highest
+# feature activation that gets us the closest to now predicting whether the criminal is
+# PROFESSIONAL or NOT/AMATEUR
+
+# NOTE: These activations are NOT final decisions.
+
+# they are just strenghts of detected high-level behavioural patterns/features
+
+# the output neuron thinks:
+# “Given all these behavioral patterns,
+# how likely is this criminal professional?”
+
+# and produce ONE VALUE/PROBABILITY/OUTPUT/PREDICTIION (in our case)
+# that's it!
+
+# now, this chief detective has his/her own pattern/preference in determining, from all the
+# behaviour evidence/activations, whether this is likely a PROFESSIONAL or AMATEUR
+
+# because that's THE ONLY JOB OF THIS NEURON – to predict
+# that's it!
+
+# now, at this stage, you're trying to make a normal classification prediction
+
+# you're assigning weights (15 of them; randomly) to certain features (15 of them from prev. layer) 
+# you have (got as input)
+
