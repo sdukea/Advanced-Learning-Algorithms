@@ -311,3 +311,24 @@
 # you're assigning weights (15 of them; randomly) to certain features (15 of them from prev. layer) 
 # you have (got as input)
 
+# now, a good classification model will give HIGH importance to HIGH features
+
+# to predict whether a criminal is PROFESSIONAL or NOT, (high-level) features such as clean-up
+# behaviour, organized-behaviour and panic-driven behaviour matter
+
+# because a criminal is PROFESSIONAL if he has HIGH clean-up techniques, HIGH organized 
+# behaviour and LOW panic-driven behaviour
+
+# so, in this case, the weights that have been assigned to these features should also accomodate
+# these importances
+
+# LARGE weight -> HIGH clean-up behaviour
+# LARGE weight -> HIGH organized-behaviour
+# LOW WEIGHT -> LOW panic-driven behaviour
+# and so on for other relevant/irrelevant features and corresponding weight sizes
+
+# but because we're randomly assigning weights to these features
+
+# the output layer treats the relevant features, such as clean-up behaviour, organized behaviour
+# and panic-driven, as sometimes irrelevant
+
