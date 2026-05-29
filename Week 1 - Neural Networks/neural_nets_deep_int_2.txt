@@ -106,11 +106,11 @@
 
 # this INCREASES value of zj_n because
 
-# BRIGHT/1 * HIGH value => large positive total value term
+# BRIGHT/1 * HIGH value => large positive total value term/pair
 
 # wherever BRIGHT pixels exists, if they are MATCHED with HIGH weights, then
 
-# the number of large positive total value terms INCREASE
+# the number of large positive total value terms/pair (like the term on line 111) INCREASE
 
 # 2. LOW/DIM pixels MATCH with LOW valued weights
 
@@ -124,15 +124,16 @@
 
 # so,
 
-# LOW/0 pixel * LOW value weight => close-to-zero/zero/negative total value term
+# LOW/0 pixel * LOW value weight => close-to-zero/zero/negative total value term/pair
 
 # and wherever these LOW/0 pixels exist, if they're impact is reduced by being assigned LOW valued
 
 # weights, then
 
-# only the large total value pairs exist
+# only the large total value terms/pairs exist
 
-# leaving zj_n = only large total value + 0/very small/close-to-zero/
+# leaving zj_n = only large total value terms + negative total value term/0 term/close-to-zero term
+#                                               ^^^^^^ VERY SLIGHT, SMALL, LESS CONTRIBUTION ^^^^^^   
 
 # for the BRIGHT pixels 4, 20 and 12, the neuron has assigned HIGH weights
 
@@ -153,7 +154,7 @@
 # neuron 1 PREFERS pixels 4, 26, 37, 64, 20, 27 and 12 to be BRIGHT and it assigns
 # HIGH weights to each of these pixels
 
-# but, from the input image, only 3 out of the 7 preferred pixels (to be BRIGHT) match
+# but, from the input image, only 3 out of the 7 preferred BRIGHT pixels match
 # with image's BRIGHT pixels: 4, 12 and 20
 
 # say the HIGH values are: 
@@ -165,3 +166,13 @@
 # z1_1 = w4_1x4 + w12_1x12 + w20_1x20 + ... = 6.0 + ...
 # you have got a higher value for z1_1 already
 
+# and ... -> very small contribution/negative contribution that might decrease the total value
+# of 6.0 very slightly but still remains a LARGE value
+
+# and hence, 
+
+# this neuron model, which is randomly a VERTICAL EDGE DETECTOR by the WEIGHTS it's being
+# assigned and hence its PREFERENCE of BRIGHT pixels, correctly SEES that PART/EDGE in the image
+# and it ACTIVATES STRONGLY
+
+# this is what each neuron in the first hidden layer does
