@@ -307,6 +307,7 @@
 # that's it!
 
 # now, at this stage, you're trying to make a normal classification prediction
+# the output neuron is a CLASSIFICATION MODEL/LOGISTIC REGRESSION MODEL
 
 # you're assigning weights (15 of them; randomly) to certain features (15 of them from prev. layer) 
 # you have (got as input)
@@ -326,6 +327,17 @@
 # LARGE weight -> HIGH organized-behaviour
 # LOW WEIGHT -> LOW panic-driven behaviour
 # and so on for other relevant/irrelevant features and corresponding weight sizes
+
+# say you only have these three features clean-up beh., organized beh. and panic-driven beh.
+# as input (from prev. hl 2) to this output neuron/log. reg./classification model
+
+# so,
+# a1 = 0.95, clean-up
+# a2 = 0.91, organized
+# a3 = 0.10, panic-driven
+# and y-hat/scalar output of neuron
+
+# 
 
 # but because we're randomly assigning weights to these features
 
