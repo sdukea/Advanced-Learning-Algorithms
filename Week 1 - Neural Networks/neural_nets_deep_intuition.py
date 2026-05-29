@@ -337,6 +337,15 @@
 # a3 = 0.10, panic-driven
 # and y-hat/scalar output of neuron
 
+# these are FEATURES (high/highest-level from the neural network) or activations
+# some of these features should be relevant/changes/affects prediction by a large amount 
+# -> we assign with a larger weight
+# some of these features are irrelevant/changes/affects prediction by a short amount
+# -> we assign a lower weight
+
+# now, with a1, a2 and a3 (feat./activations), HIGHEST RELEVANT FEATURE/THE HIGHEST AFFECTING 
+# PREDICTION means -> A HIGH ACTIVATION value
+
 # 
 
 # but because we're randomly assigning weights to these features
