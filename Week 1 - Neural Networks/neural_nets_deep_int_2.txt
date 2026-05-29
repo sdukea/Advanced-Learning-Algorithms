@@ -176,3 +176,4 @@
 # and it ACTIVATES STRONGLY
 
 # this is what each neuron in the first hidden layer does
+
