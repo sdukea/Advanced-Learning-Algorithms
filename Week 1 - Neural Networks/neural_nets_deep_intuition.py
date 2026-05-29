@@ -343,14 +343,4 @@
 # some of these features are irrelevant/changes/affects prediction by a short amount
 # -> we assign a lower weight
 
-# now, with a1, a2 and a3 (feat./activations), HIGHEST RELEVANT FEATURE/THE HIGHEST AFFECTING 
-# PREDICTION means -> A HIGH ACTIVATION value
-
-# 
-
-# but because we're randomly assigning weights to these features
-
-# the output layer treats the relevant features, such as clean-up behaviour, organized behaviour
-# and panic-driven, as sometimes irrelevant
-
 # 

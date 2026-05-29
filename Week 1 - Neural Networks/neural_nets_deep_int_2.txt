@@ -1,0 +1,167 @@
+# this is how a neural network works
+
+# say you want to predict whether an 8 x 8 px input image is 0 or 1
+
+# the image you're giving as input is "1"
+
+# input layer: image vector x (8 x 8 = 64 values)
+# hidden layer 1: 25 neurons
+# hidden layer 2: 15 neurons
+# output layer: y-hat scalar prediction
+# activation function: sigmoid function
+
+# now, your input layer first gives this vector to the first hidden layer 1
+
+# hidden layer 1:
+
+# each neuron in the hidden layer 1 sees this vector x
+
+# and each neuron assigns randomly initialized weights to this input vector x (image)
+# 64 pixel values/pixels -> 64 weights
+# weights for neuron 1 could be totally different from neuron 2 and every other neuron (25 of them)
+
+# now, based on this randomly initialized weights for each neuron,
+# each neuron has its own pixel preference pattern
+
+# an image vector x that shows number "1" should have all the centre column values BRIGHT/HIGH
+# so:
+#   0      0      0       1       0       0      0       0
+#   0      0      1       1       0       0      0       0
+#   0      0      0       1       0       0      0       0
+#   0      0      0       1       0       0      0       0
+#   0      0      0       1       0       0      0       0
+#   0      0      0       1       0       0      0       0
+#   0      0      0       1       0       0      0       0
+#   0      0      1       1       1       0      0       0
+
+
+# this is how the vector x will be, illustrating the image showing "1"
+
+# now, neurons assigning weights to each pixel shows IMPORTANCE
+# how important does this neuron think each pixel value is by the weight its assigning to it (random)
+
+# so, from the vector x (demonstrating the "1" image), we know that
+# we need pixels:
+# 4, 11, 12, 20, 28, 36, 44, 52, 59, 60, 61
+# to be BRIGHT
+
+# so, each neuron should give HIGH IMPORTANCE to each of these BRIGHT pixels
+
+# why: because that's the RIGHT model
+
+# pixels: x1...x64
+# weights: w1_n...w64_n
+#          n -> layer
+
+# neuron 1 => z1_1 = w1_1x1 + w2_1x2 + w3_1x3 + w4_1x4 + ... w64_1x64
+
+# if neuron 1 has HIGHER weights for the BRIGHT pixels i.e.:
+# w4_1, w11_1, w12_1, w20_1, w28_1, w36_1, w44_1, w52_1, w59_1, w60_1, w61_1
+
+# and all weights = 0 for other pixels (excluding BRIGHT pixels)
+
+# then z1_1 => LARGEST value possible
+
+# and then if you apply sigmoid(z1_1)
+
+# the activation closest to 1/equal to 1 => a1_1 = 1
+
+# and the probability that the image is TRUE/POSITIVE/PRESENCE/"1" is the highest
+
+# activation is the highest (or)
+# the image vector x has matched my pixel preference pattern/log. reg. neuron model/unit a 100%
+
+# NOTE: sigmoid function output/activation => probability of TRUE/POSITIVE/PRESENCE
+
+# but in essence,
+
+# you will NOT HAVE MATCHING WEIGHTS i.e.
+# you will NOT HAVE HIGH WEIGHTS for BRIGHT PIXELS and LOW/ZERO WEIGHTS for DARK PIXELS
+
+# because of the random initialization of WEIGHTS
+
+# neuron 1 might have HIGH weights for pixels -> sees as HIGH IMPORTANCE
+# 4, 26, 37, 64, 20, 27, 12. 
+# So, w4_1, w26_1, w37_1, w64_1, w20_1, w27_1, w12_1 are all HIGH (valued)
+
+# and maybe LOW/NEGATIVE weights for the remaining pixels -> sees as LOW IMPORTANCE
+
+# (vector x)
+#   0      0      0       1       0       0      0       0
+#   0      0      1       1       0       0      0       0
+#   0      0      0       1       0       0      0       0
+#   0      0      0       1       0       0      0       0
+#   0      0      0       1       0       0      0       0
+#   0      0      0       1       0       0      0       0
+#   0      0      0       1       0       0      0       0
+#   0      0      1       1       1       0      0       0
+
+# and we see that only w4_1, w20_1 and w12_1 are RIGHT here
+# they MATCH; BRIGHT pixels MATCH with HIGH weights
+# IMPORTANCE has been given to the RIGHT pixels (3/7)
+
+# NOTE: a neuron activates STRONGLY/produces a LARGE value of zj_n WHEN
+
+# 1. BRIGT pixels MATCh with HIGH weights (given HIGH importance)
+
+# this INCREASES value of zj_n because
+
+# BRIGHT/1 * HIGH value => large positive total value term
+
+# wherever BRIGHT pixels exists, if they are MATCHED with HIGH weights, then
+
+# the number of large positive total value terms INCREASE
+
+# 2. LOW/DIM pixels MATCH with LOW valued weights
+
+# this shows that the IRRELEVANT pixels can be given LOW importance
+
+# and can be assigned a LOW valued weight and
+
+# its influence on the value zj_n can be REDUCED as
+
+# this isn't as IMPACTFUL to the value zj_n
+
+# so,
+
+# LOW/0 pixel * LOW value weight => close-to-zero/zero/negative total value term
+
+# and wherever these LOW/0 pixels exist, if they're impact is reduced by being assigned LOW valued
+
+# weights, then
+
+# only the large total value pairs exist
+
+# leaving zj_n = only large total value + 0/very small/close-to-zero/
+
+# for the BRIGHT pixels 4, 20 and 12, the neuron has assigned HIGH weights
+
+# but this is a small window:
+
+#   0      0      0     | 1 |     0       0      0       0
+#   0      0      1     | 1 |     0       0      0       0
+#   0      0      0     | 1 |     0       0      0       0
+#   0      0      0       1       0       0      0       0
+#   0      0      0       1       0       0      0       0
+#   0      0      0       1       0       0      0       0
+#   0      0      0       1       0       0      0       0
+#   0      0      1       1       1       0      0       0
+
+# this is why each neuron in the earliest of layers are EDGE DETECTORS
+
+# neuron 1 only sees this SMALL PART/EDGE of the number 1
+# neuron 1 PREFERS pixels 4, 26, 37, 64, 20, 27 and 12 to be BRIGHT and it assigns
+# HIGH weights to each of these pixels
+
+# but, from the input image, only 3 out of the 7 preferred pixels (to be BRIGHT) match
+# with image's BRIGHT pixels: 4, 12 and 20
+
+# say the HIGH values are: 
+# w4_1 = 2.7
+# w12_1 = 1.4
+# w20_1 = 1.9
+
+# this means:
+# z1_1 = w4_1x4 + w12_1x12 + w20_1x20 + ... = 6.0 + ...
+# you have got a higher value for z1_1 already
+
