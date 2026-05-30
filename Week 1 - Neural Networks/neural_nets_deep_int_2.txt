@@ -50,9 +50,7 @@
 
 # so, each neuron should give HIGH IMPORTANCE/MATCH with HIGH weights to each of these BRIGHT pixels
 
-#
-
-# why: because that's the RIGHT model
+# HIGH importance -> HIGH POSITIVE weights
 
 # pixels: x1...x64
 # weights: w1_n...w64_n
