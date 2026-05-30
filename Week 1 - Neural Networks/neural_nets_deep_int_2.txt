@@ -74,20 +74,48 @@
 # activation is the highest (or)
 # the image vector x has matched my pixel preference pattern/log. reg. neuron model/unit a 100%
 
+# this means:
+
+# the neuron's PREFERRED pattern (weights) MATCHES with a PIXEL PATTERN (features) in the image
+
+# this is USEFUL EVIDENCE of the image: if a specific neuron MATCHES its PREFERRED PATTERN/WEIGHTS
+
+# with the PIXELS PATTERN/FEATURES, then the neuron is essentially SHOWING the next layer that
+
+# this kind of PATTERN, which I've been looking for, EXISTS in the image
+
+# essentially, you're LEAKING evidence to the next layer that 
+
+# this PATTERN of the image EXISTS - there is SUCH A KIND OF PATTERN TRULY INSIDE THIS IMAGE
+
+# there is EVIDENCE that such a PATTERN is TRULY PRESENT
+# somewhere in the image
+
+# if MY PREFFERED PATTERN (via weights) ≈ PIXEL PATTERN (via pixel values/features)
+
+# it (neuron) says: THIS IS MY PATTERN; IF THIS IS ALSO YOU, LET'S MATCH, ACTIVATE STRONGLY and 
+# YOU GET TO SHOW THE NEXT LAYER THAT YOU EXISTED
+
+# activation = evidence that a specific feature/pattern exists in the image
+# activation ≠ prediction
+
 # NOTE: sigmoid function output/activation => probability of TRUE/POSITIVE/PRESENCE
 
 # but in essence,
 
 # you will NOT HAVE MATCHING WEIGHTS i.e.
-# you will NOT HAVE HIGH WEIGHTS for BRIGHT PIXELS and LOW/ZERO WEIGHTS for DARK PIXELS
+# you will NOT HAVE HIGH WEIGHTS for BRIGHT PIXELS and LOW/ZERO WEIGHTS for DARK PIXELS (to negate 
+# their relevance)
+# (or)
+# the PREFFERED WEIGHT PATTERN (for eacn neuron) won't neccessarily MATCH the PIXEL PATTERN
 
-# because of the random initialization of WEIGHTS
+# because of the RANDOM initialization of WEIGHTS
 
-# neuron 1 might have HIGH weights for pixels -> sees as HIGH IMPORTANCE
+# neuron 1 might have HIGH weights for pixels
 # 4, 26, 37, 64, 20, 27, 12. 
-# So, w4_1, w26_1, w37_1, w64_1, w20_1, w27_1, w12_1 are all HIGH (valued)
+# So, w4_1, w26_1, w37_1, w64_1, w20_1, w27_1, w12_1 are all HIGH POSITIVE weights (valued)
 
-# and maybe LOW/NEGATIVE weights for the remaining pixels -> sees as LOW IMPORTANCE
+# and maybe LOW/NEGATIVE weights for the remaining pixels
 
 # (vector x)
 #   0      0      0       1       0       0      0       0
@@ -101,11 +129,11 @@
 
 # and we see that only w4_1, w20_1 and w12_1 are RIGHT here
 # they MATCH; BRIGHT pixels MATCH with HIGH weights
-# IMPORTANCE has been given to the RIGHT pixels (3/7)
+# the PREFERRED PATTERN of weights MATCH with the PIXEL PATTERN in image (3/7)
 
-# NOTE: a neuron activates STRONGLY/produces a LARGE value of zj_n WHEN
+# NOTE: a neuron activates STRONGLY/produces a LARGE value of zj_n when
 
-# 1. BRIGT pixels MATCh with HIGH weights (given HIGH importance)
+# 1. BRIGHT pixels MATCH with HIGH weights
 
 # this INCREASES value of zj_n because
 
@@ -113,7 +141,7 @@
 
 # wherever BRIGHT pixels exists, if they are MATCHED with HIGH weights, then
 
-# the number of large positive total value terms/pair (like the term on line 111) INCREASE
+# the total number of large positive total value terms/pair (like the term on line 140) INCREASE
 
 # 2. LOW/DIM pixels MATCH with LOW valued weights
 
