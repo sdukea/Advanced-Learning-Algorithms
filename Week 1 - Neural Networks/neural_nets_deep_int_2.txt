@@ -178,20 +178,20 @@
 
 # but this is a small window that it MATCHED the image's PIXEL PATTERN correctly:
 
-# |+   +| -> correct HIGH-BRIGHT MATCHES
-#  +   + -> incorrect HIGH-BRIGHT MATCHES
-#  -   - -> incorrect HIGH-BRIGHT MATCHES
-# |-   -| -> correct HIGH-weight * BRIGHT-pixel match (patterns match)
+# |+   +| -> correct HIGH-weight * BRIGHT-pixel match (patterns match)
+#  +   + -> incorrect HIGH-weight * BRIGHT-pixel match (patterns don't match)
+#  -   - -> incorrect LOW-weight * DIM/O-pixel match (patterns don't match)
+# |-   -| -> correct LOW-weight * DIM/0-pixel match (patterns match)
 
 
-#  -0-    -0-     0    |..1..|    0       0      0       0
-#  -0-    -0-     1    |..1..|    0       0      0       0
-#  -0-    -0-     0    |..1..|    0       0      0       0
-#  -0-   |+0+|  |+0+|     1       0       0      0       0
-#  -0-     0      0       1     |+0+|     0      0       0
-#  -0-     0      0       1       0       0      0       0
-#  -0-     0      0       1       0       0      0       0
-#  -0-     0      1       1       1       0      0     |+0+|
+# |-0-|  |-0-|    0     |+1+|     0       0      0       0
+# |-0-|  |-0-|    1     |+1+|     0       0      0       0
+# |-0-|  |-0-|    0    |+1+|     0       0      0       0
+# |-0-|   +0+    +0+      1       0       0      0       0
+# |-0-|  |-0-|    0       1      +0+      0      0       0
+# |-0-|  |-0-|    0       1       0       0      0       0
+# |-0-|  |-0-|    0       1       0       0      0       0
+# |-0-|  |-0-|    1       1       1       0      0      +0+
 
 # this is why each neuron in the earliest of layers are EDGE DETECTORS
 
