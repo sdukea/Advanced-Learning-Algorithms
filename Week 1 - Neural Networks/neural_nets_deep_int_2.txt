@@ -133,19 +133,23 @@
 
 # NOTE: a neuron activates STRONGLY/produces a LARGE value of zj_n when
 
-# 1. BRIGHT pixels MATCH with HIGH weights
+# 1. BRIGHT pixels MATCH with HIGH weights -> POSITIVE EVIDENCE gets added
 
 # this INCREASES value of zj_n because
 
 # BRIGHT/1 * HIGH value => large positive total value term/pair
 
-# wherever BRIGHT pixels exists, if they are MATCHED with HIGH weights, then
+# wherever (a matter of CORRECT MATCHING but due to RANDOM initialization, we cannot expect 
 
-# the total number of large positive total value terms/pair (like the term on line 140) INCREASE
+# correct HIGH valued weights to be MATCHED with HIGH/1 pixels) BRIGHT pixels exists, 
 
-# 2. LOW/DIM pixels MATCH with LOW valued weights
+# if they are MATCHED with HIGH weights, then
 
-# this shows that the IRRELEVANT pixels can be given LOW importance
+# the number of large positive total value terms/pairs (like the term on line 140) INCREASE
+
+# 2. LOW/DIM pixels MATCH with LOW valued weights => NEGATIVE EVIDENCE gets subtracted
+
+# this shows that the IRRELEVANT pixels can made ineffective
 
 # and can be assigned a LOW valued weight and
 
@@ -157,29 +161,43 @@
 
 # LOW/0 pixel * LOW value weight => close-to-zero/zero/negative total value term/pair
 
-# and wherever these LOW/0 pixels exist, if they're impact is reduced by being assigned LOW valued
+# and wherever (a matter of CORRECT MATCHING but due to RANDOM initialization, we cannot expect 
 
-# weights, then
+# correct LOW valued weights to LOW/0 pixels) these LOW/0 pixels exist, if they're impact is REDUCED 
 
-# only the large total value terms/pairs exist
+# by being assigned LOW valued weights, then
+
+# only the large positive total value terms/pairs exist
 
 # leaving zj_n = only large total value terms + negative total value term/0 term/close-to-zero term
-#                                               ^^^^^^ VERY SLIGHT, SMALL, LESS CONTRIBUTION ^^^^^^   
+                                               ^^^^^^ VERY SLIGHT, SMALL, LESS CONTRIBUTION ^^^^^^   
+
+#              = large positive value
 
 # for the BRIGHT pixels 4, 20 and 12, the neuron has assigned HIGH weights
 
-# but this is a small window:
+# but this is a small window that it MATCHED the image's PIXEL PATTERN correctly:
 
-#   0      0      0     | 1 |     0       0      0       0
-#   0      0      1     | 1 |     0       0      0       0
-#   0      0      0     | 1 |     0       0      0       0
-#   0      0      0       1       0       0      0       0
-#   0      0      0       1       0       0      0       0
-#   0      0      0       1       0       0      0       0
-#   0      0      0       1       0       0      0       0
-#   0      0      1       1       1       0      0       0
+# |+   +| -> correct HIGH-BRIGHT MATCHES
+#  +   + -> incorrect HIGH-BRIGHT MATCHES
+#  -   - -> incorrect HIGH-BRIGHT MATCHES
+# |-   -| -> correct HIGH-weight * BRIGHT-pixel match (patterns match)
+
+
+#  -0-    -0-     0    |..1..|    0       0      0       0
+#  -0-    -0-     1    |..1..|    0       0      0       0
+#  -0-    -0-     0    |..1..|    0       0      0       0
+#  -0-   |+0+|  |+0+|     1       0       0      0       0
+#  -0-     0      0       1     |+0+|     0      0       0
+#  -0-     0      0       1       0       0      0       0
+#  -0-     0      0       1       0       0      0       0
+#  -0-     0      1       1       1       0      0     |+0+|
 
 # this is why each neuron in the earliest of layers are EDGE DETECTORS
+
+# NOTE: weights (HIGH-valued/LOW-valued) determine the PATTERN/DETECTOR - it exists there
+
+# 
 
 # neuron 1 only sees this SMALL PART/EDGE of the number 1
 # neuron 1 PREFERS pixels 4, 26, 37, 64, 20, 27 and 12 to be BRIGHT and it assigns
