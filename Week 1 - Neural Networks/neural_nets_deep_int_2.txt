@@ -270,8 +270,8 @@ w62_1 = -0.1
 # but this is a small window that it MATCHED the image's PIXEL PATTERN correctly:
 
 # |+   +| -> correct HIGH-weight * BRIGHT-pixel match (patterns match)
-#  +   + -> incorrect HIGH-weight match (patterns don't match)
-#  -   - -> incorrect LOW-weight/HIGH negative match (patterns don't match)
+#  +   + -> incorrect HIGH-weight/mismatch (patterns don't match)
+#  -   - -> incorrect LOW-weight/HIGH negative/mismatch (patterns don't match)
 # |-   -| -> correct LOW-weight/HIGH negative * DIM/0-pixel match (patterns match)
 # /     / -> Fully ignored/negated
 
@@ -334,15 +334,19 @@ w62_1 = -0.1
 
 # if there are more MATCHES between HIGH NEGATIVE/LOW-VALUED * DARK PIXEL terms/pairs - 
 
-# in our case 11/13 MATCHES exist - then the value of z1_1 will tend to be close to zero/low 
+# in our case 11/13 MATCHES exist - then the value of z1_1 will tend to be 0
 
-# negative and the value of z1_1 will be taken over by/only have/made up of only the LARGE values
+# and the value of z1_1 will be taken over by/only have/made up of only the LARGE values
 
-# and the overall value of z1_1 will be a LARGE value
+# i.e. these CORRECT HIGH * BRIGHT terms/pairs where the result
+
+# HIGH weight * BRIGHT pixel = LARGE positive/LARGE value
+
+ and the overall value of z1_1 will be a LARGE value
 
 # essentially:
 
-# then these pixels do NOT add any penalty to z1_1
+# these terms/pairs do NOT add any penalty to z1_1
 
 # because the neuron expected those pixels to be dark
 
@@ -350,11 +354,57 @@ w62_1 = -0.1
 
 # therefore these terms contribute approximately 0
 
-# and do not fight against the positive evidence
+# as you're multiplying the HIGH negative/low-valued weight with 0 (DARK)
 
-# and if you applied sigmoid, then a LARGER value will tend to output a value closer to 1
+# and so you are not fight against the positive evidence
+
+# now if you applied sigmoid, then a LARGER value will tend to output a value closer to 1
 
 # and this results in a STRONG ACTIVATION
+
+# BAD CASES:
+
+# MISMATCH/incorrect LOW-weight/HIGH negative mismatch
+
+# (or - the same thing)
+
+# MISMATCH/incorrect HIGH-weight/HIGH positive mismatch
+
+# this means:
+
+# weight = -3
+
+# pixel = 1
+
+# term = -3
+
+# this pushes z1_1 downward; this is bad
+
+# as the neuron expected the pixel to be DARK and assigned it a HIGH negative weight
+
+# but neuron is actually BRIGHT
+
+# now, there is a penalty
+
+# z1_1 and inherently, the activation a1_1 is REDUCED; by -3
+
+# because the CORRECT MATCH of LOW-weight/HIGH-negative with a DARK PIXEL
+
+# should make the term's value 0 - leaving us no penalty and leaving the value z1_1 and 
+
+# inherently the activation to be LARGE/taken up by terms/pairs that output LARGE value (those
+
+# CORRECT HIGH weight * BRIGHT pixel terms/pairs)
+
+# or
+
+# weight = 2
+
+# pixel = 0
+
+# term = 0
+
+# here, the neuron thinks that this pixel will be BRIGHT 
 
 # as you can see:
 
