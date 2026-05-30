@@ -297,30 +297,84 @@ w62_1 = -0.1
 #                                                      
 # |-0-|          -1-                        |-0-|   +0+
 
-# now, only care about the HIGH positive weights (match/didn't match)
-# (you know why)
+# now, look at the HIGH positive weights first (match/didn't match)
+# why: (see below/after the diagram below)
 
 #                      |+1+|                      
 #                      |+1+|                        
-#               |-0-|  |+1+|                
-#         +0+    +0+           -0-                     
-#        |-0-|                 +0+                 
+#                      |+1+|                
+#         +0+    +0+                               
+#                              +0+                 
+#                                                 
+#                                                      
+#                                                   +0+
+
+# THIS is the HIGH PATTERN of weights that will MATCH with the image's BRIGHT PIXEL pattern
+
+# this is the 1st thing we CARE about for STRONG ACTIVATIONS from a neuron
+
+# next see the HIGH negative weights (match/didn't match)
+
+# |-0-|         |-0-|                       |-0-|      
+#                              -0-                     
+#               |-0-|                       |-0-|  |-0-|
+#                              -0-                     
+#        |-0-|                                     |-0-|
 #                             |-0-|                    
 #                                                      
-# |-0-|          -1-                        |-0-|   +0+
+# |-0-|          -1-                        |-0-|   
 
+# this is the 2nd/next thing we CARE about for STRONG ACTIVATIONS from a neuron
+
+# now, if there are more MATCHES between HIGH POSITIVE * BRIGHT PIXEL terms/pairs - 
+
+# in our case only 3 / 7 MATCHES exist - then the value of z1_1 will increase (LARGE values) 
+
+# and
+
+# if there are more MATCHES between HIGH NEGATIVE/LOW-VALUED * DARK PIXEL terms/pairs - 
+
+# in our case 11/13 MATCHES exist - then the value of z1_1 will tend to be close to zero/low 
+
+# negative and the value of z1_1 will be taken over by/only have/made up of only the LARGE values
+
+# and the overall value of z1_1 will be a LARGE value
+
+# essentially:
+
+# then these pixels do NOT add any penalty to z1_1
+
+# because the neuron expected those pixels to be dark
+
+# and they are dark
+
+# therefore these terms contribute approximately 0
+
+# and do not fight against the positive evidence
+
+# and if you applied sigmoid, then a LARGER value will tend to output a value closer to 1
+
+# and this results in a STRONG ACTIVATION
+
+# as you can see:
 
 # neuron 1 only sees this SMALL PART/EDGE of the number 1
+
 # neuron 1 PREFERS pixels 4, 26, 37, 64, 20, 27 and 12 to be BRIGHT and it assigns
+
 # HIGH weights to each of these pixels
 
 # but, from the input image, only 3 out of the 7 preferred BRIGHT pixels match
 # with image's BRIGHT pixels: 4, 12 and 20
 
-# say the HIGH values are: 
-# w4_1 = 2.7
-# w12_1 = 1.4
-# w20_1 = 1.9
+#                      |+1+|                      
+#                      |+1+|                        
+#                      |+1+|                
+#                                    
+#                              
+#                                                 
+#                                                      
+#                                                   
 
 # this means:
 # z1_1 = w4_1x4 + w12_1x12 + w20_1x20 + ... = 6.0 + ...
