@@ -23,6 +23,9 @@
 # now, based on this randomly initialized weights for each neuron,
 # each neuron has its own pixel preference pattern
 
+# and the neuron only cares about whether the input image MATCHES the pattern encoded 
+# in the weights
+
 # an image vector x that shows number "1" should have all the centre column values BRIGHT/HIGH
 # so:
 #   0      0      0       1       0       0      0       0
@@ -45,7 +48,9 @@
 # 4, 11, 12, 20, 28, 36, 44, 52, 59, 60, 61
 # to be BRIGHT
 
-# so, each neuron should give HIGH IMPORTANCE to each of these BRIGHT pixels
+# so, each neuron should give HIGH IMPORTANCE/MATCH with HIGH weights to each of these BRIGHT pixels
+
+#
 
 # why: because that's the RIGHT model
 
@@ -172,8 +177,9 @@
 # and hence, 
 
 # this neuron model, which is randomly a VERTICAL EDGE DETECTOR by the WEIGHTS it's being
-# assigned and hence its PREFERENCE of BRIGHT pixels, correctly SEES that PART/EDGE in the image
+# assigned and hence its own PREFERENCE of BRIGHT pixels, correctly SEES that PART/EDGE in the image
 # and it ACTIVATES STRONGLY
 
 # this is what each neuron in the first hidden layer does
 
+# hidden layer 2:
