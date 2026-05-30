@@ -104,18 +104,109 @@
 # but in essence,
 
 # you will NOT HAVE MATCHING WEIGHTS i.e.
-# you will NOT HAVE HIGH WEIGHTS for BRIGHT PIXELS and LOW/ZERO WEIGHTS for DARK PIXELS (to negate 
+# you will NOT HAVE HIGH WEIGHTS for BRIGHT PIXELS and LOW/NEGATIVES WEIGHTS for DARK PIXELS (to negate 
 # their relevance)
 # (or)
 # the PREFFERED WEIGHT PATTERN (for eacn neuron) won't neccessarily MATCH the PIXEL PATTERN
 
+# NOTE: HIGH POSITIVES -> intends to be matched with BRIGHT pixels
+#       HIGH NEGATIVES/LOW-VALUED -> intends to be matched with DARK/DIM pixels
+#       ZERO VALUED/CLOSE TO ZERO -> pixels are not cared/fully negated
+
 # because of the RANDOM initialization of WEIGHTS
 
-# neuron 1 might have HIGH weights for pixels
-# 4, 26, 37, 64, 20, 27, 12. 
-# So, w4_1, w26_1, w37_1, w64_1, w20_1, w27_1, w12_1 are all HIGH POSITIVE weights (valued)
+# say neuron 1 has HIGH POSITIVE weights for pixels:
+# 4, 12, 20, 26, 27, 37, 64
 
-# and maybe LOW/NEGATIVE weights for the remaining pixels
+# So,
+# w4_1, w12_1, w20_1, w26_1, w27_1, w37_1, w64_1
+# are all HIGH POSITIVE valued weights
+
+# example values:
+
+w4_1  = +2.7
+w12_1 = +1.4
+w20_1 = +1.9
+w26_1 = +2.1
+w27_1 = +2.5
+w37_1 = +1.8
+w64_1 = +2.3
+
+
+# neuron 1 has LOW valued/HIGH NEGATIVE weights for pixels:
+# 1, 3, 7, 13, 19, 23, 24, 29, 34, 40, 45, 57, 59, 63
+
+# So,
+# w1_1, w3_1, w7_1, w13_1, w19_1, w23_1, w24_1,
+# w29_1, w34_1, w40_1, w45_1, w57_1, w59_1, w63_1
+# are all LOW valued weights
+
+# example values:
+
+w1_1  = -1.8
+w3_1  = -2.1
+w7_1  = -1.6
+w13_1 = -2.4
+w19_1 = -1.7
+w23_1 = -2.0
+w24_1 = -1.5
+w29_1 = -2.2
+w34_1 = -1.9
+w40_1 = -1.4
+w45_1 = -2.3
+w57_1 = -1.8
+w59_1 = -2.5
+w63_1 = -2.0
+
+
+# neuron 1 has SMALL/NEAR-ZERO weights for all remaining pixels:
+
+# (does not care about the pixels)
+
+w2_1  = +0.1
+w5_1  = -0.2
+w6_1  = +0.1
+w8_1  = -0.1
+w9_1  = +0.2
+w10_1 = -0.1
+w11_1 = +0.3
+w14_1 = -0.2
+w15_1 = +0.1
+w16_1 = +0.0
+w17_1 = +0.2
+w18_1 = -0.1
+w21_1 = +0.1
+w22_1 = +0.2
+w25_1 = -0.2
+w28_1 = +0.1
+w30_1 = +0.0
+w31_1 = -0.1
+w32_1 = +0.2
+w33_1 = +0.1
+w35_1 = -0.2
+w36_1 = +0.2
+w38_1 = -0.1
+w39_1 = +0.1
+w41_1 = +0.0
+w42_1 = -0.2
+w43_1 = +0.1
+w44_1 = +0.2
+w46_1 = +0.1
+w47_1 = -0.1
+w48_1 = +0.0
+w49_1 = +0.2
+w50_1 = -0.2
+w51_1 = +0.1
+w52_1 = +0.3
+w53_1 = -0.1
+w54_1 = +0.0
+w55_1 = +0.2
+w56_1 = -0.2
+w58_1 = +0.1
+w60_1 = +0.2
+w61_1 = +0.1
+w62_1 = -0.1
+
 
 # (vector x)
 #   0      0      0       1       0       0      0       0
@@ -180,24 +271,21 @@
 
 # |+   +| -> correct HIGH-weight * BRIGHT-pixel match (patterns match)
 #  +   + -> incorrect HIGH-weight * BRIGHT-pixel match (patterns don't match)
-#  -   - -> incorrect LOW-weight * DIM/O-pixel match (patterns don't match)
-# |-   -| -> correct LOW-weight * DIM/0-pixel match (patterns match)
+#  -   - -> incorrect LOW-weight/HIGH negative * DIM/O-pixel match (patterns don't match)
+# |-   -| -> correct LOW-weight/HIGH negative * DIM/0-pixel match (patterns match)
+# /     / -> Fully ignored/negated
 
 
-# |-0-|  |-0-|    0     |+1+|     0       0      0       0
-# |-0-|  |-0-|    1     |+1+|     0       0      0       0
-# |-0-|  |-0-|    0    |+1+|     0       0      0       0
-# |-0-|   +0+    +0+      1       0       0      0       0
-# |-0-|  |-0-|    0       1      +0+      0      0       0
-# |-0-|  |-0-|    0       1       0       0      0       0
-# |-0-|  |-0-|    0       1       0       0      0       0
-# |-0-|  |-0-|    1       1       1       0      0      +0+
+# |-0-|   /0/   |-0-|  |+1+|   /0/    /0/   |-0-|   /0/
+#  /0/    /0/    /1/   |+1+|   |-0-|   /0/    /0/    /0/
+#  /0/    /0/   |-0-|  |+1+|   /0/    /0/   |-0-|  |-0-|
+#  /0/    +0+    +0+     1     |-0-|   /0/    /0/    /0/
+#  /0/   |-0-|   /0/     1      +0+    /0/    /0/   |-0-|
+#  /0/    /0/    /0/     1     |-0-|   /0/    /0/    /0/
+#  /0/    /0/    /0/     1      /0/    /0/    /0/    /0/
+# |-0-|   /0/   |-1-|    1       1     /0/   |-0-|   +0+
 
 # this is why each neuron in the earliest of layers are EDGE DETECTORS
-
-# NOTE: weights (HIGH-valued/LOW-valued) determine the PATTERN/DETECTOR - it exists there
-
-# 
 
 # neuron 1 only sees this SMALL PART/EDGE of the number 1
 # neuron 1 PREFERS pixels 4, 26, 37, 64, 20, 27 and 12 to be BRIGHT and it assigns
