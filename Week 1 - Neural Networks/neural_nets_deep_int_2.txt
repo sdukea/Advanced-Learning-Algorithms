@@ -270,22 +270,45 @@ w62_1 = -0.1
 # but this is a small window that it MATCHED the image's PIXEL PATTERN correctly:
 
 # |+   +| -> correct HIGH-weight * BRIGHT-pixel match (patterns match)
-#  +   + -> incorrect HIGH-weight * BRIGHT-pixel match (patterns don't match)
-#  -   - -> incorrect LOW-weight/HIGH negative * DIM/O-pixel match (patterns don't match)
+#  +   + -> incorrect HIGH-weight match (patterns don't match)
+#  -   - -> incorrect LOW-weight/HIGH negative match (patterns don't match)
 # |-   -| -> correct LOW-weight/HIGH negative * DIM/0-pixel match (patterns match)
 # /     / -> Fully ignored/negated
 
 
 # |-0-|   /0/   |-0-|  |+1+|   /0/    /0/   |-0-|   /0/
-#  /0/    /0/    /1/   |+1+|   |-0-|   /0/    /0/    /0/
+#  /0/    /0/    /1/   |+1+|   -0-    /0/    /0/    /0/
 #  /0/    /0/   |-0-|  |+1+|   /0/    /0/   |-0-|  |-0-|
-#  /0/    +0+    +0+     1     |-0-|   /0/    /0/    /0/
-#  /0/   |-0-|   /0/     1      +0+    /0/    /0/   |-0-|
-#  /0/    /0/    /0/     1     |-0-|   /0/    /0/    /0/
-#  /0/    /0/    /0/     1      /0/    /0/    /0/    /0/
-# |-0-|   /0/   |-1-|    1       1     /0/   |-0-|   +0+
+#  /0/    +0+    +0+    /1/    -0-    /0/    /0/    /0/
+#  /0/   |-0-|   /0/    /1/    +0+    /0/    /0/   |-0-|
+#  /0/    /0/    /0/    /1/   |-0-|   /0/    /0/    /0/
+#  /0/    /0/    /0/    /1/    /0/    /0/    /0/    /0/
+# |-0-|   /0/    -1-    /1/    /1/    /0/   |-0-|   +0+
 
-# this is why each neuron in the earliest of layers are EDGE DETECTORS
+
+# removing all the ignored /    / pixels:
+
+# |-0-|         |-0-|  |+1+|                |-0-|      
+#                      |+1+|   -0-                     
+#               |-0-|  |+1+|                |-0-|  |-0-|
+#         +0+    +0+           -0-                     
+#        |-0-|                 +0+                 |-0-|
+#                             |-0-|                    
+#                                                      
+# |-0-|          -1-                        |-0-|   +0+
+
+# now, only care about the HIGH positive weights (match/didn't match)
+# (you know why)
+
+#                      |+1+|                      
+#                      |+1+|                        
+#               |-0-|  |+1+|                
+#         +0+    +0+           -0-                     
+#        |-0-|                 +0+                 
+#                             |-0-|                    
+#                                                      
+# |-0-|          -1-                        |-0-|   +0+
+
 
 # neuron 1 only sees this SMALL PART/EDGE of the number 1
 # neuron 1 PREFERS pixels 4, 26, 37, 64, 20, 27 and 12 to be BRIGHT and it assigns
