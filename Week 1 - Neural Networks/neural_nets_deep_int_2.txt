@@ -396,6 +396,8 @@ w62_1 = -0.1
 
 # CORRECT HIGH weight * BRIGHT pixel terms/pairs)
 
+# the neuron has failed to SUBTRACT NEGATIVE EVIDENCE to activate strongly
+
 # or
 
 # weight = 2
@@ -404,7 +406,55 @@ w62_1 = -0.1
 
 # term = 0
 
-# here, the neuron thinks that this pixel will be BRIGHT 
+# here, the neuron thinks that this pixel will be BRIGHT and assigns it a HIGH positive weight of 2
+
+# but the pixel seems to be DARK
+
+# this does NOT get the POSITIVE evidence/LARGE value it was hoping for
+
+# so this neuron has failed to ADD positive evidence to ACTIVATE strongly
+
+# from this, we understand that
+
+# a neuron activates strongly when:
+
+# 1. CORRECT MATCHES of HIGH POSITIVE weight * BRIGHT pixel
+
+# - these add POSITIVE EVIDENCE
+
+# - these directly increase z1_1
+
+# - these push the activation a1_1 upward
+
+# 2. CORRECT MATCHES of HIGH NEGATIVE weight * DARK pixel
+
+# - these avoid NEGATIVE EVIDENCE
+
+# - because:
+
+# HIGH NEGATIVE weight * DARK/0 pixel = 0
+
+# - therefore these pixels do not penalize z1_1
+
+# - they allow the positive evidence to dominate
+
+# 3. FEW OR NO MISMATCHES between the neuron's preferred pattern and the image
+
+# because mismatches either:
+
+# (a) remove positive evidence
+
+# HIGH POSITIVE weight * DARK pixel = 0
+
+# or
+
+# (b) add negative evidence
+
+# HIGH NEGATIVE weight * BRIGHT pixel = large negative value
+
+# which directly decreases z1_1
+
+# now
 
 # as you can see:
 
