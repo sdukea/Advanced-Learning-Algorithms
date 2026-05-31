@@ -63,3 +63,13 @@ y_train = np.array([[300.0], [500.0]], dtype=np.float32)
 
 # Tensor <-> matrix
 
+fig, ax = plt.subplots(1, 1)
+
+ax.scatter(X_train, y_train, marker='x', c='r', label='Data Points')
+
+ax.legend(fontsize='xx-large')
+
+ax.set_ylabel('Price (in 1000s of dollars)', fontsize='xx-large')
+ax.set_xlabel('Size (1000 sqft)', fontsize='xx-large')
+plt.show()
+
