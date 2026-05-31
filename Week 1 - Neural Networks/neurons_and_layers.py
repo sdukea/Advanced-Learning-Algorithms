@@ -154,4 +154,17 @@ print(w, b)
 
 # this is THAT RANDOMLY INITIALIZED 'w' and 'b' for this neuron that sees that one training 
 
-# example with one feature, just like how each neuron sees one image/training exa
+# example with one feature (one w and one b), just like how each neuron sees one image/training 
+
+# example with 64 features and assigns randomly initialized 64 weights to it (and one bias)
+
+# each time, 'w' and 'b' vary - randomly initialized
+
+# let's set w and b to our own values as its being initialized randomly
+
+set_w = np.array([[200]])
+set_b = np.array([100])
+
+linear_layer.set_weights([set_w, set_b])
+
+print(linear_layer.get_weights())
