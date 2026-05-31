@@ -23,8 +23,19 @@ logging.getLogger("tensorflow").setLevel(logging.ERROR)
 
 # neuron without activation - regression/linear model
 
-X_train = np.array([[1.0], [2.0]], dtype=np.float32)
-y_train = np.array([[300.0], [500.0]], dtype=np.float32)
+X_train = np.array([[1.0], 
+                    [2.0]], dtype=np.float32)
+
+# you're training examples in the format of an actual table/2D matrix
+# you see ROWS now - one single feature in our case
+
+# X_train is of shape (2,1) now
+
+y_train = np.array([[300.0], 
+                    [500.0]], dtype=np.float32)
+
+# again - you see ROWS
+# and y_train is a 2D matrix of shape (2, 1)
 
 # data in TF is represented in a different way than what you've seen in NumPy
 # (as you know it)
@@ -61,6 +72,10 @@ y_train = np.array([[300.0], [500.0]], dtype=np.float32)
 
 # you need it to be explicitly evident of the data's structure
 
+# if you needed, say, three features then X_train would be
+
+# X_train = np.array([[1.0]])
+
 # Tensor <-> matrix
 
 fig, ax = plt.subplots(1, 1)
@@ -73,11 +88,70 @@ ax.set_ylabel('Price (in 1000s of dollars)', fontsize='xx-large')
 ax.set_xlabel('Size (1000 sqft)', fontsize='xx-large')
 plt.show()
 
-# let's implement a linear model for each layer - each neuron is a linear regression unit
+# lets now create a layer that has 1 linear reg. unit
 
-# and no activation function of sigmoid for now
+# a linear reg. unit -> computes a linear reg. output with linear model (wx + b/wvec * vec + b)
+# and activation is linear / so inherently NO CHANGE/a = z
 
-linear_layer = tf.keras.layers.Dense(units=1, activation='Linear')
+# a log. reg. unit -> still computes a linear reg. output with linear model (wx + b/wvec*xvec + b) 
+# and the activation is sigmoid.
+# so, a = sigmoid(z)
+
+linear_layer = tf.keras.layers.Dense(
+    units=1,
+    activation='linear')
 
 # just one neuron for now - a linear reg. unit
 
+# w, b = linear_layer.get_weights()
+
+# print(w, b)
+
+# now, when you do the 'linear_layer' initialization, it just CREATES a layer with one lin. reg. 
+# unit and the activation is linear
+
+# but it does not RANDOMLY initialize weights yet
+
+# only when the layer/unit SEES tr. eg./data, it will randomly assign weights to it
+
+# So,
+
+a1 = linear_layer(X_train[0].reshape(1,1))
+
+# the output is in tf.Tensor, which is the equivalent of np.ndarray or an array datatype but a
+
+# TF array -> Tensor
+
+a1.numpy()
+
+# give it ONE training example (with 1 feature)
+
+# earlier, we gave it the image vector x with 64 values -> this is ONE training example with 64
+
+# features
+
+# don't confuse - essentially, each neuron sees one training example and then randomly assigns
+
+# weights (and bias) to each feature
+
+# in our case, 1 training example has 1 feature
+
+# so one weight (and one bias)
+
+print(a1)
+
+# you're printing the activation - just the linear reg. output
+
+# now, you could see how the randomly initialized w and b i.e. the preferred weight/parameter
+
+# pattern matched with the input's feature (only one feature) pattern
+
+w, b = linear_layer.get_weights()
+
+print(w, b)
+
+# so, that 'w' * 1.0 + b = z1 = a1
+
+# this is THAT RANDOMLY INITIALIZED 'w' and 'b' for this neuron that sees that one training 
+
+# example with one feature, just like how each neuron sees one image/training exa
