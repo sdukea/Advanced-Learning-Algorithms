@@ -73,3 +73,11 @@ ax.set_ylabel('Price (in 1000s of dollars)', fontsize='xx-large')
 ax.set_xlabel('Size (1000 sqft)', fontsize='xx-large')
 plt.show()
 
+# let's implement a linear model for each layer - each neuron is a linear regression unit
+
+# and no activation function of sigmoid for now
+
+linear_layer = tf.keras.layers.Dense(units=1, activation='Linear')
+
+# just one neuron for now - a linear reg. unit
+
