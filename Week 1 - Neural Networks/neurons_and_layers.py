@@ -226,3 +226,14 @@ a_linear = np.dot(set_w, X_train[0].reshape(1,1)) + set_b
 # as told above already, you have to reshape it to (1,1) shape; exactly like how set_w is
 # so, X_train[0].rehshape(1,1) => [1.0] -> [[1.0]]
 
+# both a1 and a_linear produces the SAME values
+
+# use our linear layer to make predictions on our training data
+
+X_train_Tensor = tf.convert_to_tensor(X_train)
+
+pred_tf = linear_layer(X_train_Tensor)
+
+# 
+
+print(pred_tf)
