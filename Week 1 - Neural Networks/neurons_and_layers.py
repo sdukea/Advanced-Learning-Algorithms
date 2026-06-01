@@ -167,6 +167,10 @@ set_b = np.array([100])
 
 linear_layer.set_weights([set_w, set_b])
 
+# NOTE: the first argument in set_weights is the list of parameters: weight array and the bias array
+
+# that's why you enclose the parameter array set_w and set_b in a list
+
 print(linear_layer.get_weights())
 
 # what you're doing here: "Instead of random parameters, let's manually choose parameters whose 
@@ -254,3 +258,14 @@ print(pred_tf)
 pred_linear = np.dot(X_train, set_w) + set_b
 
 print(pred_linear)
+
+# neuron with sigmoid activation
+
+X_train = np.array([0., 1, 2, 3, 4, 5], dtype=np.float32).reshape(-1,1)  # 2-D Matrix
+Y_train = np.array([0,  0, 0, 1, 1, 1], dtype=np.float32).reshape(-1,1)  # 2-D Matrix
+
+# new data - ALWAYS - any DATA - should be in a 2D matrix/table format
+
+pos = Y_train == 1
+neg = Y_train == 0
+
