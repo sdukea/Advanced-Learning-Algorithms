@@ -234,6 +234,23 @@ X_train_Tensor = tf.convert_to_tensor(X_train)
 
 pred_tf = linear_layer(X_train_Tensor)
 
-# 
+# now pred_tf here is predicting result on our entire dataset 
+
+# i.e.
+
+# you have one neuron and for this neuron, for each tr. eg., you return a prediction with the
+
+# linear model that has w = set_w and b = set_b
+
+# So, pred_tf:
+
+# [[300.]
+#  [500.]], shape=(2, 1), dtype=float32)
+
+# NOTE: linear_layer/your layer only has ONE neuron
 
 print(pred_tf)
+
+pred_linear = np.dot(set_w, X_train) + set_b
+
+print(pred_linear)
