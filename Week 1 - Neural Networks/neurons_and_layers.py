@@ -197,7 +197,23 @@ print(linear_layer.get_weights())
 
 # for TWO NEURONS -> 3 FEATURES -> each NEURON SEES 1 TR. EG.
 
-# w should be = np.array([[w1_1, w2_1, w3_1],
-#                        [w1_2, w2_2, w3_2],
-#                        [w1_3, w2_3, w3_3]])
+# w should be:
+#              = [[w1_1, w1_2],
+#                 [w2_1, w2_2],
+#                 [w3_1, w3_2]]
 
+# YES; w and X_train (3 features now/any number of eg.) should be of the same size/orientation
+
+# exactly like you add COLUMNS to the right when adding data to X_train (making it have 2 or more
+
+# features), you will associate weights in the same directional and orientational way here in 
+
+# w as well
+
+# So if you want to modify/set weights w for when your dataset has 3 features and 2 neurons, then
+
+# your w array should look like above
+
+a1 = linear_layer(X_train[0].reshape(1, 1))
+
+print(a1) # you'll get 300
