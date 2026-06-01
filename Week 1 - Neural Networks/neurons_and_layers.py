@@ -251,6 +251,6 @@ pred_tf = linear_layer(X_train_Tensor)
 
 print(pred_tf)
 
-pred_linear = np.dot(set_w, X_train) + set_b
+pred_linear = np.dot(X_train, set_w) + set_b
 
 print(pred_linear)
