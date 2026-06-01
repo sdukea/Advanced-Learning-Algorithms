@@ -168,3 +168,36 @@ set_b = np.array([100])
 linear_layer.set_weights([set_w, set_b])
 
 print(linear_layer.get_weights())
+
+# what you're doing here: "Instead of random parameters, let's manually choose parameters whose 
+# behavior we understand."
+
+# so now, the value of a1, which was always changing due to w and b being initialized randomly,
+
+# is always: a1 = 200(1) + 100 = 300
+
+# now this is for ONE NEURON -> 1 FEATURE -> 1 TR. EG.
+#                                          w = [[200]], b = [[100]]
+
+# if you had three features where X_train looked like:
+
+# X_train = np.array([[1.0, 2.0, 3.0],
+#                    [4.0, 5.0, 6.0],
+#                    [7.0, 8.0, 9.0]])
+
+# so now, for ONE NEURON -> 3 FEATURES -> 1 TR. EG.
+#                                         w should be = [[w1], [w2], [w3]], b = [[b1]]
+#                                                     = [[w1],
+#                                                        [w2],
+#                                                        [w3]]
+
+# why: because shape of w should ALWAYS be in a table/2D form
+
+# w.shape = (3,1) now -> TF now naturally knows that we have 3 features and we have 1 neuron
+
+# for TWO NEURONS -> 3 FEATURES -> each NEURON SEES 1 TR. EG.
+
+# w should be = np.array([[w1_1, w2_1, w3_1],
+#                        [w1_2, w2_2, w3_2],
+#                        [w1_3, w2_3, w3_3]])
+
