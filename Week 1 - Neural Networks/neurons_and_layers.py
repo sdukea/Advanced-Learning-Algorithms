@@ -217,3 +217,12 @@ print(linear_layer.get_weights())
 a1 = linear_layer(X_train[0].reshape(1, 1))
 
 print(a1) # you'll get 300
+
+print(a1.numpy())
+
+a_linear = np.dot(set_w, X_train[0].reshape(1,1)) + set_b
+# set_w shape is (1,1)
+# X_train[0] shape is (1,) -> [1.0]
+# as told above already, you have to reshape it to (1,1) shape; exactly like how set_w is
+# so, X_train[0].rehshape(1,1) => [1.0] -> [[1.0]]
+
