@@ -206,7 +206,7 @@ print(linear_layer.get_weights())
 #                 [w2_1, w2_2],
 #                 [w3_1, w3_2]]
 
-# YES; w and X_train (3 features now/any number of eg.) should be of the same size/orientation
+# So, for that layer, 
 
 # exactly like you add COLUMNS to the right when adding data to X_train (making it have 2 or more
 
@@ -286,3 +286,87 @@ ax.set_title('One variable plot')
 ax.legend(fontsize=12)
 
 plt.show()
+
+# before, we build a single layer - linear_layer - with one neuron in it
+
+# this ONE neuron sees a training example, uses our set_w and set_b as the set weights for this
+
+# layer i.e. it uses these weights to apply to training examples and each training example
+
+# gets a prediction -> training eg. - apply set weights set_w and set_b to linear model with
+
+# input training example to get z value as well as z = activation a value 
+
+# (as this is a linear reg. unit and the output of each neuron equals the activation as well as 
+
+# the activation here is linear)
+
+# so, we did:
+
+# input tr. eg. -> z = wx + b/wvec * xvec + b -> linear activation/z = a -> output is a
+
+# we just studied what a layer is, and what a neuron could do
+
+# So, you can see that there is no network here, or a model here
+
+# where this one layer exists and one neuron exists inside this layer - 
+
+# it is not defined INSIDE some neural network so that we can call this a neural network
+
+# with a single layer (linear layer) and a single linear reg. unit
+
+# but let's now connect multiple layers, each with any number of neurons
+
+# this is what we call a model/network -> a collection of layers/neurons
+
+# a model: 25 neurons -> 15 neurons -> 1 neuron
+#           layer 1        layer 2      layer 3
+
+
+# so we use Sequential for this
+
+model = Sequential(
+    [
+       tf.keras.layers.Dense(1, input_dim=1, activation='sigmoid', name='L1') 
+    ])
+
+# input_dim = number of features per training example
+
+# X_train shape = (2,1)
+
+# [
+#   [1.0],
+#   [2.0]
+# ]
+
+# 2 training examples
+# 1 feature
+
+# therefore:
+
+# Dense(1, input_dim=1)
+
+# tells TF:
+
+# "every training example reaching this layer
+# will have exactly 1 feature"
+
+# so TF knows:
+
+# neuron needs:
+# 1 weight
+# 1 bias
+
+# if input_dim = 3:
+
+# Dense(2, input_dim=3)
+
+# TF knows:
+
+# 3 features
+# 2 neurons
+
+# therefore:
+
+# weights.shape = (3,2)
+# biases.shape = (2,)
