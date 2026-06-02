@@ -325,8 +325,6 @@ plt.show()
 
 # so we use Sequential for this
 
-import tensorflow as tf
-
 model = tf.keras.Sequential([
     tf.keras.layers.Dense(
         units=1,
@@ -384,13 +382,17 @@ model.summary()
 
 logistic_layer = model.get_layer('L1')
 
-w, b = logistic_layer.get_weights()
+w, b = logistic_layer.get_weights()  
 
 # again, w and b are not yet initialized as logistic_layer.get_weights() is not seeing any
 
 # training example yet - you cannot unpack 0 values into 2 variables/parameters w and b
 
+# you're doing w, b = []
+
 # same error as before - yes
+
+
 
 set_w = np.array([[2]])
 
@@ -398,4 +400,8 @@ set_b = np.array([[-4.5]])
 
 # assume as optimal
 
+logistic_layer.set_weights([set_w, set_b])
 
+print(logistic_layer.get_weights())
+
+# even if we set w and 
