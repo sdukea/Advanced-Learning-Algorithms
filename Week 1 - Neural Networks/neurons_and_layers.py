@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
-from tensorflow.python.keras.layers import Dense, Input
+from tensorflow.keras.layers import Dense, Input
 from tensorflow.python.keras import Sequential
 from tensorflow.python.keras.losses import MeanSquaredError, BinaryCrossentropy
 from tensorflow.python.keras.activations import sigmoid
@@ -325,10 +325,15 @@ plt.show()
 
 # so we use Sequential for this
 
-model = Sequential(
-    [
-       tf.keras.layers.Dense(1, input_dim=1, activation='sigmoid', name='L1') 
-    ])
+import tensorflow as tf
+
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(
+        1,
+        activation='sigmoid',
+        name='L1'
+    )
+])
 
 # input_dim = number of features per training example
 
