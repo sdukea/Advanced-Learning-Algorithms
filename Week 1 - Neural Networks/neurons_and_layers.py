@@ -329,11 +329,11 @@ import tensorflow as tf
 
 model = tf.keras.Sequential([
     tf.keras.layers.Dense(
-        1,
+        units=1,
         activation='sigmoid',
         name='L1'
     )
-])
+])  
 
 # input_dim = number of features per training example
 
@@ -375,3 +375,26 @@ model = tf.keras.Sequential([
 
 # weights.shape = (3,2)
 # biases.shape = (2,)
+
+model.summary()
+
+# this shows layers and number of parameters in the model/network
+
+# here: there is 1 layer, and one unit and the unit has two parameters w and b
+
+logistic_layer = model.get_layer('L1')
+
+w, b = logistic_layer.get_weights()
+
+# again, w and b are not yet initialized as logistic_layer.get_weights() is not seeing any
+
+# training example yet - you cannot unpack 0 values into 2 variables/parameters w and b
+
+# same error as before - yes
+
+set_w = np.array([[2]])
+
+set_b = np.array([[-4.5]])
+
+# assume as optimal
+
