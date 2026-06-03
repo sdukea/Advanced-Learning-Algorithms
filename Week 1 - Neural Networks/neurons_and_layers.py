@@ -409,7 +409,7 @@ print(logistic_layer.get_weights())
 
 # arguments as units=1), I will now need 1 weight and 1 bias
 
-# so if you did:
+# so if you added 'input_dim=1' in the layer:
 
 # model = tf.keras.Sequential([
 #     tf.keras.layers.Dense(
@@ -429,9 +429,13 @@ print(logistic_layer.get_weights())
 
 # this is because TF/Keras already knows that you have one input feature coming in
 
-# 
+# and that you only have 1 neuron
 
-# print(w.shape, b.shape)
+# the shape of weight that TF/Keras creates is of the form (no of features, no of neurons)
+
+# in our case, we have 1 feature, and 1 neuron -> shape of w (1,1)
+
+# b's shape ->
 
 
 set_w = np.array([[2]])
@@ -446,4 +450,3 @@ logistic_layer.set_weights([set_w, set_b])
 
 print(logistic_layer.get_weights())
 
-# even if we set w and 
