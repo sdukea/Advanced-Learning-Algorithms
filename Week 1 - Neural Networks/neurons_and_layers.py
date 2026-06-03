@@ -382,7 +382,7 @@ model.summary()
 
 logistic_layer = model.get_layer('L1')
 
-w, b = logistic_layer.get_weights()  
+print(logistic_layer.get_weights())  
 
 # again, w and b are not yet initialized as logistic_layer.get_weights() is not seeing any
 
