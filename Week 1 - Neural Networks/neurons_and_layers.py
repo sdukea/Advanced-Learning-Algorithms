@@ -374,6 +374,12 @@ model = tf.keras.Sequential([
 # weights.shape = (3,2)
 # biases.shape = (2,)
 
+# we can't give in the 'input_dim' parameter here; some TF/Keras issue that
+
+# could not be resolved
+
+# so the layers won't know how many features it will input
+
 model.summary()
 
 # this shows layers and number of parameters in the model/network
@@ -388,10 +394,44 @@ print(logistic_layer.get_weights())
 
 # training example yet - you cannot unpack 0 values into 2 variables/parameters w and b
 
-# you're doing w, b = []
+# like w, b = logistic_layer.get_weights() because
 
-# same error as before - yes
+# you're doing w, b = [], which is erroneous
 
+# so if you printed out logistic_layer.get_weights(), you'd just get []
+# (like we saw above)
+
+# ––– if input_dim=1
+
+# if you had the argument input_dim=1 while creating the model/network,
+
+# then TF/Keras will know that every training example that 1 unit/neuron (as initialized in the
+
+# arguments as units=1), I will now need 1 weight and 1 bias
+
+# so if you did:
+
+# model = tf.keras.Sequential([
+#     tf.keras.layers.Dense(
+#         units=1,
+#         input_dim=1,
+#         activation='sigmoid',
+#         name='L1'
+#     )
+# ])  
+
+# logistic_layer = model.get_layer('L1')
+
+# w, b = logistic_layer.get_weights()
+
+# print(w, b)
+# [[1.52]] [0.]
+
+# this is because TF/Keras already knows that you have one input feature coming in
+
+# 
+
+# print(w.shape, b.shape)
 
 
 set_w = np.array([[2]])
@@ -401,6 +441,8 @@ set_b = np.array([[-4.5]])
 # assume as optimal
 
 logistic_layer.set_weights([set_w, set_b])
+
+# you are trying to set weights w and b THAT HAVE NOT YET BEEN INITIALIZED
 
 print(logistic_layer.get_weights())
 
