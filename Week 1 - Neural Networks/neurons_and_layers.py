@@ -450,3 +450,4 @@ logistic_layer.set_weights([set_w, set_b])
 
 print(logistic_layer.get_weights())
 
+
