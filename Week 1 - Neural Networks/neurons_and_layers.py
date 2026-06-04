@@ -656,4 +656,24 @@ print(logistic_layer.get_weights())
 # predict
 a1 = model.predict(X_train[0].reshape(1,1))
 
+# you are giving: 1 training example (X_train[0].reshape(1,1))
+
+# has 1 feature
+
+# model has 1 unit
+
+# so returns 1 prediction
+
+# with 1 w and 1 b set by us (after being initialized randomly)
+
+# to accomodate that 1 feature in the training example given
+
 print(a1)
+
+# normal logistic prediction
+
+alog = sigmoid(np.dot(set_w, X_train[0].reshape(1,1)) + set_b)
+
+print(alog)
+
+# both normal and model/network prediction is same
