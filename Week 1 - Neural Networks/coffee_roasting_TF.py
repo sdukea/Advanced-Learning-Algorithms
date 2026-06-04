@@ -25,13 +25,13 @@ X, Y = load_coffee_data()
 
 print(X.shape, Y.shape)
 
-print(X)
+# print(X)
 # shape: (200, 2)
 
 # so you have 200 training examples, each with 2 features - temperature of coffee beans (in celsius) 
 # and duration of roasting in minutes
 
-print(Y)
+# print(Y)
 # shape: (200,1)
 
 # this is for each tr. eg.: 1 for good roast, 0 for bad roast
@@ -41,6 +41,73 @@ print(Y)
 temp = X[:, 0]
 
 duration = X[:, 1]
+
+Y = Y.ravel()
+
+# you have a column vector of labels Y; 2D shape
+
+# i.e. you have it like:
+
+# # array([
+#     [1],
+#     [0],
+#     [1],
+#     ...
+# ])
+
+# and when you try to do the below: boolean masking
+
+# NumPy expects a 1D array of labels, not a column vector that is 2D
+
+# so, you ravel/flatten it to a 1D array
+
+# so, you turn (200,1) to (200,)
+
+# now, Y == 1 (= good) is now a 1D array that serves as the perfect mask
+
+# why:
+
+# BECAUSE 'temp' is a 1D array 
+
+# and so is 'duration'
+
+# you can only have as mask a 1D array if the data you're applying the mask on is ALSO a 1D array
+
+# so as we have all data (that mask is applied on; temp and duration) as 1D array
+
+# masks that are applied on this should also be of 1D array
+
+# .ravel() is a great function to ravel/flatten a column vector as such to a 1D array
+
+# NOTE: you can also have
+
+# 1. a 2D array with a 1D mask
+
+A = np.array([
+    [1, 2],
+    [3, 4],
+    [5, 6]
+])
+
+mask = np.array([True, False, True])
+
+A[mask]
+
+# the result:
+# array([
+#     [1, 2],
+#     [5, 6]
+# ])
+
+# but what's incompatible is
+
+# A.shape    == (3, 2)
+# mask.shape == (3, 1)
+
+# NumPy cannot interpret a (3,1) boolean mask for indexing a (3,2) array
+# (think about it/TBI)
+
+# A[mask] 
 
 good = Y == 1
 bad = Y == 0
@@ -59,3 +126,19 @@ plt.title('Coffee roasting')
 plt.legend()
 
 plt.show()
+
+# normalize data
+
+# fitting weights to the data will proceed more quickly if the data is normalized
+
+print(f"Temperature Max, Min pre normalization: {np.max(X[:,0]):0.2f}, {np.min(X[:,0]):0.2f}")
+print(f"Duration    Max, Min pre normalization: {np.max(X[:,1]):0.2f}, {np.min(X[:,1]):0.2f}")
+
+norm_l = tf.keras.layers.Normalization(axis=-1)
+
+
+norm_l.adapt(X) 
+X_norm = norm_l(X)
+print(f"Temperature Max, Min post normalization: {np.max(X_norm[:,0]):0.2f}, {np.min(X_norm[:,0]):0.2f}")
+print(f"Duration    Max, Min post normalization: {np.max(X_norm[:,1]):0.2f}, {np.min(X_norm[:,1]):0.2f}")
+
