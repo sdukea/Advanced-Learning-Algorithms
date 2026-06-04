@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
-from tensorflow.keras.layers import Dense, Input
+from tensorflow.python.keras.layers import Dense, Input
 from tensorflow.python.keras import Sequential
 from tensorflow.python.keras.losses import MeanSquaredError, BinaryCrossentropy
 from tensorflow.python.keras.activations import sigmoid
@@ -26,7 +26,7 @@ logging.getLogger("tensorflow").setLevel(logging.ERROR)
 X_train = np.array([[1.0], 
                     [2.0]], dtype=np.float32)
 
-# you're training examples in the format of an actual table/2D matrix
+# you have training examples in the format of an actual table/2D matrix
 # you see ROWS now - one single feature in our case
 
 # X_train is of shape (2,1) now
@@ -48,7 +48,7 @@ y_train = np.array([[300.0],
 
 # np.array([1.0, 2.0])
 
-# this is fine as well - you'd have data
+# this is fine - you'd have data
 
 # but when it comes to ACTUAL MACHINE LEARNING i.e. linear algebra, TF/PyTorch interoperability
 
@@ -64,7 +64,7 @@ y_train = np.array([[300.0],
 
 # represent it in a single row vector with shape (m,) or (only rows,) - columns still EXIST and this 
 
-# is what ML actually needs; what kind of data it is?
+# is what ML actually needs; real meaning of data
 
 # how many rows does it have - so that I know how many training examples there are
 
@@ -74,7 +74,10 @@ y_train = np.array([[300.0],
 
 # if you needed, say, three features then X_train would be
 
-# X_train = np.array([[1.0]])
+# X_train = np.array([[1.0, 2.0, 3.0],
+#                     [4.0, 5.0, 6.0]]) i.e.
+
+# 3 features, 2 training examples
 
 # Tensor <-> matrix
 
@@ -90,7 +93,7 @@ plt.show()
 
 # lets now create a layer that has 1 linear reg. unit
 
-# a linear reg. unit -> computes a linear reg. output with linear model (wx + b/wvec * vec + b)
+# a linear reg. unit -> computes a linear reg. output z with linear model (wx + b/wvec * vec + b)
 # and activation is linear / so inherently NO CHANGE/a = z
 
 # a log. reg. unit -> still computes a linear reg. output with linear model (wx + b/wvec*xvec + b) 
@@ -101,6 +104,7 @@ linear_layer = tf.keras.layers.Dense(
     units=1,
     activation='linear')
 
+# one layer and
 # just one neuron for now - a linear reg. unit
 
 # w, b = linear_layer.get_weights()
