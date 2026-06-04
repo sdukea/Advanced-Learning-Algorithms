@@ -111,7 +111,7 @@ linear_layer = tf.keras.layers.Dense(
 
 # print(w, b)
 
-# now, when you do the 'linear_layer' initialization, it just CREATES a layer with one lin. reg. 
+# now, when you do the 'linear_layer' initialization, it just CREATES 1 layer with 1 lin. reg. 
 # unit and the activation is linear
 
 # but it does not RANDOMLY initialize weights yet
@@ -144,7 +144,7 @@ a1.numpy()
 
 print(a1)
 
-# you're printing the activation - just the linear reg. output
+# you're printing the activation = the linear reg. output
 
 # now, you could see how the randomly initialized w and b i.e. the preferred weight/parameter
 
@@ -203,20 +203,22 @@ print(linear_layer.get_weights())
 
 # w.shape = (3,1) now -> TF now naturally knows that we have 3 features and we have 1 neuron
 
+# shape of data = (number of training examples, number of features)
+#               = (3,1)
+
+# weight w shape = (number of features, number of neurons)
+#               = (3, whatever the number of neurons are)
+
+# Yes, it does not mean the size of training data matrix and the size of weight matrix
+# (mentioned 'matrix' because in TF implementation, all data is a matrix of 2D shape) should
+# always match - stop being dumb!
+
 # for TWO NEURONS -> 3 FEATURES -> each NEURON SEES 1 TR. EG.
 
 # w should be:
 #              = [[w1_1, w1_2],
 #                 [w2_1, w2_2],
 #                 [w3_1, w3_2]]
-
-# So, for that layer, 
-
-# exactly like you add COLUMNS to the right when adding data to X_train (making it have 2 or more
-
-# features), you will associate weights in the same directional and orientational way here in 
-
-# w as well
 
 # So if you want to modify/set weights w for when your dataset has 3 features and 2 neurons, then
 
