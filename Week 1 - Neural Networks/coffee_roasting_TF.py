@@ -36,3 +36,16 @@ print(Y)
 
 # this is for each tr. eg.: 1 for good roast, 0 for bad roast
 
+# let's plot data
+
+temp = X[:, 0]
+
+duration = X[:, 1]
+
+good = Y == 1
+bad = Y == 0
+
+fig, ax = plt.subplots(1, 1, figsize=(1,3))
+
+# good roast
+plt.scatter(temp[good], duration[good], marker='x', c='r', s=80, label='Good roast')
