@@ -456,7 +456,7 @@ model = tf.keras.Sequential([
 # TF knows:
 
 # 3 features
-# 2 neurons
+# 2 neurons/units
 
 # therefore:
 
@@ -473,7 +473,7 @@ model.summary()
 
 # this shows layers and number of parameters in the model/network
 
-# here: there is 1 layer, and one unit and the unit has two parameters w and b
+# here: there is 1 layer, and one unit and the unit has one weight w and one bias b
 
 logistic_layer = model.get_layer('L1')
 
@@ -487,56 +487,95 @@ print(logistic_layer.get_weights())
 
 # you're doing w, b = [], which is erroneous
 
-# so if you printed out logistic_layer.get_weights(), you'd just get []
+# so if you printed out logistic_layer.get_weights(), you'd just get:
+
+# []
+
 # (like we saw above)
 
-# ––– if input_dim=1
+print(logistic_layer.built)
 
-# if you had the argument input_dim=1 while creating the model/network,
+# you'd get False - the model/layer hasn't seen any data yet to initialize weights
 
-# then TF/Keras will know that every training example that 1 unit/neuron (as initialized in the
+# for the version of TF I had on 4/6/26, 6:47 PM -> Version 2.17/Keras 3
 
-# arguments as units=1), I will now need 1 weight and 1 bias
+# in the Lab, you see 'input_dim=1'
 
-# so if you added 'input_dim=1' in the layer:
+# this 'input_dim=1' is done to specify the number of features the input data has
+
+# i.e. the input data in the input layer 
+
+# in older TF/Keras tutorials, what they do is:
+
+# if you want to create a model/network with 3 layers in it,
+
+# you do:
 
 # model = tf.keras.Sequential([
 #     tf.keras.layers.Dense(
+#         units=25,
+#         input_dim=3,                      < layer 1
+#         activation='relu'
+#     ),
+
+#     tf.keras.layers.Dense(
+#         units=15,
+#         activation='relu'                < layer 2
+#     ),
+
+#     tf.keras.layers.Dense(
 #         units=1,
-#         input_dim=1,
-#         activation='sigmoid',
-#         name='L1'
+#         activation='sigmoid'             < layer 3
 #     )
-# ])  
+# ])
 
-# logistic_layer = model.get_layer('L1')
+# all Dense layers
 
-# w, b = logistic_layer.get_weights()
+# and the first Dense layer - layer 1 - will have this input_dim argument as it 
 
-# print(w, b)
-# [[1.52]] [0.]
+# behaves as the input layer 
 
-# this is because TF/Keras already knows that you have one input feature coming in
+# and every other layer in the model - layers 2 and 3 - don't need the parameter because
 
-# and that you only have 1 neuron
+# TF/Keras already knows that layer 3/output layer will input a vector of activations of size of 
 
-# the shape of weight that TF/Keras creates is of the form (no of features, no of neurons)
+# units/Neurons of layer 2 which we already specified -> 15 units in Dense layer 2
 
-# in our case, we have 1 feature, and 1 neuron -> shape of w (1,1)
+# so specifying input_dim in each of the layer would make code redundant - not followed
 
-# b's shape ->
+# but the input layer's number of features from the input data it will get is not known by
 
+# TF/Keras yet - it does not have anything before it/before hand to infer from
 
-set_w = np.array([[2]])
+# that's why we specify input_dim=1 in the first layer as it is an input layer and input layers
 
-set_b = np.array([[-4.5]])
+# will need to be specified of the number of features it will be seeing because it cannot infer
 
-# assume as optimal
+# it - it hasn't gotten any evidence of the number of features it will be getting as input like
 
-logistic_layer.set_weights([set_w, set_b])
+# the other layers do - they can infer from previous layer the number of input feature/activations
 
-# you are trying to set weights w and b THAT HAVE NOT YET BEEN INITIALIZED
+# they will be getting
+
+# model = tf.keras.Sequential([
+#     tf.keras.Input(shape=(3,)),
+#     tf.keras.layers.Dense(25, activation='relu'),
+#     tf.keras.layers.Dense(15, activation='relu'),
+#     tf.keras.layers.Dense(1, activation='sigmoid')
+# ])
+
+# this is the modern approach - you use Input and not a Dense and specify 'input_dim=1'
+
+# to make it the input layer
+
+# so, if we did it modernly
+
+model = tf.keras.Sequential([
+    tf.keras.Input(shape=(1,)),
+
+    tf.keras.layers.Dense(1, activation='sigmoid', name='L1')
+])
+
+logistic_layer = model.get_layer('L1')
 
 print(logistic_layer.get_weights())
-
-
