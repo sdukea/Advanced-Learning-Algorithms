@@ -226,6 +226,54 @@ print(linear_layer.get_weights())
 
 a1 = linear_layer(X_train[0].reshape(1, 1))
 
+# you are reshaping a (1,) - 1D array value - of [1.0] into [[1.0]]
+
+# if you have number of elements = 1, then valid reshapes are (1,1) and (1,)
+
+# you cannot do .reshape(2,1) because you would need 2 elements/values for that
+
+# and 2 x 1 = 2 elements needed from the array (X_train[0] in our case -> 1D array)
+
+# our 1D array only has 1 element -> we need 2 to reshape it -> so you get an error
+
+# elements -> scalar values ONLY
+
+# you might think: in a 3D array, elements are 2D arrays and this count of 2D arrays is what
+
+# corresponds to the elements that you need when multiplying the rows and columns set for reshaping 
+
+# into
+
+# WRONG
+
+# if you had a 3D array like:
+
+# x = np.array([
+#     [[1,2],
+#      [3,4]],
+
+#     [[5,6],
+#      [7,8]]
+# ])
+
+# you'd think: no of elements = 2 as there are 2 2D arrays
+
+# but when trying to reshape, you only need to consider the scalar values in the 3D array
+
+# i.e. the single values
+
+# so we have 8 single scalar values
+
+# so valid reshapes are all the rows and columns set that when multiplied together should 
+
+# yield 8
+
+# so, .reshape(4,2), .reshape(2, 4), .reshape(1, 8), .reshape(8, 1) (you get the point)
+
+# even .reshape(2,2,2) -> unless and until produt set rows and columns for reshaping = number of
+
+# scalar values you have
+
 print(a1) # you'll get 300
 
 print(a1.numpy())
