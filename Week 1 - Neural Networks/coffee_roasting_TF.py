@@ -49,3 +49,7 @@ fig, ax = plt.subplots(1, 1, figsize=(1,3))
 
 # good roast
 plt.scatter(temp[good], duration[good], marker='x', c='r', s=80, label='Good roast')
+
+# bad roast
+plt.scatter(temp[bad], duration[bad], marker='o', s=80, label='Bad roast')
+
