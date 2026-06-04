@@ -21,3 +21,6 @@ tf.autograph.set_verbosity(0)
 
 from lab_coffee_utils import load_coffee_data
 
+X, Y = load_coffee_data()
+
+print(X.shape, Y.shape)
