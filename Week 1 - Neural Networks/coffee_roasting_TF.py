@@ -9,3 +9,15 @@ import logging
 logging.getLogger("tensorflow").setLevel(logging.ERROR)
 
 tf.autograph.set_verbosity(0)
+# means: don't print AutoGraph informational messages
+
+# You'll see fewer messages such as:
+
+# AutoGraph could not transform ...
+# Converting function ...
+# Generated TensorFlow graph ...
+
+# load data:
+
+from lab_coffee_utils import load_coffee_data
+
