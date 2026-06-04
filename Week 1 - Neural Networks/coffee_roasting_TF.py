@@ -53,3 +53,9 @@ plt.scatter(temp[good], duration[good], marker='x', c='r', s=80, label='Good roa
 # bad roast
 plt.scatter(temp[bad], duration[bad], marker='o', s=80, label='Bad roast')
 
+plt.xlabel('Temperature (Celsius)')
+plt.ylabel('Duration (minutes)')
+plt.title('Coffee roasting')
+plt.legend()
+
+plt.show()
