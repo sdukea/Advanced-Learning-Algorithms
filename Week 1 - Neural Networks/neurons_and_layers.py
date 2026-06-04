@@ -300,10 +300,45 @@ pred_tf = linear_layer(X_train_Tensor)
 
 # linear model that has w = set_w and b = set_b
 
+# so, inherently,
+
+# TF sees from your dataset TWO rows/TWO in its 2D shape of (2,1)/TWO tr. eg.
+
+# and only for training examples each, you predict
+
+# using the set parameters/rand. initialized parameters for each feature in each TR. EG./ROW
+
+# which is sees again from X_train shape of (2,1)
+#                                              ^
+
+# ONE/1 feature in our case
+# |
+# so one weight w, and one b (either initialized/set randomly)
+
+# for each ROW/TR. EG. now, the layer returns a prediction -> EACH NEURON in layer returns one 
+
+# prediction one Tensor consisting of predictions of each tr. eg. in the input dataset
+
 # So, pred_tf:
 
 # [[300.]
 #  [500.]], shape=(2, 1), dtype=float32)
+
+# in layer: 1 Neuron/unit -> sees dataset of two training examples and 1 feature -> initializes one
+
+# weight and one bias (sets/random) -> gives 2 predictions i.e. 
+
+# (the usual linear model pred. explanation follows here)
+
+# 1 for each each training example and 
+
+# each prediction is the linear model w/ attached set weight and bias for how many ever features/
+# or feature values (1 in our case) that
+
+# exist in the tr. eg./tr. eg. vector (if more than one feature) and by attaching the weights to 
+
+# the tr. eg./tr. eg. vector feature values, you get the prediction for that example
+
 
 # NOTE: linear_layer/your layer only has ONE neuron
 
