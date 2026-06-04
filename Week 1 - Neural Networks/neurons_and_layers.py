@@ -531,31 +531,42 @@ print(logistic_layer.built)
 
 # all Dense layers
 
+# input/input layer/input data approximately mean the same thing
+
+
 # and the first Dense layer - layer 1 - will have this input_dim argument as it 
 
-# behaves as the input layer 
+# behaves as the FIRST layer that retrieves from input/input data/input layer
 
-# and every other layer in the model - layers 2 and 3 - don't need the parameter because
+# and every other layer in the model - layers 2 and 3 - don't need the parameter input_dim because
 
-# TF/Keras already knows that layer 3/output layer will input a vector of activations of size of 
+# TF/Keras already knows that layer 3 will input a vector of activations of size of 
 
-# units/Neurons of layer 2 which we already specified -> 15 units in Dense layer 2
+# units/Neurons of layer 2 which we already specified -> 15 units specified for Dense layer 2
 
-# so specifying input_dim in each of the layer would make code redundant - not followed
+# so specifying input_dim in each of the layer would make code redundant - not recommended
 
-# but the input layer's number of features from the input data it will get is not known by
+# but the layer retrieving from the input data/layer will not know how many features it will be
 
-# TF/Keras yet - it does not have anything before it/before hand to infer from
+# getting - it does not have anything before it/before hand to infer from like other layers
 
-# that's why we specify input_dim=1 in the first layer as it is an input layer and input layers
+# that's why we specify input_dim=1 in the FIRST layer that will retrieve input/input data/input 
 
-# will need to be specified of the number of features it will be seeing because it cannot infer
+# layer 
 
-# it - it hasn't gotten any evidence of the number of features it will be getting as input like
+# the input of this layer is THE INPUT OF THE NEURAL NETWORK - and this FIRST layer would not
 
-# the other layers do - they can infer from previous layer the number of input feature/activations
+# know how many features it will see like other layers
 
-# they will be getting
+# layer 2 knows it will have as input -> layer 1's output -> an activation vector of 25 features
+
+# layer 3 knows it will have as input -> layer 2's output -> an activation vector of 15 features
+
+# but layer 1 does not know what it will have as input
+
+# that's why we specify input_dim for the FIRST layer that retrieves input/input data/from input
+
+# layer
 
 # model = tf.keras.Sequential([
 #     tf.keras.Input(shape=(3,)),
@@ -571,11 +582,73 @@ print(logistic_layer.built)
 # so, if we did it modernly
 
 model = tf.keras.Sequential([
-    tf.keras.Input(shape=(1,)),
+    tf.keras.Input(shape=(1,)), # the input layer
 
-    tf.keras.layers.Dense(1, activation='sigmoid', name='L1')
+    tf.keras.layers.Dense(1, activation='sigmoid', name='L1') # a layer - retrieves from input
 ])
 
 logistic_layer = model.get_layer('L1')
 
+# this layer DOES NOT KNOW how many features it will input from the input layer
+
+# because its retrieving from the input layer which - itself - does not know how many features
+
+# it will see in the TRAINING EXAMPLE 
+
+# and so if you specify the input's/input layer's/input data's number of features for a sinlge
+
+# training example, the layer that will firstly retrieve from the input/input layer/input data
+
+# will know that 'Oh, I will recieve 1 feature - so I should set one weight w and one bias'
+
+# (our case)
+
 print(logistic_layer.get_weights())
+
+# this is the layer FIRST retrieving from input/input layer/input data
+
+# this layer previously mirrored (in Lab)
+
+# tf.keras.layers.Dense(units=1, input_dim=1, activation='sigmoid', name='L1')
+
+# and this is the layer retrieving from the input/input data/input layer
+
+# and it does not know how many features this input/input data/input layer has
+
+# and so we set input_dim=1
+
+# in the modern approach,
+
+# you don't have to do this - just specify Input and then TF will automatically infer from
+
+# then onwards as we've helped the FIRST layer retrieving from the input/input data/input layer
+
+# with the number of features it will be taking in (in a training example, of couse) so that
+
+# it can set parameter shape and initialize it with values
+
+# now, you see that weights are initialized here, with the desired shape of each parameter
+
+# so, you can now do:
+
+w, b = logistic_layer.get_weights()
+
+print(w, b)
+
+# [[-1.2424643]] [0.]
+
+# so, parameters have been initialized with the
+
+# 1. desired shape to accomodate input features
+# 2. randomly initialized value for each parameter
+
+set_w = np.array([[2]])
+
+set_b = np.array([-4.5])
+
+# you can now set these weights yourself (as seen before)
+
+logistic_layer.set_weights([set_w, set_b])
+
+print(logistic_layer.get_weights())
+
