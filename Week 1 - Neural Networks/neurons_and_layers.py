@@ -351,6 +351,7 @@ print(pred_linear)
 # neuron with sigmoid activation
 
 X_train = np.array([0., 1, 2, 3, 4, 5], dtype=np.float32).reshape(-1,1)  # 2-D Matrix
+
 Y_train = np.array([0,  0, 0, 1, 1, 1], dtype=np.float32).reshape(-1,1)  # 2-D Matrix
 
 # new data - ALWAYS - any DATA - should be in a 2D matrix/table format
@@ -652,3 +653,7 @@ logistic_layer.set_weights([set_w, set_b])
 
 print(logistic_layer.get_weights())
 
+# predict
+a1 = model.predict(X_train[0].reshape(1,1))
+
+print(a1)
