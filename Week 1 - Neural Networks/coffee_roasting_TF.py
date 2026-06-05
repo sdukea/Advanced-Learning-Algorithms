@@ -153,9 +153,6 @@ norm_l = tf.keras.layers.Normalization(axis=-1)
 
 # the same this is what norm_l/normalization_layer does
 
-# and IT IS NOT PART OF THE MODEL/NERUAL NETWORK
-# (not a layer by itself/not placed anywhere in the network)
-
 # axis=-1
 
 # this says the object that the data you will be seeing - X - has 'features' in the 
@@ -164,6 +161,23 @@ norm_l = tf.keras.layers.Normalization(axis=-1)
 # i.e. X dimension -> (200,1)
 #                          ^
 # and so features are here ^ which is the last dimension
+
+# so axis=-1 tells that the last dimension of my data contains the features
+
+# why these features have to be given:
+# "Whenever you learn statistics, learn them separately for each feature." is what you're
+# saying to this feature
+
+# so, yes:
+# now - for each feature - this object will know to calculate/learn mean and variance
+# as you've stated already that you've got 2 features in the data
+
+# so, this object will later operate to learn/calculate:
+# mean of temperature feature 
+# variance of temperature feature
+
+# mean of duration feature
+# variance of duration feature
 
 norm_l.adapt(X) 
 X_norm = norm_l(X)
