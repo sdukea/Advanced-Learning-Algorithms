@@ -190,14 +190,55 @@ norm_l = tf.keras.layers.Normalization(axis=-1)
 # and every input automatically passes through the same learned coordinate transformation/normali-
 # zation
 
+# the point of normalization: to know what high, low, normal is for each feature data you have
+
+# coffee might be roasting at 250 degree Celsius, and for about 3 minutes
+
+# is this temperature high or low, and is this time very long or short?
+
+# you need the normal value in each first - the average value/mean
+
+# so that you know such temperature is ABOVE/BELOW AVERAGE temperature
+
+# and such duration is ABOVE/BELOW AVERAGE duration/time
+
+# now you have a more useful system
+
 
 norm_l.adapt(X) 
 
-# now, TF already knows that it has to operate by learning mean/variance for each feature
+# now, norm_l object already knows that it has to operate by learning mean/variance for each feature
 # in the incoming dataset, given by the information via the argument 'axis=-1' (last dimension
 # of data will hint the feature)
 
+# so, now, the operation BEGINS
 
+# .adapt() lets you calculate/learn the mean and variance of each feature there
+
+# it finds: (just an example)
+
+# temperature_mean = 220
+# temperature_std  = 30
+
+# duration_mean = 13
+# duration_std  = 1
+
+# and internally, it stores that like:
+
+# mean = [220, 13]
+# std  = [30, 1]
+
+# if you did: print(norm_1.adapt(X))
+
+# you'd get None - because learning/calculating these is all INTERNAL
+
+# just like if you did:
+
+# numbers = [2, 2352, 23, 234, 12, 1.8]
+
+# print(numbers.sort())
+
+# you'd get None - even though the number is sorted successfully
 
 X_norm = norm_l(X)
 print(f"Temperature Max, Min post normalization: {np.max(X_norm[:,0]):0.2f}, {np.min(X_norm[:,0]):0.2f}")
