@@ -240,7 +240,20 @@ norm_l.adapt(X)
 
 # you'd get None - even though the number is sorted successfully
 
+# but if you want to see the learned statistics, then you could do:
+
+# print(norm_l.mean.numpy())
+
+# prints all the learned mean for each feature
+
+# print(norm_l.variance.numpy())
+
+# prints all the learned variance for each feature
+
 X_norm = norm_l(X)
+
+
 print(f"Temperature Max, Min post normalization: {np.max(X_norm[:,0]):0.2f}, {np.min(X_norm[:,0]):0.2f}")
 print(f"Duration    Max, Min post normalization: {np.max(X_norm[:,1]):0.2f}, {np.min(X_norm[:,1]):0.2f}")
 
+ 
