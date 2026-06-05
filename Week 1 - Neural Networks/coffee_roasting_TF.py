@@ -252,8 +252,80 @@ norm_l.adapt(X)
 
 X_norm = norm_l(X)
 
+# now you feed the entire dataset through the normalization layer
+
+# FIRST, norm_l was made to be a MACHINE whose job was to normalize (like we're doing here -
+
+# normalizing the training data X) + telling it where to look in the dimension of data to 
+
+# know the number of features
+
+# but before creating this object, SECONDLY, you have to make this norm_l learn/calculate the
+
+# mean and variance of incoming features 
+
+# and then LASTLY, after this machine object/layer has learned this, you can now use it to 
+
+# normalize data - layer_object(training_data) -> norm_l(X)
+
+# .adapt(X) is very similar to .fit(X)
+
+# X_norm = norm_l(X) is very similar to X_norm = transform(X)
+
+# and, you know that the normalization formula is:
+
+# X_norm = (X - μ) / σ
+
+# so, for each training example, say you have
+
+# [250, 12]
+
+# where 250 is the temperature and 12 is the duration
+
+# now, the layer remembers:
+
+# Temperature mean = 220
+# Temperature std  = 30
+
+# Duration mean = 13
+# Duration std  = 1
+
+# so, the new, normalized temp. value for this tr. eg. becomes:
+
+# (250 - 220) / 30 = 1
+
+# and to get the new, normalized duration value for this tr. eg.:
+
+# (12 - 13) / 1 = -1
+
+# X_norm_tr_eg = [1, -1]
+
+# and so on for all the other training examples
 
 print(f"Temperature Max, Min post normalization: {np.max(X_norm[:,0]):0.2f}, {np.min(X_norm[:,0]):0.2f}")
 print(f"Duration    Max, Min post normalization: {np.max(X_norm[:,1]):0.2f}, {np.min(X_norm[:,1]):0.2f}")
 
- 
+Xt = np.tile(X_norm, (1000,1))
+
+# how .tile works
+
+# np.tile([1, 2, 3], 3)
+
+# output: [1, 2, 3, 1, 2, 3, 1, 2, 3]
+
+# repeats/duplicates the given array three times
+
+# .tile(X_norm, (1000, 1))
+
+# repeats the first dimension i.e. the rows a 1000 times and 
+
+# the second dimension 1 time
+
+# so prev. dimension: (200, 2)
+
+# new dimension: (200*1000, 2*1) = (200000, 2)
+
+Yt = np.tile(X_norm, (1000, 1))
+
+print(Xt.shape, Yt.shape)
+
