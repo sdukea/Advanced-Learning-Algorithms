@@ -136,6 +136,34 @@ print(f"Duration    Max, Min pre normalization: {np.max(X[:,1]):0.2f}, {np.min(X
 
 norm_l = tf.keras.layers.Normalization(axis=-1)
 
+# does not normalize anything
+# does not compute mean/variance
+# does not touch your data
+
+# it creates a MACHINE whose future job is normalization
+
+# its like constructing
+# layer = tf.keras.layers.Dense(units=25, activation='sigmoid')
+# |
+# TF does not immediately compute z = wx + b
+
+# It creates an object that knows how to perform this operation later.
+
+# only if you did: layer(X), you get a prediction/does its job/operation
+
+# the same this is what norm_l/normalization_layer does
+
+# and IT IS NOT PART OF THE MODEL/NERUAL NETWORK
+# (not a layer by itself/not placed anywhere in the network)
+
+# axis=-1
+
+# this says the object that the data you will be seeing - X - has 'features' in the 
+# last dimension
+
+# i.e. X dimension -> (200,1)
+#                          ^
+# and so features are here ^ which is the last dimension
 
 norm_l.adapt(X) 
 X_norm = norm_l(X)
