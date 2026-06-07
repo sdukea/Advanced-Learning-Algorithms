@@ -393,3 +393,48 @@ model.fit(
     epochs=10
 )
 
+# know that:
+# shape of Xt = (200000, 2)
+# shape of Yt = (200000, 1)
+
+# so we have 200000 training examples
+
+# when we do 'epochs=...'
+
+# one complete pass through 200000 training examples = 1 epoch
+
+# epochs = 10; we pass through 200000 training examples 10 seperate times
+
+# it is not:
+
+# 1. see/compute loss - for all 200000 examples
+# ------------one epoch done-------------
+# 2. optimizing parameters using gradient descent
+# 3. repeat this 10 times
+
+# it is actually:
+
+# mini-batch gradient descent
+
+# where each batch size = 32
+
+# what is a batch: a small chunk of the training examples
+
+# and the default size of a batch in TF is about 32 - 32 chunks/batches of the training example
+
+# so, in our case, we have 200000/32 batches = 6250 batches of our training example
+
+# so this is how it actually works:
+
+# 1. see/compute loss - for first batch/first 32 examples (0-32)
+# 2. optimize/update parameters via g.descent optimization
+# 3. see/compute loss  for the next batch/next set of 32 examples (33-64)
+# 4. # 2. optimize/update parameters via g.descent optimization
+# 5. see/compute loss - for the next batch/next set of 32 examples (65-96)
+# 6. optimize/update parameters via g.descent optimization
+# and so on for the 6250 times
+# ------------now one epoch is done-------------
+
+# so, for 1 epoch, you get 6250 parameter updates
+# for 10 epoch, you get 6250 x 10 = 62500 parameter updates
+
