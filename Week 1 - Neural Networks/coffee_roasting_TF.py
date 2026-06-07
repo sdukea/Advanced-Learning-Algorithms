@@ -128,8 +128,10 @@ plt.legend()
 plt.show()
 
 # unravel Y
+Y = Y.reshape(-1, 1)
 
-Y = Y.reshape(-1, 1)    
+# because the shape has to be a 2D array again
+# and specifically, has to be (200, 1) again
 
 # normalize data
 
@@ -448,3 +450,31 @@ W2, b2 = model.get_layer('L2').get_weights()
 print("Updated W1:\n", W1, "\nUpdated b1:", b1)
 print("Updated W2:\n", W2, "\nUpdated b2:", b2)
 
+# if you ran this notebook/file more than once,
+
+# you can see that the updated weights are different in each run
+
+# both minimize the cost functions well - they do the task very well - but each run might
+
+# end up leading the parameters to a different valley than the other
+
+# and even the gradients - for each batch - will very minutely differ in every run
+
+# let's now set some weights ourselves
+
+W1 = np.array([
+    [-8.94,  0.29, 12.89],
+    [-0.17, -7.34, 10.79]] )
+
+b1 = np.array([-9.87, -9.28,  1.01])
+
+W2 = np.array([
+    [-31.38],
+    [-27.86],
+    [-32.79]])
+b2 = np.array([15.54])
+
+model.get_layer('L1').set_weights([W1, b1])
+model.get_layer('L2').set_weights([W2, b2])
+
+# set custom weights
