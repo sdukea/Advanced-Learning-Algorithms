@@ -340,7 +340,7 @@ tf.random.set_seed(1234)
 # but will stay the same for every run after run 1
 # (ykwii)
 
-model = Sequential([
+model = tf.keras.Sequential([
     tf.keras.Input(shape=(2,)),
     Dense(3, activation='sigmoid', name='L1'),
     Dense(1, activation='sigmoid', name='L2')
