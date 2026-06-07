@@ -329,3 +329,32 @@ Yt = np.tile(X_norm, (1000, 1))
 
 print(Xt.shape, Yt.shape)
 
+# tensorflow model
+
+tf.random.set_seed(1234)
+
+# as you know, a layer will be assigned weights randomly (if the weights have not been set)
+
+# now, for every run, weights will still be randomly initialized in the first place (run 1)
+
+# but will stay the same for every run after run 1
+# (ykwii)
+
+model = Sequential([
+    tf.keras.Input(shape=(2,)),
+    Dense(3, activation='sigmoid', name='L1'),
+    Dense(1, activation='sigmoid', name='L2')
+])
+
+# input data/layer is a single training example with 2 features
+
+# and we predict/use the neural network/model on a single training example ONLY
+
+# NOTE: the shape in the Input: specifies the shape of each incoming training example
+
+# i.e.
+
+# inherently the number of features in the incoming training example
+
+print(model.summary())
+
