@@ -462,6 +462,11 @@ print("Updated W2:\n", W2, "\nUpdated b2:", b2)
 
 # let's now set some weights ourselves
 
+# we're just saying:
+
+# No matter what weights YOUR training produced,
+# replace them with/set OUR known weights.
+
 W1 = np.array([
     [-8.94,  0.29, 12.89],
     [-0.17, -7.34, 10.79]] )
@@ -497,4 +502,8 @@ X_test = np.array(
 )
 
 X_test_norm = norm_l(X_test)
+
+predictions = model.predict(X_test_norm)
+
+print(f"Predictions:\n{predictions}")
 
