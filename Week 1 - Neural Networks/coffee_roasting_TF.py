@@ -127,6 +127,10 @@ plt.legend()
 
 plt.show()
 
+# unravel Y
+
+Y = Y.reshape(-1, 1)
+
 # normalize data
 
 # fitting weights to the data will proceed more quickly if the data is normalized
@@ -325,7 +329,7 @@ Xt = np.tile(X_norm, (1000,1))
 
 # new dimension: (200*1000, 2*1) = (200000, 2)
 
-Yt = np.tile(X_norm, (1000, 1))
+Yt = np.tile(Y, (1000, 1))
 
 print(Xt.shape, Yt.shape)
 
@@ -382,7 +386,7 @@ print(f"W2{W2.shape}:\n", W2, f"\nb2{b2.shape}:", b2)
 # compile
 model.compile(
     loss = tf.keras.losses.BinaryCrossentropy(),
-    optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
+    optimizer = tf.keras.optimizers.Adam(learning_rate=0.01)
 )
 
 # the compile method sets loss function and the optimization function
