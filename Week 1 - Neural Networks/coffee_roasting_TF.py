@@ -358,3 +358,25 @@ model = tf.keras.Sequential([
 
 print(model.summary())
 
+# the parameters for each layer
+
+L1_num_params = 3 * 2 + 3 
+L2_num_params = 1 * 3 + 1 
+
+print(f"Number of parameters:\nLayer 1: {L1_num_params}\nLayer 2: {L2_num_params}")
+
+# FROM HERE ON OUT:
+
+# w1_1 -> layer 1, weight 1
+# w2_1 -> layer 2, weight 1
+# w3_1 -> layer 3, weight 1
+
+W1, b1 = model.get_layer('L1').get_weights()
+W2, b2 = model.get_layer('L2').get_weights()
+
+print(f"W1{W1.shape}:\n", W1, f"\nb1{b1.shape}:", b1)
+print(f"W2{W2.shape}:\n", W2, f"\nb2{b2.shape}:", b2)
+# shape of weight parameter initialized: (number of features, number of neurons)
+# shape of bias parameter initialized: (number of neurons,)
+
+
