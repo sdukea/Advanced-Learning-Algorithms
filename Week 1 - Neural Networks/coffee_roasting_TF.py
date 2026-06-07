@@ -342,8 +342,8 @@ tf.random.set_seed(1234)
 
 model = tf.keras.Sequential([
     tf.keras.Input(shape=(2,)),
-    Dense(3, activation='sigmoid', name='L1'),
-    Dense(1, activation='sigmoid', name='L2')
+    tf.keras.layers.Dense(3, activation='sigmoid', name='L1'),
+    tf.keras.layers.Dense(1, activation='sigmoid', name='L2')
 ])
 
 # input data/layer is a single training example with 2 features
