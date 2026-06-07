@@ -496,3 +496,5 @@ X_test = np.array(
     ]
 )
 
+X_test_norm = norm_l(X_test)
+
