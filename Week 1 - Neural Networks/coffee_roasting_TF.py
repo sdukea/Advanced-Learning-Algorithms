@@ -380,3 +380,9 @@ print(f"W2{W2.shape}:\n", W2, f"\nb2{b2.shape}:", b2)
 # shape of bias parameter initialized: (number of neurons,)
 
 
+model.compile(
+    loss = tf.keras.losses.BinaryCrossentropy(),
+    optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
+)
+
+# the compile method sets loss function and the optimization function
