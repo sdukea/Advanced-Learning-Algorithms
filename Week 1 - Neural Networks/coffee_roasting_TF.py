@@ -478,3 +478,21 @@ model.get_layer('L1').set_weights([W1, b1])
 model.get_layer('L2').set_weights([W2, b2])
 
 # set custom weights
+
+W1, b1 = model.get_layer('L1').get_weights()
+W2, b2 = model.get_layer('L2').get_weights()
+
+# check if the weights have now been set
+
+print("W1:\n", W1, "\nb1:", b1)
+print("W2:\n", W2, "\nb2:", b2)
+
+# make predictions now
+
+X_test = np.array(
+    [
+        [200, 13.9],
+        [200, 17]
+    ]
+)
+
