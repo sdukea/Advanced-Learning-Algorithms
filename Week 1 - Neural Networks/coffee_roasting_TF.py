@@ -129,7 +129,7 @@ plt.show()
 
 # unravel Y
 
-Y = Y.reshape(-1, 1)
+Y = Y.reshape(-1, 1)    
 
 # normalize data
 
