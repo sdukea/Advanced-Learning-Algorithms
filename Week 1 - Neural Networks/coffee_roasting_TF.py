@@ -438,3 +438,9 @@ model.fit(
 # so, for 1 epoch, you get 6250 parameter updates
 # for 10 epoch, you get 6250 x 10 = 62500 parameter updates
 
+W1, b1 = model.get_layer('L1').get_weights()
+W2, b2 = model.get_layer('L2').get_weights()
+
+print("Updated W1:\n", W1, "\nUpdated b1:", b1)
+print("Updated W2:\n", W2, "\nUpdated b2:", b2)
+
