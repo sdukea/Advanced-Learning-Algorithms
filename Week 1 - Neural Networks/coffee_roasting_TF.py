@@ -596,9 +596,18 @@ predictions = model.predict(X_test_norm)
 
 print(f"Predictions:\n{predictions}")
 
-# the model will return one prediction for each training example in our data
+# predictions -> contains predictions for 1 example each
 
-# one training example as input -> one prediction
+# so predictions returns 2 values - 1 for each training example in test data/X_test_norm
 
-# two training examples as input -> two predictions
+# threshold predictions
+
+yhat = np.zeros_like(predictions)
+
+for i in range(len(predictions)):
+    if predictions[i] >= 0.5:
+        yhat[i] = 1
+    else:
+        yhat[i] = 0
+print(f"decisions = \n{yhat}")
 
