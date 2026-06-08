@@ -27,7 +27,8 @@ X_train = np.array([[1.0],
                     [2.0]], dtype=np.float32)
 
 # you have training examples in the format of an actual table/2D matrix
-# you see ROWS now as training examples - one single feature in our case
+# you see ROWS now, which are training examples just like in real-life data - one single feature 
+# in our case
 
 # X_train is of shape (2,1) now
 
@@ -52,19 +53,21 @@ y_train = np.array([[300.0],
 
 # but when it comes to ACTUAL MACHINE LEARNING i.e. linear algebra, TF/PyTorch interoperability
 
-# you should ALWAYS have data in rows and columns
+# you should ALWAYS have data in rows and columns/table
 
 # so rather than np.array([1.0, 2.0]) which would just be a row vector with some numbers
 
-# and it still is data - not in the format they usually come in practical applications - you should
+# and still being data - it isn't in the format they usually come in practical applications - you 
 
-# actually represent data in 2D matrices; like a table
+# should actually represent data in their preferred form - a table
 
 # even if you get X_train in real-life with one feature in it (so only one column) you do not
 
 # represent it in a single row vector with shape (m,) or (only rows,) - columns still EXIST and this 
 
-# is what ML actually needs; real meaning of data
+# is what ML actually needs; real meaning of data i.e. the idea that data has shape
+
+# so (m, ) -> convert to 2D -> (m,n) -> get real meaning -> number of examples, number of features
 
 # how many rows does it have - so that I know how many training examples there are
 
@@ -93,7 +96,7 @@ plt.show()
 
 # lets now create a layer that has 1 linear reg. unit
 
-# a linear reg. unit -> computes a linear reg. output z with linear model (wx + b/wvec * vec + b)
+# a linear reg. unit -> computes a linear reg. output z with linear model (wx + b/wvec*xvec + b)
 # and activation is linear / so inherently NO CHANGE/a = z
 
 # a log. reg. unit -> still computes a linear reg. output with linear model (wx + b/wvec*xvec + b) 
@@ -104,23 +107,39 @@ linear_layer = tf.keras.layers.Dense(
     units=1,
     activation='linear')
 
-# one layer and
-# just one neuron for now - a linear reg. unit
+# ONE Dense layer and
+# just ONE neuron for now - a linear reg. unit/neuron
 
 # w, b = linear_layer.get_weights()
 
 # print(w, b)
 
 # now, when you do the 'linear_layer' initialization, it just CREATES 1 layer with 1 lin. reg. 
-# unit and the activation is linear
+# unit/neuron and the activation is linear
 
-# but it does not RANDOMLY initialize weights yet
+# but this layer DOES NOT INITIALIZE PARAMETERS YET because
 
-# only when the layer/unit SEES tr. eg./data, it will randomly assign weights to it
+# it DOES NOT KNOW how many input features are coming
 
-# So,
+# NOTE: the neuron DOES NOT CARE about the training examples that are incoming
+
+# no: of features inferred from data = no: of parameters to be initialized/shape of parameters can 
+
+# be initialized
+
+# only when the layer/unit SEES the number of features from input data, it can get to know 
+
+# the SHAPE OF the parameters to then initialize the parameters
+
+# So, if input data is something like:
+
+# X_train[0].reshape(1,1)
 
 a1 = linear_layer(X_train[0].reshape(1,1))
+
+# the layer SEEs the input data and infers the NUMBER OF FEATURES alone 
+
+# it determines the number of features (that each example has) from the shape of the input
 
 # the output is in tf.Tensor, which is the equivalent of np.ndarray or an array datatype but a
 
