@@ -26,3 +26,31 @@ X_norm = norm_l(X)
 
 # model from scratch (forward prop)
 
+g = sigmoid
+
+def Dense(a_in, W, b):
+    """
+    Computes dense layer
+    Args:
+      a_in (ndarray (n, )) : Data, 1 example 
+      W    (ndarray (n,j)) : Weight matrix; (number of features in example, number of neurons/units)
+      b    (ndarray (j, )) : bias vector, (number of neurons/units,)
+    Returns
+      a_out (ndarray (j,))  : j units|
+    """
+
+    # you can expect input data/1 example to look like:
+    
+    units = W.shape[1]
+
+    a_out = np.zeros(units)
+
+    for j in range(units): # for each neuron
+        w_neuron = W[:, j]
+
+        z_neuron = np.dot(w_neuron, a_in) + b[j]
+
+        a_out[j] = g(z_neuron)
+    
+    return (a_out)
+

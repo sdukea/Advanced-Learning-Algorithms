@@ -206,7 +206,7 @@ print(linear_layer.get_weights())
 # shape of data = (number of training examples, number of features)
 #               = (3,1)
 
-# weight w shape = (number of features, number of neurons)
+# weight w shape = (number of features, number of neurons/units)
 #               = (3, whatever the number of neurons are)
 
 # Yes, it does not mean the size of training data matrix and the size of weight matrix
