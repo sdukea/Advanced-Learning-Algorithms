@@ -352,15 +352,84 @@ model = tf.keras.Sequential([
     tf.keras.layers.Dense(1, activation='sigmoid', name='L2')
 ])
 
-# input data/layer is a single training example with 2 features
 
-# and we predict/use the neural network/model on a single training example ONLY
+# the 'shape' argument in Input:
 
-# NOTE: the shape in the Input: specifies the shape of each incoming training example
+# describes the shape of ONE EXAMPLE, not the entire incoming dataset
 
-# i.e.
+# say shape=(2,)
 
-# inherently the number of features in the incoming training example
+# this actually translates to
+
+# (None, 2) in NumPy/Tensor array
+
+# and as you can see, the '2' here = columns = features
+
+# and inherently, None will specify the NUMBER OF EXAMPLES
+
+# and it can be ANY NUMBER OF TRAINING EXAMPLES
+
+# what shape=(2,) actually says is 'I don't care how many training examples there are –
+
+# I need 2 features in each example'
+
+# so, your input data can be NumPy arrays/tensors of shape
+
+# (32, 2)
+
+# (2, 2)
+
+# (1, 2)
+
+# (10000, 2)
+
+# ...
+
+# say shape=(28,28)
+
+# this now means input data is a 3D array/Tensor 
+
+# and it translates to
+
+# (None, 28, 28) in NumPy/Tensor array
+
+# this means that each training example is 28 x 28 - most likely an image
+
+# and input data will contain MANY/ANY number of eg. of these images like
+
+# (1000, 28, 28)
+
+# (10, 28, 28)
+
+# (2, 28, 28)
+
+# (32, 28, 28)
+
+# ...
+
+# So the shape argument in Input only mentions the number of features in each eg. in Input data
+
+# if shape=(2,) = 1-Dimensional -> Input data SHOULD BE 2-Dimensional only to MATCH
+
+# why:
+
+# because each training example is known to have 2 features (2,) i.e. they are 1D arrays
+
+# so if you are CONTAINERIZING these examples, you can only do so with a 2D array
+
+# so input data/NumPy array/Tensor should be a 2D array containing these 1D examples
+
+# (2,) -> (None, 2)/(32, 2)/(1000, 2)/(10000, 2)... -> MATCHES
+#  ^                    ^
+# 1D examples     2D data of 1D examples can be given as input          
+
+# if shape=(28,28) = 2-Dimensional -> Input data SHOULD BE 3-Dimensional only to MATCH
+
+# why:
+
+# because each example is known to have 28 x 28 features - a 2D array by themselves
+
+# so if you are CONTAINERIZING these examples, you can only do so with a 3D array
 
 print(model.summary())
 
@@ -506,4 +575,10 @@ X_test_norm = norm_l(X_test)
 predictions = model.predict(X_test_norm)
 
 print(f"Predictions:\n{predictions}")
+
+# the model will return one prediction for each training example in our data
+
+# one training example as input -> one prediction
+
+# two training examples as input -> two predictions
 
