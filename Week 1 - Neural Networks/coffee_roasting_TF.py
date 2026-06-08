@@ -352,6 +352,12 @@ model = tf.keras.Sequential([
     tf.keras.layers.Dense(1, activation='sigmoid', name='L2')
 ])
 
+# NOTE:
+# the model takes input DATA (a set of EXAMPLES), not a specific EXAMPLE alone
+
+# and for each example in data, it gives a prediction
+
+# so model.predict(test_data) will return predictions for each tr. eg. in the input data/test_data
 
 # the 'shape' argument in Input:
 
@@ -361,9 +367,11 @@ model = tf.keras.Sequential([
 
 # this actually translates to
 
-# (None, 2) in NumPy/Tensor array
+# (None, 2) in NumPy/Tensor array of input DATA/test data for prediction
 
 # and as you can see, the '2' here = columns = features
+
+# which matches the meaning of shape=(2,) -> 2 features in each training example
 
 # and inherently, None will specify the NUMBER OF EXAMPLES
 
@@ -395,7 +403,9 @@ model = tf.keras.Sequential([
 
 # this means that each training example is 28 x 28 - most likely an image
 
-# and input data will contain MANY/ANY number of eg. of these images like
+# and input data/test data for pred. can contain ANY number of eg. of these images and
+
+# their shapes can be:
 
 # (1000, 28, 28)
 
@@ -410,18 +420,21 @@ model = tf.keras.Sequential([
 # So the shape argument in Input only mentions the number of features in each eg. in Input data
 
 # if shape=(2,) = 1-Dimensional -> Input data SHOULD BE 2-Dimensional only to MATCH
+#       ^                                              ^
+#     tr. eg.                               input data/NumPy array/Tensor
 
 # why:
 
-# because each training example is known to have 2 features (2,) i.e. they are 1D arrays
+# because each training example is known to have 2 features/values (2,) i.e. they are 1D arrays
 
 # so if you are CONTAINERIZING these examples, you can only do so with a 2D array
 
 # so input data/NumPy array/Tensor should be a 2D array containing these 1D examples
 
-# (2,) -> (None, 2)/(32, 2)/(1000, 2)/(10000, 2)... -> MATCHES
+# shape=(2,) -> (None, 2)/(32, 2)/(1000, 2)/(10000, 2)... -> MATCHES
 #  ^                    ^
-# 1D examples     2D data of 1D examples can be given as input          
+# 1D examples   2D input data of 1D examples can be given as input for making predictions for
+#               each 1D example now
 
 # if shape=(28,28) = 2-Dimensional -> Input data SHOULD BE 3-Dimensional only to MATCH
 
@@ -430,6 +443,13 @@ model = tf.keras.Sequential([
 # because each example is known to have 28 x 28 features - a 2D array by themselves
 
 # so if you are CONTAINERIZING these examples, you can only do so with a 3D array
+
+# so input data/NumPy array/Tensor/test data should be a 3D array containing these 2D examples
+
+# shape=(28, 28) -> (None, 28, 28)/(Any number of images, 28, 28)/(1000, 28, 28) ... -> MATCHES
+#      ^                                                ^
+#   2D image tr. eg.                3D input data/test data containing 2D image
+#                                   examples so that we can predict output for each example
 
 print(model.summary())
 
