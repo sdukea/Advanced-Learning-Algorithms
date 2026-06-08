@@ -30,7 +30,7 @@ X_train = np.array([[1.0],
 # you see ROWS now, which are training examples just like in real-life data - one single feature 
 # in our case
 
-# X_train is of shape (2,1) now
+# X_train is of shape (2,1) - a table/2D matrix
 
 y_train = np.array([[300.0], 
                     [500.0]], dtype=np.float32)
@@ -65,7 +65,7 @@ y_train = np.array([[300.0],
 
 # represent it in a single row vector with shape (m,) or (only rows,) - columns still EXIST and this 
 
-# is what ML actually needs; real meaning of data i.e. the idea that data has shape
+# is what ML actually needs; real meaning of data i.e. from their table-like shape
 
 # so (m, ) -> convert to 2D -> (m,n) -> get real meaning -> number of examples, number of features
 
@@ -78,7 +78,9 @@ y_train = np.array([[300.0],
 # if you needed, say, three features then X_train would be
 
 # X_train = np.array([[1.0, 2.0, 3.0],
-#                     [4.0, 5.0, 6.0]]) i.e.
+#                     [4.0, 5.0, 6.0]]) 
+
+# i.e.
 
 # 3 features, 2 training examples
 
@@ -110,22 +112,26 @@ linear_layer = tf.keras.layers.Dense(
 # ONE Dense layer and
 # just ONE neuron for now - a linear reg. unit/neuron
 
-# w, b = linear_layer.get_weights()
+w, b = linear_layer.get_weights()
 
-# print(w, b)
+print(w, b)
 
 # now, when you do the 'linear_layer' initialization, it just CREATES 1 layer with 1 lin. reg. 
-# unit/neuron and the activation is linear
+# unit/neuron and the activation is 'linear'
 
-# but this layer DOES NOT INITIALIZE PARAMETERS YET because
+# but this layer DOES NOT INITIALIZE PARAMETERS YET/INITIALIZE SHAPE OF PARAMETERS YET because
 
 # it DOES NOT KNOW how many input features are coming
 
+# NOTE: Parameters i.e. weights and biases are initialized for each neuron
+
+# by the layer only after the layer sees/infers from data the number of input features
+
 # NOTE: the neuron DOES NOT CARE about the training examples that are incoming
 
-# no: of features inferred from data = no: of parameters to be initialized/shape of parameters can 
+# only no: of features are inferred from data, translating to the no: of parameters to be 
 
-# be initialized
+# initialized/shape of parameters to be initialized
 
 # only when the layer/unit SEES the number of features from input data, it can get to know 
 
@@ -133,7 +139,7 @@ linear_layer = tf.keras.layers.Dense(
 
 # So, if input data is something like:
 
-# X_train[0].reshape(1,1)
+# X_train[0].reshape(1,1) - as seen below
 
 a1 = linear_layer(X_train[0].reshape(1,1))
 
@@ -141,9 +147,13 @@ a1 = linear_layer(X_train[0].reshape(1,1))
 
 # i.e.
 
-# when the layer is passed with input data,
+# when the layer is passed with this input data,
 
-# it determines how many features each example contains
+# it determines how many features the data contains
+
+# which essentially means
+
+# how many features does each example have
 
 # we give it - X_train[0].reshape(1,1)
 
@@ -155,15 +165,63 @@ a1 = linear_layer(X_train[0].reshape(1,1))
 
 # and in layer, we have 1 unit
 
-# so shape of W = (1,1) -> (number of features in 1 eg., number of units in layer)
+# so shape of weight W = (1,1) -> (number of features in 1 eg., number of units in layer)
 
-# shape of b = (1,) -> number of units in layer
+# shape of bias b = (1,) -> number of units in layer
 
+# let's see the random initialization in action:
+
+# so, W = [[w]] -> a single scalar value wrapped into a 2D structure
+
+# b = [b] -> a single scalar bias in 1D
+
+# NOTE: notations, henceforth
+
+# layer 1 -> our layer/linear_layer (not numbered but assume)
+
+# w1_(1) -> weight vector for neuron 1 in layer 1
+# w1_(2) -> weight vector for neuron 2 in layer 1
+# w1_(3) -> weight vector for neuron 3 in layer 1
+# and so on...
+
+# so, in our case, 
+
+# W contains only w1_(1) -> weight vector for neuron 1 in layer 1
+
+# and w1_(1) only contains a single value/scalar value as there is only 1 feature (in each eg.)
+
+# so, W = [w1_(1)] = [[0.73]] <-- randomly initialized
+
+# b = [-0.12] <-- randomly initialized
+
+# Another example
+
+# Say you had 3 features and 2 neurons in layer 1
+
+# so, W shape = (3, 2)
+
+# now, W contains w1_(1), w1_(2); for neuron 1 and 2 in layer 1
+
+# W = [w1_(1), w1_(2)]
+
+# and we have three features;
+
+# this means weight vectors w1_(1) and w1_(2) each have three different values
+
+# BUT, they are stacked vertically - transposed
+
+# W = [[ | , | , |], <-- neuron 1
+#      [ |,  |,  |]
+#      [ |,  |,  |]]
+#        ^   ^   ^
+#   w1_(1) w1(2) w1_(3)
 
 
 # and the layer IGNORES
 
-# the number of training examples in the input data
+# until the weights and bias are initialized for each neuron in the layer
+
+# in our case - only one neuron
 
 # the output is in tf.Tensor, which is the equivalent of np.ndarray or an array datatype but a
 
