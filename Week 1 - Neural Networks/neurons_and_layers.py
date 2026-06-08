@@ -159,9 +159,7 @@ a1 = linear_layer(X_train[0].reshape(1,1))
 
 # shape of b = (1,) -> number of units in layer
 
-# and parameters are initialized randomly FOR EACH NEURON in the layer now
 
-# based on this weight
 
 # and the layer IGNORES
 
@@ -230,7 +228,7 @@ print(linear_layer.get_weights())
 # is always: a1 = 200(1) + 100 = 300
 
 # now this is for ONE NEURON -> 1 FEATURE -> 1 TR. EG.
-#                                          w = [[200]], b = [[100]]
+#                                          W = [[200]], b = [[100]]
 
 # if you had three features where X_train looked like:
 
@@ -239,7 +237,7 @@ print(linear_layer.get_weights())
 #                    [7.0, 8.0, 9.0]])
 
 # so now, for ONE NEURON -> 3 FEATURES -> 1 TR. EG.
-#                                         w should be = [[w1_1], <--- feature 1
+#                                         W should be = [[w1_1], <--- feature 1
 #                                                        [w2_1], <--- feature 2
 #                                                        [w3_1]] <--- feature 3
 #                                                          ^
@@ -247,12 +245,12 @@ print(linear_layer.get_weights())
 
 # why: because shape of w should ALWAYS be in a table/2D form
 
-# w.shape = (3,1) now -> TF now naturally knows that we have 3 features and we have 1 neuron
+# W.shape = (3,1) now -> TF now naturally knows that we have 3 features and we have 1 neuron
 
 # shape of data = (number of training examples, number of features)
 #               = (3,1)
 
-# weight w shape = (number of features, number of neurons/units)
+# weight W shape = (number of features, number of neurons/units)
 #               = (3, whatever the number of neurons are)
 
 # Yes, it does not mean the size of training data matrix and the size of weight matrix
@@ -261,7 +259,7 @@ print(linear_layer.get_weights())
 
 # for TWO NEURONS -> 3 FEATURES -> each NEURON SEES 1 TR. EG.
 
-# w should be:
+# W should be:
 #              = [[w1_1_val_1, w2_1_val_1], <--- for feature 1
 #                 [w1_1_val_2, w2_1_val_2], <--- for feature 2
 #                 [w1_1_val_3, w3_1_val_3]] <--- for feature 3

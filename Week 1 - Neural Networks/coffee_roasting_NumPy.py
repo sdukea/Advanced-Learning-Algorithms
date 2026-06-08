@@ -80,6 +80,7 @@ def Dense(a_in, W, b):
     #                   ^           ^
     #                Neuron 1    Neuron 2
     
+    # Now, TF recieves the entire batch 
                     
     
     units = W.shape[1]
