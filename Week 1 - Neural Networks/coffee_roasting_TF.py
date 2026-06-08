@@ -185,6 +185,11 @@ norm_l = tf.keras.layers.Normalization(axis=-1)
 # mean of duration feature
 # variance of duration feature
 
+# or more succinctly
+
+# mean of each feature
+# variance of each feature
+
 # buy why not create a function separately that does this normalization?
 
 # Because TF wants this transformation to be part of the model itself
@@ -193,7 +198,7 @@ norm_l = tf.keras.layers.Normalization(axis=-1)
 
 # model = Sequential([norm_l, Dense(...), Dense(...)])
 
-# and every input automatically passes through the same learned coordinate transformation/normali-
+# and every input can passes through the same learned coordinate transformation/normali-
 # zation
 
 # the point of normalization: to know what high, low, normal is for each feature data you have

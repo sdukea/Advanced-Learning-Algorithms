@@ -14,3 +14,15 @@ X, Y = load_coffee_data()
 
 print(X.shape, Y.shape)
 
+# normalize data
+
+print(f"Temperature Max, Min pre normalization: {np.max(X[:,0]):0.2f}, {np.min(X[:,0]):0.2f}")
+print(f"Duration    Max, Min pre normalization: {np.max(X[:,1]):0.2f}, {np.min(X[:,1]):0.2f}")
+
+norm_l = tf.keras.layers.Normalization(axis=-1)
+norm_l.adapt(X)
+
+X_norm = norm_l(X)
+
+# model from scratch (forward prop)
+
