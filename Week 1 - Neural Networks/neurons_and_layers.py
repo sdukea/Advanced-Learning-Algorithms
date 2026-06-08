@@ -27,7 +27,7 @@ X_train = np.array([[1.0],
                     [2.0]], dtype=np.float32)
 
 # you have training examples in the format of an actual table/2D matrix
-# you see ROWS now - one single feature in our case
+# you see ROWS now as training examples - one single feature in our case
 
 # X_train is of shape (2,1) now
 
@@ -194,10 +194,11 @@ print(linear_layer.get_weights())
 #                    [7.0, 8.0, 9.0]])
 
 # so now, for ONE NEURON -> 3 FEATURES -> 1 TR. EG.
-#                                         w should be = [[w1], [w2], [w3]], b = [[b1]]
-#                                                     = [[w1],
-#                                                        [w2],
-#                                                        [w3]]
+#                                         w should be = [[w1_1], <--- feature 1
+#                                                        [w2_1], <--- feature 2
+#                                                        [w3_1]] <--- feature 3
+#                                                          ^
+#                                                       Neuron 1
 
 # why: because shape of w should ALWAYS be in a table/2D form
 
@@ -216,9 +217,11 @@ print(linear_layer.get_weights())
 # for TWO NEURONS -> 3 FEATURES -> each NEURON SEES 1 TR. EG.
 
 # w should be:
-#              = [[w1_1, w1_2],
-#                 [w2_1, w2_2],
-#                 [w3_1, w3_2]]
+#              = [[w1_1_val_1, w2_1_val_1], <--- for feature 1
+#                 [w1_1_val_2, w2_1_val_2], <--- for feature 2
+#                 [w1_1_val_3, w3_1_val_3]] <--- for feature 3
+#                      ^           ^
+#                  Neuron 1     Neuron 2
 
 # So if you want to modify/set weights w for when your dataset has 3 features and 2 neurons, then
 
@@ -326,7 +329,9 @@ pred_tf = linear_layer(X_train_Tensor)
 
 # in layer: 1 Neuron/unit -> sees dataset of two training examples and 1 feature -> initializes one
 
-# weight and one bias (sets/random) -> gives 2 predictions i.e. 
+# weight and one bias (sets/random) for each tr. eg. as each tr. eg. has 1 feature only -> gives 2 
+
+# predictions in total i.e. 
 
 # (the usual linear model pred. explanation follows here)
 
