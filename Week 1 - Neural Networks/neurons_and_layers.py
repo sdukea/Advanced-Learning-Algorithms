@@ -137,9 +137,35 @@ linear_layer = tf.keras.layers.Dense(
 
 a1 = linear_layer(X_train[0].reshape(1,1))
 
-# the layer SEEs the input data and infers the NUMBER OF FEATURES alone 
+# when the layer is built for the first time,
 
-# it determines the number of features (that each example has) from the shape of the input
+# i.e.
+
+# when the layer is passed with input data,
+
+# it determines how many features each example contains
+
+# we give it - X_train[0].reshape(1,1)
+
+# so the shape of the input data here is (1,1) -> 1 example, 1 feature
+#                                                            ^^^^^^^^
+#                                                 this is what the layer understands
+
+# so, feature(s) in each example = 1
+
+# and in layer, we have 1 unit
+
+# so shape of W = (1,1) -> (number of features in 1 eg., number of units in layer)
+
+# shape of b = (1,) -> number of units in layer
+
+# and parameters are initialized randomly FOR EACH NEURON in the layer now
+
+# based on this weight
+
+# and the layer IGNORES
+
+# the number of training examples in the input data
 
 # the output is in tf.Tensor, which is the equivalent of np.ndarray or an array datatype but a
 
