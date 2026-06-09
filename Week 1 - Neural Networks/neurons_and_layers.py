@@ -300,7 +300,7 @@ a1 = linear_layer(X_train[0].reshape(1,1))
 
 # (number of examples the layer sees from input/incoming data, number of neurons)
 
-# here, the output of layer 1 is the output of ONE NEURON (all it has)
+# here, the output of layer 1 is the output of ONE NEURON -> has only ONE NEURON (all it has)
 
 # and the number of examples in input data is 1
 
