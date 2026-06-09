@@ -338,6 +338,7 @@ a1 = linear_layer(X_train[0].reshape(1,1))
 # 1. 3 neurons
 # 2. sees one example from input data 
 
+
 # so layer 2 recieves this a_(1) activation vector now
 
 # with shape = (1, 3)
