@@ -53,4 +53,3 @@ def Dense(a_in, W, b):
         a_out[j] = g(z_neuron)
     
     return (a_out)
-
