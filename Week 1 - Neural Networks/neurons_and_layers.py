@@ -169,6 +169,12 @@ a1 = linear_layer(X_train[0].reshape(1,1))
 
 # shape of bias b = (1,) -> number of units in layer
 
+# so the layer:
+
+# -> infers number of features from incoming data
+# -> combines it with the number of units it has
+# -> to initialzie parameters/shape of parameters
+
 # let's see the random initialization in action:
 
 # so, W = [[w]] -> a single scalar value wrapped into a 2D structure
@@ -180,8 +186,8 @@ a1 = linear_layer(X_train[0].reshape(1,1))
 # layer 1 -> our layer/linear_layer (not numbered but assume)
 
 # w1_(1) -> weight vector for neuron 1 in layer 1
-# w1_(2) -> weight vector for neuron 2 in layer 1
-# w1_(3) -> weight vector for neuron 3 in layer 1
+# w2_(1) -> weight vector for neuron 2 in layer 1
+# w3_(1) -> weight vector for neuron 3 in layer 1
 # and so on...
 
 # so, in our case, 
@@ -200,28 +206,155 @@ a1 = linear_layer(X_train[0].reshape(1,1))
 
 # so, W shape = (3, 2)
 
-# now, W contains w1_(1), w1_(2); for neuron 1 and 2 in layer 1
+# now, W contains w1_(1), w2_(1); for neuron 1 and 2 in layer 1
 
-# W = [w1_(1), w1_(2)]
+# W = [w1_(1), w2_(1)]
 
 # and we have three features;
 
-# this means weight vectors w1_(1) and w1_(2) each have three different values
+# this means weight vectors w1_(1) and w2_(1) each have three different values in them
+# (hence a 'vector')
 
 # BUT, they are stacked vertically - transposed
 
-# W = [[ | , | , |], <-- neuron 1
-#      [ |,  |,  |]
-#      [ |,  |,  |]]
-#        ^   ^   ^
-#   w1_(1) w1(2) w1_(3)
+# W = [[ | , |] <--- feature 1
+#      [ |,  |] <--- feature 2
+#      [ |,  |]] <--- feature 3
+#        ^   ^
+#     Unit1 Unit2
+#    w1_(1) w2_(1) 
 
+# And now, values randomly initialized could be something like:
 
-# and the layer IGNORES
+# W = [[ -0.1, 12] 
+#      [0.04, 11] 
+#      [9.92, -5.67]] 
 
-# until the weights and bias are initialized for each neuron in the layer
+# NOTE: 'W' is for a SINGLE LAYER; layer 1 in our case
+
+# when the layer has parameters initialized/shape of parameters initialized, we say that the
+
+# layer is 'built'
+
+# you can check that: linear_layer.built
+# Output: True -> layer is built | False: layer is not built i.e. parameters haven't been 
+# initialized for that layer
+
+# and the layer initially IGNORES the number of examples in incoming/input data into the layer
+
+# NOTE: incoming input -> could be data/activations
+
+# and only cares about the feature count - the last dimension of input/incoming data
+
+# the weights and bias are then initialized for each neuron in layer 1
 
 # in our case - only one neuron
+
+# and only NOW,
+
+# after W - parameters for this/that layer - is initialized
+
+# the layer sees the first example from incoming data
+
+# so, it sees from X_train[0].reshape(1,1) not just the feature count now but the 
+
+# first example from this X_train[0].reshape(1,1) input data
+
+# essentially, from X_train, X_train[0].reshape(1,1) is actually this:
+
+# [[1.0]]
+
+# the layer sees the first example from this input incoming data
+
+# [1.0]
+
+# and now, 
+
+# each neuron in the layer will use its weight/weight vector and bias initialized for it
+
+# i.e.
+
+# in our case, only ONE NEURON and only w1_(1)
+
+# and the first neuron applies it to this example 
+
+# to compute output z
+
+# z = wx + b
+
+# z1_(1) = 0.73(1) + (-0.12)
+
+# z1_(1) = 0.61
+
+# now the neuron computes activation = linear
+
+# z1_(1) = a1_(1) = 0.61
+
+# AND THAT'S IT
+
+# The output of any layer is the output of ALL NEURONS inside the layer
+
+# more specifically,
+
+# the output activation vector of a layer is:
+
+# (number of examples the layer sees from input/incoming data, number of neurons)
+
+# here, the output of layer 1 is the output of ONE NEURON (all it has)
+
+# and the number of examples in input data is 1
+
+# so the activation vector, equals a1_(1)
+
+# has shape = (1,1)
+#              | |___________________________________________________________   
+#  no: of examples layer sees from input/incoming data                      |
+#  -> from X_train[0].reshape(1,1)                             number of neurons in layer
+#  -> just one example 
+
+# so, a_(1) is just:
+
+#       = [[a1_(1)]]
+
+# with shape = (1,1)
+
+# NOTE: conceptually, we represent/containerize a_(1) as [a1_(1), a2_(1), a3_(1),...] 
+
+# but in TF, you have to actually understand what the shape of a_(1) actually is
+
+# now the next layer will recieve this:
+
+# layer 2 will recieve the activation vector of layer 1 -> a_(1)
+
+# imagine layer 2 has 3 neurons in it
+
+# and all activation = linear
+
+# rather than having a_(1) = [[a1_(1)]] as input, for better understanding, we'll use
+
+# a_(1) = [[a1_(1), a2_(1), a3_(1)]]
+
+# so this new, imagined layer that gives this new a_(1) as output has:
+# 1. 3 neurons
+# 2. sees one example from input data 
+
+# so layer 2 recieves this a_(1) activation vector now
+
+# with shape = (1, 3)
+
+# now, the same process happens:
+
+# 1. layer 2 sees the input activation vector
+# i.e. a_(1) - output of layer 1 - becomes input of layer 2
+# something like layer_2(a_(1)) 
+
+# 2. layer sees the shape of input activation vector
+# shape = (1, 3)
+
+# 3. infers that activation count = 3
+# inherently, 'activation count' is something like 'feature count'
+
+# 4. 
 
 # the output is in tf.Tensor, which is the equivalent of np.ndarray or an array datatype but a
 
