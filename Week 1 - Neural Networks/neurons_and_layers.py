@@ -59,7 +59,7 @@ y_train = np.array([[300.0],
 
 # and still being data - it isn't in the format they usually come in practical applications - you 
 
-# should actually represent data in their preferred form - a table
+# should actually represent data in their preferred form - a table/matrix
 
 # even if you get X_train in real-life with one feature in it (so only one column) you do not
 
@@ -432,104 +432,50 @@ a1 = linear_layer(X_train[0].reshape(1,1))
 
 a1.numpy()
 
-# give it ONE training example (with 1 feature)
+# input/incoming data here is just 1 training example here
 
-# earlier, we gave it the image vector x with 64 values -> this is ONE training example with 64
+# [[1.0]]
 
-# features
+# earlier, we gave it the image vector x with 64 values -> this is ONE training example as well
 
-# don't confuse - essentially, each neuron sees one training example and then randomly assigns
+# with 64 features
 
-# weights (and bias) to each feature
-
-# in our case, 1 training example has 1 feature
-
-# so one weight (and one bias)
+# [[...]]
+#    ^
+# 64 values
 
 print(a1)
 
-# you're printing the activation = the linear reg. output
+# NOTE: a1 -> a_(1)
 
-# now, you could see how the randomly initialized w and b i.e. the preferred weight/parameter
+# you are printing the activation of the layer
 
-# pattern matched with the input's feature (only one feature) pattern
+# this layer has:
 
-w, b = linear_layer.get_weights()
+# 1 neuron; sees 1 example with 1 feature in it
+
+# so activation vector has shape (1,1)
+
+# (number of examples, number of neurons)
+
+# i.e. [[a1]] <-- for that 1 example
+
+W, b = linear_layer.get_weights()
 
 print(w, b)
 
-# so, that 'w' * 1.0 + b = z1 = a1
-
-# this is THAT RANDOMLY INITIALIZED 'w' and 'b' for this neuron that sees that one training 
-
-# example with one feature (one w and one b), just like how each neuron sees one image/training 
-
-# example with 64 features and assigns randomly initialized 64 weights to it (and one bias)
-
-# each time, 'w' and 'b' vary - randomly initialized
-
 # let's set w and b to our own values as its being initialized randomly
 
-set_w = np.array([[200]])
+set_W = np.array([[200]])
 set_b = np.array([100])
 
-linear_layer.set_weights([set_w, set_b])
+linear_layer.set_weights([set_W, set_b])
 
 # NOTE: the first argument in set_weights is the list of parameters: weight array and the bias array
 
-# that's why you enclose the parameter array set_w and set_b in a list
+# that's why you enclose the parameter array set_W and set_b in a list
 
 print(linear_layer.get_weights())
-
-# what you're doing here: "Instead of random parameters, let's manually choose parameters whose 
-# behavior we understand."
-
-# so now, the value of a1, which was always changing due to w and b being initialized randomly,
-
-# is always: a1 = 200(1) + 100 = 300
-
-# now this is for ONE NEURON -> 1 FEATURE -> 1 TR. EG.
-#                                          W = [[200]], b = [[100]]
-
-# if you had three features where X_train looked like:
-
-# X_train = np.array([[1.0, 2.0, 3.0],
-#                    [4.0, 5.0, 6.0],
-#                    [7.0, 8.0, 9.0]])
-
-# so now, for ONE NEURON -> 3 FEATURES -> 1 TR. EG.
-#                                         W should be = [[w1_1], <--- feature 1
-#                                                        [w2_1], <--- feature 2
-#                                                        [w3_1]] <--- feature 3
-#                                                          ^
-#                                                       Neuron 1
-
-# why: because shape of w should ALWAYS be in a table/2D form
-
-# W.shape = (3,1) now -> TF now naturally knows that we have 3 features and we have 1 neuron
-
-# shape of data = (number of training examples, number of features)
-#               = (3,1)
-
-# weight W shape = (number of features, number of neurons/units)
-#               = (3, whatever the number of neurons are)
-
-# Yes, it does not mean the size of training data matrix and the size of weight matrix
-# (mentioned 'matrix' because in TF implementation, all data is a matrix of 2D shape) should
-# always match - stop being dumb!
-
-# for TWO NEURONS -> 3 FEATURES -> each NEURON SEES 1 TR. EG.
-
-# W should be:
-#              = [[w1_1_val_1, w2_1_val_1], <--- for feature 1
-#                 [w1_1_val_2, w2_1_val_2], <--- for feature 2
-#                 [w1_1_val_3, w3_1_val_3]] <--- for feature 3
-#                      ^           ^
-#                  Neuron 1     Neuron 2
-
-# So if you want to modify/set weights w for when your dataset has 3 features and 2 neurons, then
-
-# your w array should look like above
 
 a1 = linear_layer(X_train[0].reshape(1, 1))
 
@@ -585,7 +531,7 @@ print(a1) # you'll get 300
 
 print(a1.numpy())
 
-a_linear = np.dot(set_w, X_train[0].reshape(1,1)) + set_b
+a_linear = np.dot(set_W, X_train[0].reshape(1,1)) + set_b
 # set_w shape is (1,1)
 # X_train[0] shape is (1,) -> [1.0]
 # as told above already, you have to reshape it to (1,1) shape; exactly like how set_w is
@@ -653,7 +599,7 @@ pred_tf = linear_layer(X_train_Tensor)
 
 print(pred_tf)
 
-pred_linear = np.dot(X_train, set_w) + set_b
+pred_linear = np.dot(X_train, set_W) + set_b
 
 print(pred_linear)
 
