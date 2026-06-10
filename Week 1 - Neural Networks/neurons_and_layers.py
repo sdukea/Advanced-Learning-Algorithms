@@ -411,6 +411,21 @@ a1 = linear_layer(X_train[0].reshape(1,1))
 # 1 -> 1 single example from input activation vector a_(1) from layer 1
 # 3 -> 3 neurons in our layer
 
+# so:
+
+# layer 2 sees first example from input activ. vector (only example there is)
+# neuron 1 -> computes z1_(2) -> linear activation -> a1_(2)
+# neuron 2 -> computes z2_(2) -> linear activation -> a2_(2)
+# neuron 3 -> computes z3_(2) -> linear activation -> a3_(2)
+
+# there are no other examples left
+
+# and so the output vector a_(2) would look something like:
+
+# a_(2) = [[a1_(2), a2_(2), a3_(2)]]
+
+# that's it!
+
 # the output is in tf.Tensor, which is the equivalent of np.ndarray or an array datatype but a
 
 # TF array -> Tensor
