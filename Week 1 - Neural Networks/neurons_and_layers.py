@@ -375,13 +375,23 @@ a1 = linear_layer(X_train[0].reshape(1,1))
 
 # and based on the activation count/like feature count, 
 
-# w1_(2) -> vector will contain 3 values -> say its [0.17, 8.0, 12.3] (randomly )
-# w2_(2) -> vector will contain 3 values ->
-# w3_(2) -> vector will contain 3 values
+# w1_(2) -> vector will contain 3 values -> [0.17, 8.0, 12.3]
+# w2_(2) -> vector will contain 3 values -> [-0.234, 19.6, 0]
+# w3_(2) -> vector will contain 3 values -> [9.9, 6.4, -0.16]
 
-# 
+#                                            random init.
 
-# 4. 
+# now transpose each weight vector (initialized for each neuron)
+
+# so, W will now be:
+
+# W = [[0.17, -0.234, 9.9],
+#      [8.0, 19.6, 6.4],
+#      [12.3, 9, -0.16]] 
+
+# shape = (3,3) CORRECT
+
+# 4.
 
 # the output is in tf.Tensor, which is the equivalent of np.ndarray or an array datatype but a
 
