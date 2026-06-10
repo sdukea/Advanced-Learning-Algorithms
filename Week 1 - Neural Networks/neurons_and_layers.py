@@ -391,7 +391,25 @@ a1 = linear_layer(X_train[0].reshape(1,1))
 
 # shape = (3,3) CORRECT
 
-# 4.
+# 4. now output/activation production happens
+
+# a_(1) was = [[a1_(1), a2_(1), a3_(1)]]
+
+# so, we see that our input/incoming activations/activation vector have
+
+# 1 example
+# 3 features/activations
+
+# and our layer 2 has three neurons
+
+# so, this means our output activation vector from layer 2 
+
+# a_(2)
+
+# will have a shape of (1, 3)
+
+# 1 -> 1 single example from input activation vector a_(1) from layer 1
+# 3 -> 3 neurons in our layer
 
 # the output is in tf.Tensor, which is the equivalent of np.ndarray or an array datatype but a
 
