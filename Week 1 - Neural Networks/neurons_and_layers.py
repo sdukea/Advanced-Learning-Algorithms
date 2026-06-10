@@ -332,18 +332,18 @@ a1 = linear_layer(X_train[0].reshape(1,1))
 
 # rather than having a_(1) = [[a1_(1)]] as input from layer 1, for better understanding, we'll use
 
-# a_(1) = [[a1_(1), a2_(1), a3_(1)]]
-
-# so this new, imagined layer that gives this new a_(1) as output has:
-# 1. 3 neurons
-# 2. only one example existed in input/incoming data
-
-# if two examples in input/incoming data, then a_(1) would look something like:
-
-# a_(1) = [[a1_(1), a2_(1), a3_(1)], <-- for example 1
-#          [a1_(1), a2_(1), a3_(1)]] <-- for example 2
-
-# so layer 2 recieves this a_(1) activation vector now
+# a_(1) = [[a1_(1), a2_(1), a3_(1)]] <---------------------------------------------
+#                                                                                 |
+# so this new, imagined layer that gives this new a_(1) as output has:            |
+# 1. 3 neurons                                                                    |
+# 2. only one example existed in input/incoming data                              |
+#                                                                                 |
+# if two examples in input/incoming data, then a_(1) would look something like:   |
+#                                                                                 |
+# a_(1) = [[a1_(1), a2_(1), a3_(1)], <-- for example 1                            |
+#          [a1_(1), a2_(1), a3_(1)]] <-- for example 2                            |
+#                                                                                 | 
+# so layer 2 recieves this a_(1) activation vector now ----------------------------
 
 # with shape = (1, 3)
 
@@ -358,6 +358,28 @@ a1 = linear_layer(X_train[0].reshape(1,1))
 
 # 3. infers that activation count = 3
 # inherently, 'activation count' is something like 'feature count'
+
+# and now, parameters are initialized:
+
+# neuron 1 -> w1_(2)
+# neuron 2 -> w2_(2)
+# neuron 3 -> w3_(2)
+
+# W will now contain = [w1_(2), w2_(2), w3_(2)]
+
+# and the shape of W will be -> (number of activation, number of neurons) -> (3,3)
+
+# b will contain = [b1_(2), b2_(2), b3_(2)]
+
+# so, as we see that the shape is (3,3) we can infer that
+
+# and based on the activation count/like feature count, 
+
+# w1_(2) -> vector will contain 3 values -> say its [0.17, 8.0, 12.3] (randomly )
+# w2_(2) -> vector will contain 3 values ->
+# w3_(2) -> vector will contain 3 values
+
+# 
 
 # 4. 
 
