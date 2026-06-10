@@ -330,13 +330,18 @@ a1 = linear_layer(X_train[0].reshape(1,1))
 
 # and all activation = linear
 
-# rather than having a_(1) = [[a1_(1)]] as input, for better understanding, we'll use
+# rather than having a_(1) = [[a1_(1)]] as input from layer 1, for better understanding, we'll use
 
 # a_(1) = [[a1_(1), a2_(1), a3_(1)]]
 
 # so this new, imagined layer that gives this new a_(1) as output has:
 # 1. 3 neurons
-# 2. sees one example from input data 
+# 2. only one example existed in input/incoming data
+
+# if two examples in input/incoming data, then a_(1) would look something like:
+
+# a_(1) = [[a1_(1), a2_(1), a3_(1)], <-- for example 1
+#          [a1_(1), a2_(1), a3_(1)]] <-- for example 2
 
 # so layer 2 recieves this a_(1) activation vector now
 
