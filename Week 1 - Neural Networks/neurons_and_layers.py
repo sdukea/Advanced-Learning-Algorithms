@@ -477,6 +477,8 @@ linear_layer.set_weights([set_W, set_b])
 
 print(linear_layer.get_weights())
 
+# check if parameters have been set
+
 a1 = linear_layer(X_train[0].reshape(1, 1))
 
 # you are reshaping a (1,) - 1D array value - of [1.0] into [[1.0]]
@@ -532,12 +534,12 @@ print(a1) # you'll get 300
 print(a1.numpy())
 
 a_linear = np.dot(set_W, X_train[0].reshape(1,1)) + set_b
-# set_w shape is (1,1)
+# set_W shape is (1,1)
 # X_train[0] shape is (1,) -> [1.0]
 # as told above already, you have to reshape it to (1,1) shape; exactly like how set_w is
 # so, X_train[0].rehshape(1,1) => [1.0] -> [[1.0]]
 
-# both a1 and a_linear produces the SAME values
+# both a1 (a_(1)) and a_linear produces the SAME values
 
 # use our linear layer to make predictions on our training data
 
@@ -545,55 +547,13 @@ X_train_Tensor = tf.convert_to_tensor(X_train)
 
 pred_tf = linear_layer(X_train_Tensor)
 
-# now pred_tf here is predicting result on our entire dataset 
+# now the input/incoming data to your linear_layer/layer 1 has 2 examples
 
-# i.e.
+# so the activation vector produced now will have shape
 
-# you have one neuron and for this neuron, for each tr. eg., you return a prediction with the
+# (number of examples in incoming/input data, number of neurons)
 
-# linear model that has w = set_w and b = set_b
-
-# so, inherently,
-
-# TF sees from your dataset TWO rows/TWO in its 2D shape of (2,1)/TWO tr. eg.
-
-# and only for training examples each, you predict
-
-# using the set parameters/rand. initialized parameters for each feature in each TR. EG./ROW
-
-# which is sees again from X_train shape of (2,1)
-#                                              ^
-
-# ONE/1 feature in our case
-# |
-# so one weight w, and one b (either initialized/set randomly)
-
-# for each ROW/TR. EG. now, the layer returns a prediction -> EACH NEURON in layer returns one 
-
-# prediction one Tensor consisting of predictions of each tr. eg. in the input dataset
-
-# So, pred_tf:
-
-# [[300.]
-#  [500.]], shape=(2, 1), dtype=float32)
-
-# in layer: 1 Neuron/unit -> sees dataset of two training examples and 1 feature -> initializes one
-
-# weight and one bias (sets/random) for each tr. eg. as each tr. eg. has 1 feature only -> gives 2 
-
-# predictions in total i.e. 
-
-# (the usual linear model pred. explanation follows here)
-
-# 1 for each each training example and 
-
-# each prediction is the linear model w/ attached set weight and bias for how many ever features/
-# or feature values (1 in our case) that
-
-# exist in the tr. eg./tr. eg. vector (if more than one feature) and by attaching the weights to 
-
-# the tr. eg./tr. eg. vector feature values, you get the prediction for that example
-
+# so, it will be: (2, 1)
 
 # NOTE: linear_layer/your layer only has ONE neuron
 
@@ -632,40 +592,6 @@ ax.legend(fontsize=12)
 
 plt.show()
 
-# before, we build a single layer - linear_layer - with one neuron in it
-
-# this ONE neuron sees a training example, uses our set_w and set_b as the set weights for this
-
-# layer i.e. it uses these weights to apply to training examples and each training example
-
-# gets a prediction -> training eg. - apply set weights set_w and set_b to linear model with
-
-# input training example to get z value as well as z = activation a value 
-
-# (as this is a linear reg. unit and the output of each neuron equals the activation as well as 
-
-# the activation here is linear)
-
-# so, we did:
-
-# input tr. eg. -> z = wx + b/wvec * xvec + b -> linear activation/z = a -> output is a
-
-# we just studied what a layer is, and what a neuron could do
-
-# So, you can see that there is no network here, or a model here
-
-# where this one layer exists and one neuron exists inside this layer - 
-
-# it is not defined INSIDE some neural network so that we can call this a neural network
-
-# with a single layer (linear layer) and a single linear reg. unit
-
-# but let's now connect multiple layers, each with any number of neurons
-
-# this is what we call a model/network -> a collection of layers/neurons
-
-# a model: 25 neurons -> 15 neurons -> 1 neuron
-#           layer 1        layer 2      layer 3
 
 
 # so we use Sequential for this
