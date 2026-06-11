@@ -815,9 +815,9 @@ print(logistic_layer.get_weights())
 
 # so, you can now do:
 
-w, b = logistic_layer.get_weights()
+W, b = logistic_layer.get_weights()
 
-print(w, b)
+print(W, b)
 
 # [[-1.2424643]] [0.]
 
@@ -826,13 +826,13 @@ print(w, b)
 # 1. desired shape to accomodate input features
 # 2. randomly initialized value for each parameter
 
-set_w = np.array([[2]])
+set_W = np.array([[2]])
 
 set_b = np.array([-4.5])
 
 # you can now set these weights yourself (as seen before)
 
-logistic_layer.set_weights([set_w, set_b])
+logistic_layer.set_weights([set_W, set_b])
 
 print(logistic_layer.get_weights())
 
@@ -847,7 +847,10 @@ a1 = model.predict(X_train[0].reshape(1,1))
 
 # so returns 1 prediction
 
-# with 1 w and 1 b set by us (after being initialized randomly)
+# prediction shape: (1, 1)
+#        (number of examples, number of neurons)
+
+# with 1 W and 1 b set by us (after being initialized randomly)
 
 # to accomodate that 1 feature in the training example given
 
@@ -855,7 +858,7 @@ print(a1)
 
 # normal logistic prediction
 
-alog = sigmoid(np.dot(set_w, X_train[0].reshape(1,1)) + set_b)
+alog = sigmoid(np.dot(set_W, X_train[0].reshape(1,1)) + set_b)
 
 print(alog)
 
