@@ -593,8 +593,9 @@ ax.legend(fontsize=12)
 plt.show()
 
 
-
 # so we use Sequential for this
+
+# to string different layers and make a model/network
 
 model = tf.keras.Sequential([
     tf.keras.layers.Dense(
@@ -604,7 +605,7 @@ model = tf.keras.Sequential([
     )
 ])  
 
-# input_dim = number of features per training example
+# input_dim = number of features (per training example) that is incoming
 
 # X_train shape = (2,1)
 
@@ -627,7 +628,7 @@ model = tf.keras.Sequential([
 
 # so TF knows:
 
-# neuron needs:
+# one neuron needs:
 # 1 weight
 # 1 bias
 
@@ -657,17 +658,19 @@ model.summary()
 
 # here: there is 1 layer, and one unit and the unit has one weight w and one bias b
 
+# i.e. W for this layer only contains w1_(1) -> W = [w1_(1)]
+
 logistic_layer = model.get_layer('L1')
 
 print(logistic_layer.get_weights())  
 
-# again, w and b are not yet initialized as logistic_layer.get_weights() is not seeing any
+# again, W and b are not yet initialized as logistic_layer.get_weights() is not seeing any
 
-# training example yet - you cannot unpack 0 values into 2 variables/parameters w and b
+# training example yet - you cannot unpack 0 values into 2 variables/parameters W and b
 
-# like w, b = logistic_layer.get_weights() because
+# like W, b = logistic_layer.get_weights() because
 
-# you're doing w, b = [], which is erroneous
+# you're doing W, b = [], which is erroneous
 
 # so if you printed out logistic_layer.get_weights(), you'd just get:
 
@@ -711,10 +714,9 @@ print(logistic_layer.built)
 #     )
 # ])
 
-# all Dense layers
+# all will be Dense layers
 
 # input/input layer/input data approximately mean the same thing
-
 
 # and the first Dense layer - layer 1 - will have this input_dim argument as it 
 
