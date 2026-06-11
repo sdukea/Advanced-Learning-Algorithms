@@ -863,3 +863,4 @@ alog = sigmoid(np.dot(set_W, X_train[0].reshape(1,1)) + set_b)
 print(alog)
 
 # both normal and model/network prediction is same
+
