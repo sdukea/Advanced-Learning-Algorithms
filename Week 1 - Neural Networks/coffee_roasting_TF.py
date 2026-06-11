@@ -360,11 +360,11 @@ model = tf.keras.Sequential([
 # NOTE:
 # the model takes input DATA (a set of EXAMPLES), not a specific EXAMPLE alone
 
-# and for each example in data, it gives a prediction
+# and for each example in data, it gives a prediction (as you know)
 
 # so model.predict(test_data) will return predictions for each tr. eg. in the input data/test_data
 
-# the 'shape' argument in Input:
+# the 'shape' argument in Input: 
 
 # describes the shape of ONE EXAMPLE, not the entire incoming dataset
 
@@ -470,6 +470,8 @@ print(f"Number of parameters:\nLayer 1: {L1_num_params}\nLayer 2: {L2_num_params
 # w1_1 -> layer 1, weight 1
 # w2_1 -> layer 2, weight 1
 # w3_1 -> layer 3, weight 1
+
+# (changed in 'neurons_and_layers.py' as well)
 
 W1, b1 = model.get_layer('L1').get_weights()
 W2, b2 = model.get_layer('L2').get_weights()
@@ -615,5 +617,3 @@ for i in range(len(predictions)):
     else:
         yhat[i] = 0
 print(f"decisions = \n{yhat}")
-
-
