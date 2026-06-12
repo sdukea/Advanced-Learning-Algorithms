@@ -101,9 +101,6 @@ def Dense(a_in, W, b):
     # So, the shape of input and a_out/activation vector of a layer would have the same dimension 
     # always/same number of axes.
     # If input has 2D shape, then the output activ. vector/a_out will also have a 2D shape
-    # but not mirroring values always i.e. if input shape = (100,3), then it does not mean
-    # that a_out should always be (100, 3) with exact values - but both their axes/dimension 
-    # are ALWAYS the same
 
     # On the other hand,
 
