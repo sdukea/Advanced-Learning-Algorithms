@@ -39,6 +39,10 @@ def Dense(a_in, W, b):
       a_out (ndarray (j,))  : j units|
     """             
     
+    # here:
+    # input data/incoming data for this Dense layer would be 1 single example
+    # which has 1 feature in it
+
     units = W.shape[1]
     # get number of neurons
 
