@@ -34,12 +34,19 @@ def Dense(a_in, W, b):
     Args:
       a_in (ndarray (n, )) : Data, 1 example
       # - input/incoming data is just 1 example
-      # - and it has shape (n,) -> so a 1-D array is the input data/input activation
+      # - and it has shape (n,) -> so this one example has n features
+      # - and this data is 1-dimensional/1-D array/Tensor
       W    (ndarray (n,j)) : Weight matrix; (number of features in example, number of neurons/units)
       b    (ndarray (j, )) : bias vector, (number of neurons/units,)
     Returns
-      a_out (ndarray (j,))  : j units|
+      a_out (ndarray (j,))  : j units
     """             
+    # NOTE:
+    # Earlier, we passed in X_train[0].reshape(1,1) and actual tables to layers like this
+    # and that was TF - TF Dense layers are designed to process many examples at once
+    # and they naturally can handle if input data/input activations are 2-Dimensional
+
+    # But here, we have handwritten code and we don't have that dynamic nature
 
     units = W.shape[1]
     # get number of neurons
