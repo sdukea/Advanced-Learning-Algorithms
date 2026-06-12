@@ -98,15 +98,19 @@ def Dense(a_in, W, b):
 
     # exactly being a 1D array like the input
 
-    # So, the shape of input and the a_out depend on each other 
-    # i.e. they will have the same dimension
+    # So, the shape of input and a_out/activation vector of a layer would have
+    # the same dimension always/same number of axes
+    # If input has 2D shape, then the output activ. vector/a_out will also have a 2D shape
+    # but not mirroring values always i.e. if input shape = (100,3), then it does not mean
+    # that a_out should always be (100, 3) - but both axes/dimension of the shape is ALWAYS 
+    # the same
 
     # Shape of W will vary as the shape also specifies/hints at the number of neurons
     # and so it is not neccessarily the case where the shape of input matches the shape of
     # W
 
     # And the shape of b depends on the number of neurons solely - so need not consider for
-    # discussion
+    # discussion  
 
     units = W.shape[1]
     # get number of neurons
