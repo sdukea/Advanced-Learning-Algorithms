@@ -33,7 +33,6 @@ def Dense(a_in, W, b):
     Computes dense layer
     Args:
       a_in (ndarray (n, )) : Data, 1 example
-      # - and this data is 1-dimensional/1-D array/Tensor
       W    (ndarray (n,j)) : Weight matrix; (number of features in example, number of neurons/units)
       b    (ndarray (j, )) : bias vector, (number of neurons/units,)
     Returns
@@ -49,8 +48,65 @@ def Dense(a_in, W, b):
     # 2. the number of examples can be traced to the shape of the output activation vector as it
     #    has shape=(number of examples, number of units)
 
-    # This is just for an educational implementation
-    # 
+    # But you have to know that:
+    # a neural network layer can have data/activations of ANY SHAPE
+    # and everything - parameters W and b and the output activation (a_out) - will vary
+    # accordingly.
+
+    # Here, the input is a single example, not 2D data/table/matrix
+    # and so, if we have input of shape = (n,)
+
+    # then, if we have, say 3 neurons, and
+
+    # we have input shape = (n,) - then
+
+    # 1. W shape = (n,3)
+    # 2. b shape = (3,)
+    # 3. a_out/output activation shape = (3,)
+
+    # because, if input was 2D data like:
+    # (consider 3 neurons itself)
+    # (consider 1 feature here)
+
+    # input:
+    # [[200.0],
+    #  [150.0]]
+    # a 2D input data of 2 examples
+
+    # then a_out would be:
+
+    # [[a1_(1), a2_(1), a3_(1)], <-- example 1/200.0
+    #  [a1_(1), a2_(1), a3_(1)]] <-- example 2/150.0
+
+    # and even if you had input:
+    # [[200.0]]
+    # which is still a 2D input data of 1 example
+
+    # a_out would be:
+
+    # [[a1_(1), a2_(1), a3_(1)]]
+
+    # but, if input was:
+    # [200.0]
+    # now, data is just 1 example - a 1D array and not a table
+
+    # and so, a_out would be:
+
+    # [a1_(1), a2_(1), a3_(1)]
+
+    # which has shape of just (3,) -> (number of neurons,)
+
+    # exactly being a 1D array like the input
+
+    # So, the shape of input and the a_out depend on each other 
+    # i.e. they will have the same dimension
+
+    # Shape of W will vary as the shape also specifies/hints at the number of neurons
+    # and so it is not neccessarily the case where the shape of input matches the shape of
+    # W
+
+    # And the shape of b depends on the number of neurons solely - so need not consider for
+    # discussion
 
     units = W.shape[1]
     # get number of neurons
