@@ -32,16 +32,14 @@ def Dense(a_in, W, b):
     """
     Computes dense layer
     Args:
-      a_in (ndarray (n, )) : Data, 1 example 
+      a_in (ndarray (n, )) : Data, 1 example
+      # - input data could have any number of examples
+      # - and each example can have n fe
       W    (ndarray (n,j)) : Weight matrix; (number of features in example, number of neurons/units)
       b    (ndarray (j, )) : bias vector, (number of neurons/units,)
     Returns
       a_out (ndarray (j,))  : j units|
     """             
-    
-    # here:
-    # input data/incoming data for this Dense layer would be 1 single example
-    # which has 1 feature in it
 
     units = W.shape[1]
     # get number of neurons
@@ -50,7 +48,7 @@ def Dense(a_in, W, b):
 
     for j in range(units): # for each neuron
 
-        w_neuron = W[:, j]
+        w_neuron = W[:, j] 
 
         z_neuron = np.dot(w_neuron, a_in) + b[j]
 
