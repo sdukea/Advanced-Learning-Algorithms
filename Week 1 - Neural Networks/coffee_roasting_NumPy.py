@@ -33,6 +33,8 @@ def Dense(a_in, W, b):
     Computes dense layer
     Args:
       a_in (ndarray (n, )) : Data, 1 example
+      # - input/incoming data is just 1 example
+      # - and it has shape (n,) -> so a 1-D array is the input data/input activation
       W    (ndarray (n,j)) : Weight matrix; (number of features in example, number of neurons/units)
       b    (ndarray (j, )) : bias vector, (number of neurons/units,)
     Returns
