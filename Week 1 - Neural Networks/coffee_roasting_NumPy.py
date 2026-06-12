@@ -33,10 +33,6 @@ def Dense(a_in, W, b):
     Computes dense layer
     Args:
       a_in (ndarray (n, )) : Data, 1 example
-      # - translates to input activations; activations_in
-      # - so, this is like the 'input_dim' argument/parameter to this Dense layer function
-      # - specifies the number of features in 1 single example from input/incoming data
-      # - and input/incoming data is actually (None, n)
       W    (ndarray (n,j)) : Weight matrix; (number of features in example, number of neurons/units)
       b    (ndarray (j, )) : bias vector, (number of neurons/units,)
     Returns
