@@ -162,3 +162,10 @@ b2_tmp = np.array( [15.41] )
 # 1. we have 3 features
 # 2. we have 1 neuron
 
+def predict(X, W1, b1, W2, b2):
+    m = X.shape[0]
+
+    predictions = np.zeros(W2.shape[0],W2.shape[1])
+
+    for i in range(m):
+        pass
