@@ -133,3 +133,8 @@ def Dense(a_in, W, b):
         a_out[j] = g(z_neuron)
     
     return (a_out)
+
+def Sequential(x, W1, b1, W2, b2):
+    a1 = Dense(x, W1, b1)
+    a2 = Dense(a1, W2, b2)
+  
