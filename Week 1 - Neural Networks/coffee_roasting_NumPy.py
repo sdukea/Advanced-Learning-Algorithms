@@ -135,6 +135,14 @@ def Dense(a_in, W, b):
     return (a_out)
 
 def Sequential(x, W1, b1, W2, b2):
+    
+    # W1, b1 -> parameters for layer 1
+    # W2, b2 -> parameters for layer 2
+
     a1 = Dense(x, W1, b1)
     a2 = Dense(a1, W2, b2)
+
+    # initialize the 2 layers using the parameters
   
+    return a2
+
