@@ -167,9 +167,10 @@ def Dense(a_in, W, b):
 
     # THEN,
 
-    # We can infer/solidify the fact that the actual data is of a 2D shape
+    # We can set the actual data to be a 2D shape ONLY
     # Essentially, we are demanding/setting that the actual input data is a 2-dimensional matrix/
-    # table.
+    # table by specifying that the dimension of a single example - which is what a layer will
+    # process at a time from input data that has these examples - is 1-dimensional
 
     # Because each layer sees 1 example at a time from the actual data
     # And if we specify that the layer will see a 1-dimensional array of shape (n,) as input -
