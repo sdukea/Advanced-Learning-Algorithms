@@ -167,14 +167,19 @@ def Dense(a_in, W, b):
 
     # THEN,
 
-    # We can set the actual data to be a 2D shape ONLY
+    # We can set the actual data as input to be a 2D shape ONLY
     # Essentially, we are demanding/setting that the actual input data is a 2-dimensional matrix/
-    # table by specifying that the dimension of a single example - which is what a layer will
-    # process at a time from input data that has these examples - is 1-dimensional
+    # table by specifying that the dimension of a single example is 1-dimensional, which is
+    # what the layer will process at a time from the actual input data
 
     # Because each layer sees 1 example at a time from the actual data
-    # And if we specify that the layer will see a 1-dimensional array of shape (n,) as input -
-    # FROM the actual data 
+    # And if we specify that the layer will see/process a 1-dimensional array of shape (n,) from the
+    # actual input data, then this input data is a container of these 1-D examples only, which is
+    # inherently a 2D matrix/table (a container of 1D arrays/examples)
+
+    # So in order to demonstrate how a layer will work, we do this:
+    # we make the Dense layer see only one example
+    # and in our case, this one example is 1D - so, the actual input dataset should be 2D
 
     units = W.shape[1]
     # we infer the number of neurons from shape of W
@@ -189,14 +194,27 @@ def Dense(a_in, W, b):
 
         a_out[j] = g(z_neuron)
     
+    # The process here is to show you:
+    # how a layer will process example by example
+    # and so we have one example passed in
+
+    # You normally give in a batch/actual input data that has examples in it
+    # and TF will dynamically see through the examples and process them one by one - in a layer
+    # Here, you will have to write handwritten code to take in one example into a layer
+    # and produce the output activation vector (based on the number of units and this one example -
+    # as shape of output activ. vector = (number of examples, number of units))
+
     return (a_out)
 
 def Sequential(x, W1, b1, W2, b2):
     
     # W1, b1 -> parameters for layer 1
     # W2, b2 -> parameters for layer 2
+    # so we have a model/network of two layers
 
     a1 = Dense(x, W1, b1)
+    # single example input
+
     a2 = Dense(a1, W2, b2)
 
     # initialize the 2 layers using the parameters
