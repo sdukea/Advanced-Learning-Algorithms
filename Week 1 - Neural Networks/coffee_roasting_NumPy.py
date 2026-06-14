@@ -49,12 +49,12 @@ def Dense(a_in, W, b):
     #    has shape=(number of examples, number of units)
 
     # But you have to know that:
-    # a neural network layer can have as input data/activations of MANY/ANY SHAPE
+    # a neural network layer can have as input data/activations of MANY/ANY DIMENSION
     # and everything - parameters W and b and the output activation (a_out) - will vary
     # accordingly.
 
     # Here, the input is a single example, not 2D data/table/matrix
-    # and so, if we have input of shape = (n,)
+    # and so, if we have input of shape (n,), then DIMENSION = 1/a 1D array
 
     # then, if we have, say 3 neurons, and
 
@@ -64,7 +64,7 @@ def Dense(a_in, W, b):
     # 2. b shape = (3,)
     # 3. a_out/output activation shape = (3,)
 
-    # because, if input was 2D data like:
+    # because, if input data was 2D/2-Dimensional:
     # (consider 3 neurons itself)
     # (consider 1 feature here)
 
@@ -77,6 +77,7 @@ def Dense(a_in, W, b):
 
     # [[a1_(1), a2_(1), a3_(1)], <-- example 1/200.0
     #  [a1_(1), a2_(1), a3_(1)]] <-- example 2/150.0
+    # HAS THE SAME DIMENSION - 2D
 
     # and even if you had input:
     # [[200.0]]
@@ -86,7 +87,7 @@ def Dense(a_in, W, b):
 
     # [[a1_(1), a2_(1), a3_(1)]]
 
-    # but, if input was:
+    # but, if input was 1-Dimensional:
     # [200.0]
     # now, data is just 1 example - a 1D array and not a table
 
@@ -96,15 +97,15 @@ def Dense(a_in, W, b):
 
     # which has shape of just (3,) -> (number of neurons,)
 
-    # exactly being a 1D array like the input
+    # exactly being 1-Dimensional as the input data
 
-    # So, the shape of input and a_out/activation vector of a layer would have the same dimension 
-    # always/same number of axes.
+    # So, the DIMENSION of input and a_out/activation vector of a layer would have the same 
+    # dimension always/same number of axes.
     # If input has 2D shape, then the output activ. vector/a_out will also have a 2D shape
 
     # On the other hand,
 
-    # W is typically a 2D matrix.
+    # W dimension can vary
 
     # If the input has n features and the layer has j neurons:
 
@@ -118,6 +119,50 @@ def Dense(a_in, W, b):
     # for every input feature.
 
     # and for b, the shape depends ONLY on the number of neurons in the layer
+
+    # NOTE:
+
+    # As you know,
+    # A Dense layer is defined on a single example - that's why a layer processes
+    # one example at a time
+
+    # Case 1: when input data/activation vector has a 2D shape - a table/2D matrix
+
+    # So a Dense layer here will look at one example/row at a time from the 2D matrix
+    # i.e. it will process the 1D array/example from the 2D matrix at a time
+    # Because in a 2D matrix/table as data, each row/example is a 1D array
+    
+    # So, inherently, if you have parameters for each neuron like (say layer 1):
+    # w1_(1), w2_(1), w3_(1) and so on, and
+    # b1_(1), b2_(1), b3_(1)
+
+    # each neuron does this:
+    # z1_(1) = w1_(1) * 1D-example + b1_(1)
+    # z2_(1) = w2_(1) * 1D-dexample + b2_(1)
+    # z3_(1) = w3_(1) * 1D-example + b3_(1)
+
+    # this would now be correspond to one example/row in the output activation vector of this neuron
+    # which is a_(1):
+    # a_(1) = [[z1_(1), z2_(1), z3_(1)]] <-- for first example
+    #                   .
+    #                   .
+    #                   .
+    # and so on if you have more 1D examples
+
+    # NOTE: both input data/activation vector to this layer and the output activ. vector have
+    # the same dimension - both are 2D
+
+    # Here:
+    # input data -> 2D table/matrix
+    # each example -> should be 1D array
+
+    # The natural case:
+    # Now, naturally, a layer will see one example at a time
+    # When input data is of 3D shape, like giving in images -> (1000, 28, 28) -> 1000 images of 
+    # 28 x 28 px size, then each example/image has a 2D dimension
+    # And when it comes to input data of a 2D shape, then each example has a 1D array
+
+    # So, if you specified the dimension of the input data that is coming into the layer
 
     units = W.shape[1]
     # we infer the number of neurons from shape of W
