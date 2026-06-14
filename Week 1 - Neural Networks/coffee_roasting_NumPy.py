@@ -49,7 +49,7 @@ def Dense(a_in, W, b):
     #    has shape=(number of examples, number of units)
 
     # But you have to know that:
-    # a neural network layer can have data/activations of ANY SHAPE
+    # a neural network layer can have as input data/activations of MANY/ANY SHAPE
     # and everything - parameters W and b and the output activation (a_out) - will vary
     # accordingly.
 
@@ -120,7 +120,7 @@ def Dense(a_in, W, b):
     # and for b, the shape depends ONLY on the number of neurons in the layer
 
     units = W.shape[1]
-    # get number of neurons
+    # we infer the number of neurons from shape of W
 
     a_out = np.zeros(units)
 
