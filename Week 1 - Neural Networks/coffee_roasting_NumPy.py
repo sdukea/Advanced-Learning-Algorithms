@@ -125,6 +125,9 @@ def Dense(a_in, W, b):
     # As you know,
     # A Dense layer is defined on a single example - that's why a layer processes
     # one example at a time
+    
+    # NOTE: actual input data - data that contains many examples as input to the layer/model
+    # and not just 1 example
 
     # Case 1: when input data/activation vector has a 2D shape - a table/2D matrix
 
@@ -188,7 +191,7 @@ def Dense(a_in, W, b):
 
     for j in range(units): # for each neuron
 
-        w_neuron = W[:, j] 
+        w_neuron = W[:, j]
 
         z_neuron = np.dot(w_neuron, a_in) + b[j]
 
@@ -203,6 +206,12 @@ def Dense(a_in, W, b):
     # Here, you will have to write handwritten code to take in one example into a layer
     # and produce the output activation vector (based on the number of units and this one example -
     # as shape of output activ. vector = (number of examples, number of units))
+    # |
+    # NOTE: Here, input data is one example of 1D, shape = (n,)
+    # So, actual input data should be 2D, shape = (m,n)
+
+    # So, output activ. vector would be be 1D, shape = (number of units,)
+    # actual output activ. vector would be 2D, shape = (number of examples, number of units)
 
     return (a_out)
 
@@ -222,7 +231,8 @@ def Sequential(x, W1, b1, W2, b2):
     return a2
 
 # layer 1 parameters
-W1_tmp = np.array( [[-8.93,  0.29, 12.9], [-0.1,  -7.32, 10.81]])
+W1_tmp = np.array( [[-8.93,  0.29, 12.9],   # <-- w1_(1)
+                    [-0.1,  -7.32, 10.81]]) # <-- w2_(1)
 b1_tmp = np.array( [-9.82, -9.28,  0.96])
 
 # so this means:
@@ -230,7 +240,9 @@ b1_tmp = np.array( [-9.82, -9.28,  0.96])
 # 2. we have three neurons
 
 # layer 2 parameters
-W2_tmp = np.array( [[-31.18], [-27.59], [-32.56]] )
+W2_tmp = np.array( [[-31.18],   # <-- w1_(2)
+                    [-27.59],   # <-- w2_(2)
+                    [-32.56]] ) # <-- w3_(2)
 b2_tmp = np.array( [15.41] )
 
 # means:
