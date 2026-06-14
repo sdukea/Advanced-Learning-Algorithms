@@ -163,6 +163,17 @@ def Dense(a_in, W, b):
     # And when it comes to input data of a 2D shape, then each example has a 1D array
 
     # So, if you specified the dimension of the input data that is coming into the layer
+    # i.e. if you tell that input data is 1 example and has shape (n,) - 1 dimensional,
+
+    # THEN,
+
+    # We can infer/solidify the fact that the actual data is of a 2D shape
+    # Essentially, we are demanding/setting that the actual input data is a 2-dimensional matrix/
+    # table.
+
+    # Because each layer sees 1 example at a time from the actual data
+    # And if we specify that the layer will see a 1-dimensional array of shape (n,) as input -
+    # FROM the actual data 
 
     units = W.shape[1]
     # we infer the number of neurons from shape of W
