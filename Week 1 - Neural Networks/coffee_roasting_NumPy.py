@@ -233,28 +233,27 @@ def Sequential(x, W1, b1, W2, b2):
 # layer 1 parameters
 W1_tmp = np.array( [[-8.93,  0.29, 12.9],   # <-- w1_(1)
                     [-0.1,  -7.32, 10.81]]) # <-- w2_(1)
-b1_tmp = np.array( [-9.82, -9.28,  0.96])
+b1_tmp = np.array( [-9.82, -9.28,  0.96])   # <-- b1_(1)
 
 # so this means:
-# 1. we have two features
-# 2. we have three neurons
+# 1. we have 2 features -> so the 1 single example as input has shape (2,)/(number of features,)
+# 2. we have 3 neurons
 
 # layer 2 parameters
 W2_tmp = np.array( [[-31.18],   # <-- w1_(2)
                     [-27.59],   # <-- w2_(2)
                     [-32.56]] ) # <-- w3_(2)
-b2_tmp = np.array( [15.41] )
+b2_tmp = np.array( [15.41] )    # <-- b1_(2)
 
 # means:
-# 1. we have 3 features
+# 1. we have 3 features -> layer 2 recieves from layer 1 - a1/a_(1) - and will have shape (3,)/
+# (number of units,)
 # 2. we have 1 neuron
 
 def predict(X, W1, b1, W2, b2):
+
     m = X.shape[0]
+    # Now, we get actual input data - data with many examples in it
+    # and not data that is just 1 example
 
-    predictions = np.zeros(W2.shape[0],W2.shape[1])
-
-    for i in range(m):
-        pass
-    
-    
+    predictions = np.zeros((m,1))
