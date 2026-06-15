@@ -230,6 +230,10 @@ def Sequential(x, W1, b1, W2, b2):
   
     return a2
 
+# All 'Sequential' does: string multiple layers by getting arguments for:
+# 1. W for each layer
+# 2. b for each layer
+
 # layer 1 parameters
 W1_tmp = np.array( [[-8.93,  0.29, 12.9],   # <-- w1_(1)
                     [-0.1,  -7.32, 10.81]]) # <-- w2_(1)
@@ -249,6 +253,13 @@ b2_tmp = np.array( [15.41] )    # <-- b1_(2)
 # 1. we have 3 features -> layer 2 recieves from layer 1 - a1/a_(1) - and will have shape (3,)/
 # (number of units,)
 # 2. we have 1 neuron
+
+# So NOTE:
+# as the final layer - layer 2 - has one neuron,
+# the output of the network is just a 2D vector (as we will be getting 2D input data when
+# predicting and the output activation vector (final) should also be a 2D dimension) of 1 value
+# So, shape=(1,1) when data is 2D like (m,n) - so, 1 example, 1 unit
+# This MATCHES!
 
 # NOTE:
 # When we did: for j in range(units) - line 192
@@ -270,3 +281,12 @@ def predict(X, W1, b1, W2, b2):
     # and not data that is just 1 example
 
     predictions = np.zeros((m,1))
+    # Input incoming data is 2D
+    # So initialize the final predictions array to also be 2D.
+
+    for i in range(m):
+        predictions[i, 0] = Sequential(X[i], W1, b1, W2, b2)
+        #                   Feed in example by example to the network/model/Sequential
+        #                   as this is what we're handwritten the code for
+
+    return predictions
