@@ -287,3 +287,13 @@ def predict(X, W1, b1, W2, b2):
         predictions[i, 0] = Sequential(X[i], W1, b1, W2, b2)
 
     return predictions
+
+X_test = np.array([
+    [200, 13.9],
+    [200, 17]
+])
+
+X_test_norm = norm_l(X_test)
+
+predictions = predict(X_test_norm, W1_tmp, b1_tmp, W2_tmp, b2_tmp)
+
