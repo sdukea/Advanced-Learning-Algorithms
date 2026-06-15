@@ -250,6 +250,9 @@ b2_tmp = np.array( [15.41] )    # <-- b1_(2)
 # (number of units,)
 # 2. we have 1 neuron
 
+# NOTE:
+# 
+
 def predict(X, W1, b1, W2, b2):
 
     m = X.shape[0]
