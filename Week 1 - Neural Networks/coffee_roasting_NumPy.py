@@ -254,12 +254,9 @@ b2_tmp = np.array( [15.41] )    # <-- b1_(2)
 # (number of units,)
 # 2. we have 1 neuron
 
-# So NOTE:
-# as the final layer - layer 2 - has one neuron,
-# the output of the network is just a 2D vector (as we will be getting 2D input data when
-# predicting and the output activation vector (final) should also be a 2D dimension) of 1 value
-# So, shape=(1,1) when data is 2D like (m,n) - so, 1 example, 1 unit
-# This MATCHES!
+# NOTE: Look at TIPS ICT notebook - last page - to see the entire thing in action
+# So, if the input data is of a 1D dimension, then:
+# - every activation/output of each layer would have the same dimension.
 
 # NOTE:
 # When we did: for j in range(units) - line 192
@@ -283,10 +280,10 @@ def predict(X, W1, b1, W2, b2):
     predictions = np.zeros((m,1))
     # Input incoming data is 2D
     # So initialize the final predictions array to also be 2D.
+    # NOTE: also, output layer/layer 2 only has 1 neuron
+    # So, no: of units = 1
 
     for i in range(m):
         predictions[i, 0] = Sequential(X[i], W1, b1, W2, b2)
-        #                   Feed in example by example to the network/model/Sequential
-        #                   as this is what we're handwritten the code for
 
     return predictions
