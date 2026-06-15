@@ -50,8 +50,7 @@ def Dense(a_in, W, b):
 
     # But you have to know that:
     # a neural network layer can have as input data/activations of MANY/ANY DIMENSION
-    # and everything - parameters W and b and the output activation (a_out) - will vary
-    # accordingly.
+    # and everything - parameters W and b and the output activation (a_out) - can vary.
 
     # Here, the input is a single example, not 2D data/table/matrix
     # and so, if we have input of shape (n,), then DIMENSION = 1/a 1D array
@@ -150,7 +149,7 @@ def Dense(a_in, W, b):
     #                   .
     #                   .
     #                   .
-    # and so on if you have more 1D examples
+    # and so on if you have more 1D examples in the input data of 2D matrix
 
     # NOTE: both input data/activation vector to this layer and the output activ. vector have
     # the same dimension - both are 2D
@@ -251,7 +250,7 @@ b2_tmp = np.array( [15.41] )    # <-- b1_(2)
 # 2. we have 1 neuron
 
 # NOTE:
-# 
+# Each layer will
 
 def predict(X, W1, b1, W2, b2):
 
