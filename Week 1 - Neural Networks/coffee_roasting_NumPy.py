@@ -187,6 +187,7 @@ def Dense(a_in, W, b):
     # we infer the number of neurons from shape of W
 
     a_out = np.zeros(units)
+    # for one example -> one row in the activ. vector
 
     for j in range(units): # for each neuron
 
@@ -250,7 +251,17 @@ b2_tmp = np.array( [15.41] )    # <-- b1_(2)
 # 2. we have 1 neuron
 
 # NOTE:
-# Each layer will
+# When we did: for j in range(units) - line 192
+# This is what we mean when we say the layer i.e. each neuron will look at one example from data
+# So, for each unit/neuron in layer (say layer 1):
+#   1. get the weight for this neuron - from W
+#   2. get the bias for this neuron - from b
+#   3. execute model/matrix multiplication between
+#      weight for neuron neuron * example + b for this neuron
+
+# And then we aggregate each neuron's output for 1 example into a_out -> becomes 1 row
+
+# And we repeat (line 256 to 262) for each example in the input data for this layer: layer 1
 
 def predict(X, W1, b1, W2, b2):
 
