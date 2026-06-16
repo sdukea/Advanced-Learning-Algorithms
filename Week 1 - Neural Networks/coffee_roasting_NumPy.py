@@ -297,3 +297,16 @@ X_test_norm = norm_l(X_test)
 
 predictions = predict(X_test_norm, W1_tmp, b1_tmp, W2_tmp, b2_tmp)
 
+print(predictions)
+
+# apply threshold
+
+yhat = np.zeros_like(predictions)
+
+for i in range(len(predictions)):
+    if predictions[i] >= 0.5:
+        yhat[i] = 1
+    else:
+        yhat[i] = 0
+
+print(f"Decisions/prob. = {yhat}")
