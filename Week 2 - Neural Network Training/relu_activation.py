@@ -60,6 +60,7 @@ print(f"Duration; max, min: {np.max(X_norm[:, 1])}, {np.min(X_norm[:, 1])}")
 # So, input dimension/number of axes set        layer       neuron      output activ. vector
 #                   2D                           1D        scalar/0D              1D
 
+
 def ReLU(z):
     return max(0, z)
 
