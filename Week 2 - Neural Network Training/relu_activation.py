@@ -64,7 +64,7 @@ print(f"Duration; max, min: {np.max(X_norm[:, 1])}, {np.min(X_norm[:, 1])}")
 def ReLU(z):
     return max(0, z)
 
-def Dense(a_in, W, b):
+def Dense_(a_in, W, b):
 
     neurons = W.shape[1]
 
@@ -80,3 +80,19 @@ def Dense(a_in, W, b):
         a_out[j] = a
     
     return a_out
+
+# initialize a network with 2 layers 
+def Sequential_(x, W1, b1, W2, b2):
+    a1 = Dense_(x, W1, b1)
+    a2 = Dense_(a1, W2, b2)
+
+    return a2
+
+# NOTE:
+# We are building a NETWORK that works by taking in a single 1D example as input
+# So that when we 'predict' - as you see in line 286 on 'coffee_roasting_NumPy.py' - we
+# do predictions for each example from the 2D input (actual) as each example in a 2D input is a 1D
+# example, for which we've already built a NETWORK that works on processing 1D example inputs and 
+# iterating through the 2D matrix input (actual), we serve the the 1D examples from these as
+# the input to the NETWORK we have built.
+
