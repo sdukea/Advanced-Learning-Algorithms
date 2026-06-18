@@ -79,4 +79,3 @@ def Dense(a_in, W, b):
         a_out[j] = a
     
     return a_out
-
