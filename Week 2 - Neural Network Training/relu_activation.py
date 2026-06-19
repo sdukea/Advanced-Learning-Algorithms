@@ -103,7 +103,4 @@ def Sequential_(x, W1, b1, W2, b2):
 #     tf.keras.layers.Dense(3, activation='sigmoid', name='L1'),
 #     tf.keras.layers.Dense(1, activation='sigmoid', name='L2')
 # ])
-# When you did something like this: setting Input(shape=(2,)) and so on
-# you are actually telling TF that the input dimension of ONE EXAMPLE is 1-Dimesional as the 
-# shape=(2,) and (2,) is a 1D array of 2 elements - we are also implying the number of features
-# But when you are writ
+# Say you did model.predict()
