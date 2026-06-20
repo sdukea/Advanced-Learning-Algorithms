@@ -99,8 +99,24 @@ def Sequential_(x, W1, b1, W2, b2):
 # Why are we doing this:
 # Because we are trying to imitate what TF does actually under the hood.
 # model = tf.keras.Sequential([
-#     tf.keras.Input(shape=(2,)),
-#     tf.keras.layers.Dense(3, activation='sigmoid', name='L1'),
-#     tf.keras.layers.Dense(1, activation='sigmoid', name='L2')
-# ])
-# Say you did model.predict()
+#     tf.keras.Input(shape=(2,)), <--------------------------------------|
+#     tf.keras.layers.Dense(3, activation='sigmoid', name='L1'),         |
+#     tf.keras.layers.Dense(1, activation='sigmoid', name='L2')          |
+# ])                                                                     |
+# You say that the input dimension of data i.e. the shape of ONE EXAMPLE ^ is 1D/(just 2 features)
+
+# NOTE: If I say that the dimension is 1D, then it can have any shape/features inside: (1,), (2,) 
+# and so on - 1D input data makes it evident that the dimension is 1D and there are these-many 
+# features in it.
+# If input_dimension is (28,28) - 2D - then the input dimension is 2D and the number of features
+# are 28 x 28 = 784 features.
+
+# And TF now can take in any 2D data (as you know it - as input dimension is 1D) and it will
+# dynamically iterate through each example under the hood - with the input/set parameters - and
+# give out predictions.
+
+# So, say you have input 2D data of shape: (200, 2)
+
+# This is CORRECT/APPLICABLE - data is in a 2D format and each example is also 1D and has 2 features
+
+# Say y
