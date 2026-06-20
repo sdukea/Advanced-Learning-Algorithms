@@ -155,5 +155,15 @@ def Sequential_(x, W1, b1, W2, b2):
 # example * unit 3 W + unit 3 b
 
 # It's the SAME first example (out of the 200 example in actual input data)
-# that passes through the ENTIRE network model to register in a_out/final output layer activation
+# that passes through the ENTIRE network/model to register in a_out/final output layer activation
 # vector as the first row
+
+# NOTE: 'passes through the ENTIRE network' means that it turns richer and richer as it moves
+# along the network but is still the first example that had been initiated/taken as input first
+# from actual 2D input data/as examples a
+
+# as a_out/layer's output activation vector has shape: (number of examples, number of neurons)
+
+# if the output layer had, say 1 neuron, then:
+
+# a_out = [[()]] <- the first row = the first example from input data that passes 
