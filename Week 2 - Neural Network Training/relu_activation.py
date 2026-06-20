@@ -135,8 +135,25 @@ def Sequential_(x, W1, b1, W2, b2):
 # So, this is how - typically - the weights are assigned. And of course:
 
 # b = [()  ()  ()]
+#      ^   ^   ^
+# unit 1   2   3
 # shape: (3,)
 
 # So, what happens in TF is that:
 
-# fo
+# for each example from data - which has a 1D shape and has 2 features:
+# |
+# now in layer 1 that takes this 1 example from input data (actual) as input:
+# |
+# and for each neuron:
+# example * unit 1 W + unit 1 b
+# |
+# next neuron:
+# example * unit 2 W + unit 2 b
+# |
+# next neuron:
+# example * unit 3 W + unit 3 b
+
+# It's the SAME first example (out of the 200 example in actual input data)
+# that passes through the ENTIRE network model to register in a_out/final output layer activation
+# vector as the first row
