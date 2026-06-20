@@ -115,8 +115,28 @@ def Sequential_(x, W1, b1, W2, b2):
 # dynamically iterate through each example under the hood - with the input/set parameters - and
 # give out predictions.
 
-# So, say you have input 2D data of shape: (200, 2)
+# So, say you have input 2D data of shape to your model: (200, 2)
 
 # This is CORRECT/APPLICABLE - data is in a 2D format and each example is also 1D and has 2 features
 
-# Say y
+# And you have 2 layers in your model - layer 1 and 2
+
+# layer 1 -> 3 neurons (the layer that takes the input)
+# layer 2 -> 2 neurons
+# (and maybe an output layer as well - output layer)
+
+# layer 1 W shape would be: (2, 3)
+# and it would be something like:
+# W = [[ ()  ()  ()], <- feature 1
+#      [ ()  ()  ()]] <- feature 2
+#        ^   ^   ^
+# unit   1   2   3 
+
+# So, this is how - typically - the weights are assigned. And of course:
+
+# b = [()  ()  ()]
+# shape: (3,)
+
+# So, what happens in TF is that:
+
+# fo
