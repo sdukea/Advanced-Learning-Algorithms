@@ -206,4 +206,26 @@ def Sequential_(x, W1, b1, W2, b2):
     return predictions
 """
 
-# You actually try to imitate the same method 
+# You actually try to do the same thing:
+# 1. take in the appropriate actual input data of CORRECT/APPLICABLE dimension/number of features
+# in each example
+# 2. iterate through each example
+# 3. get predictions added to a_out/final prediction output layer activation vector
+
+# So, this is why:
+
+# def Dense(a_in, W, b)
+
+# ARE FOR THAT LAYER:
+
+# layer sees 1 example - a_in is 1D in shape from 2D actual input data
+# layer will be given its own W
+# layer will be giveni its own b
+
+# So, in Dense, you:
+
+# iterate through each unit
+# get that vertical/transposed weight vector for this unit
+# matrix multiply with 1 example
+# add b for that unit to this product
+# 
