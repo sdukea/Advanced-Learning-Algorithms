@@ -192,4 +192,18 @@ def Sequential_(x, W1, b1, W2, b2):
 # All the dot products and output processing of every layer happens dynamically and
 # under the hood.
 
-# So, when you are building the 
+# So, when you do:
+
+# def predict(X, W1, b1, W2, b2):
+"""
+    m = X.shape[0]
+
+    predictions = np.zeros((m,1))
+
+    for i in range(m):
+        predictions[i, 0] = Sequential(X[i], W1, b1, W2, b2)
+
+    return predictions
+"""
+
+# You actually try to imitate the same method 
