@@ -228,4 +228,7 @@ def Sequential_(x, W1, b1, W2, b2):
 # get that vertical/transposed weight vector for this unit
 # matrix multiply with 1 example
 # add b for that unit to this product
-# 
+# return value to a_out of this layer at that index/row for example-wise building
+
+# And Sequential just wraps it up - that's it!
+
