@@ -125,6 +125,8 @@ def Sequential_(x, W1, b1, W2, b2):
 # layer 2 -> 2 neurons
 # (and maybe an output layer as well - output layer)
 
+# NOTE: (),{} -> represents scalar values
+
 # layer 1 W shape would be: (2, 3)
 # and it would be something like:
 # W = [[ ()  ()  ()], <- feature 1
@@ -160,10 +162,34 @@ def Sequential_(x, W1, b1, W2, b2):
 
 # NOTE: 'passes through the ENTIRE network' means that it turns richer and richer as it moves
 # along the network but is still the first example that had been initiated/taken as input first
-# from actual 2D input data/as examples a
+# from actual 2D input data
 
 # as a_out/layer's output activation vector has shape: (number of examples, number of neurons)
 
 # if the output layer had, say 1 neuron, then:
 
-# a_out = [[()]] <- the first row = the first example from input data that passes 
+# a_out = [[()]] <- the first row = the first example from input data that passed through - turning
+# richer - and ended up here
+
+# for the next example, out of the 200 examples, it will pass through the entire network/model
+# to end up below/as the second row
+
+# a_out = [[()], <- first example being passed through/first row
+#          [{}]] <- second example being passed through/second row
+
+# and so on for every example taken - one at a time
+
+# But, TF does all of this under the hood.
+
+# If you intialized the model and return the predictions:
+
+# predictions = model.predict(X_test)
+
+# predictions would have the shape: (200, 1)
+
+# for each and every 200 example in the layer, that 1 neuron gave predictions.
+
+# All the dot products and output processing of every layer happens dynamically and
+# under the hood.
+
+# So, when you are building the 
