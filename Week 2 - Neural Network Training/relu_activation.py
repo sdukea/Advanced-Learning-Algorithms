@@ -232,3 +232,5 @@ def Sequential_(x, W1, b1, W2, b2):
 
 # And Sequential just wraps it up - that's it!
 
+# set parameters
+
