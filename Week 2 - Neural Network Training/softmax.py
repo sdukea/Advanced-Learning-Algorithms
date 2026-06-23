@@ -17,3 +17,4 @@ def my_softmax(z):
     return(sm)
 
 
+# make datasets
