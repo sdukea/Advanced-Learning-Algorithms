@@ -20,3 +20,5 @@ def my_softmax(z):
 # make datasets
 centers = [[-5, 2], [-2, -2], [1, 2], [5, -2]]
 
+X_train, y_train = make_blobs(n_samples=2000, centers=centers, cluster_std=1.0, random_state=30)
+
