@@ -18,3 +18,5 @@ def my_softmax(z):
 
 
 # make datasets
+centers = [[-5, 2], [-2, -2], [1, 2], [5, -2]]
+
