@@ -25,4 +25,4 @@ cent = np.array([[-5, 2], [-2, -2], [1, 2], [5, -2]])
 data = make_blobs(n_samples=2000, centers=cent, cluster_std=1.0, random_state=30,
                               return_centers=False)
 
-print(data)
+print(type(data))
