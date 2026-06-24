@@ -46,3 +46,17 @@ print(X_train, y_train)
 # present in the image
 # |
 # So the image need not have all classes true but it can have them simultaneously true
+
+# NOTE: data in Lab file is used alongisde a helper function to visualize - won't be doing it here
+
+# Softmax - used for multiclass
+# So, each example can only belong to ONE class out of the many classes we possibly have/can 
+# attribute to
+
+# After z-values are produced out of a neuron:
+# - Softmax converts them to probabilities as activations where each activation per neuron is
+# - the probability of that class the neuron is representing
+# - and adding up all prob., you get 1.
+
+# Cost
+# 
