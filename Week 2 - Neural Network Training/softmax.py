@@ -20,8 +20,9 @@ def my_softmax(z): # z -> an array of all z-values from neurons/units
 
 
 # make datasets
-cent = [[-5, 2], [-2, -2], [1, 2], [5, -2]]
+cent = np.array([[-5, 2], [-2, -2], [1, 2], [5, -2]])
 
-X_train, y_train = make_blobs(n_samples=2000, centers=cent, cluster_std=1.0, random_state=30)
+data = make_blobs(n_samples=2000, centers=cent, cluster_std=1.0, random_state=30,
+                              return_centers=False)
 
-
+print(data)
