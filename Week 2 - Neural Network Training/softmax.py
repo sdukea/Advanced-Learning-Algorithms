@@ -58,5 +58,4 @@ print(X_train, y_train)
 # - the probability of that class the neuron is representing
 # - and adding up all prob., you get 1.
 
-# Cost
-# 
+#
