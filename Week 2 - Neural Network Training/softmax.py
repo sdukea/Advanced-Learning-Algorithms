@@ -11,6 +11,8 @@ import logging
 logging.getLogger("tensorflow").setLevel(logging.ERROR)
 tf.autograph.set_verbosity(0)
 
+from typing import cast
+
 def my_softmax(z): # z -> an array of all z-values from neurons/units
     ez = np.exp(z)              # ez -> an array where each z-value is exponentiated with base 'e'
     sm = ez/np.sum(ez)          # sm -> an array where the 'ez' array is divided i.e. each value
@@ -22,7 +24,14 @@ def my_softmax(z): # z -> an array of all z-values from neurons/units
 # make datasets
 cent = np.array([[-5, 2], [-2, -2], [1, 2], [5, -2]])
 
-data = make_blobs(n_samples=2000, centers=cent, cluster_std=1.0, random_state=30,
-                              return_centers=False)
+X_train, y_train = cast(
+    tuple[np.ndarray, np.ndarray],
+    make_blobs(
+        n_samples=2000,
+        centers=cent,
+        cluster_std=1.0,
+        random_state=30
+    )
+)
 
-print(type(data))
+print(X_train, y_train)
