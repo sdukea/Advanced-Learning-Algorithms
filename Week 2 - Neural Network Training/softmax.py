@@ -35,3 +35,14 @@ X_train, y_train = cast(
 )
 
 print(X_train, y_train)
+
+# multiclass - one example is attributed to only ONE class out of a collection of many classes
+# multilabel - one example is attributed can belong to multiple classes simultaneously
+# NOTE: in multilabel classification, say photo tagging:
+# if you have 3 classes: beach, sunset, people
+# then, an example could have all these classes simultaneously i.e.
+# one image could have true/be tagged beach, sunset and people (if present in the image/hence tagged)
+# another image could have true/be tagged with only beach and people and probably no sunset is
+# present in the image
+# |
+# So the image need not have all classes true but it can have them simultaneously true
