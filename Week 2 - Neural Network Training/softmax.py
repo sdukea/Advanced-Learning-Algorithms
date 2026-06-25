@@ -66,3 +66,5 @@ model.compile(
     optimizer=tf.keras.optimizers.Adam(0.001)
 )
 
+model.fit(X_train, y_train, epochs=10)
+
