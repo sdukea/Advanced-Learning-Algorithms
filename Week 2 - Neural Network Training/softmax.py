@@ -53,9 +53,5 @@ print(X_train, y_train)
 # So, each example can only belong to ONE class out of the many classes we possibly have/can 
 # attribute to
 
-# After z-values are produced out of a neuron:
-# - Softmax converts them to probabilities as activations where each activation per neuron is
-# - the probability of that class the neuron is representing
-# - and adding up all prob., you get 1.
+# The 'obvious'
 
-#
