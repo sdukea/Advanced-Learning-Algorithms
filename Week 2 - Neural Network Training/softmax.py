@@ -55,3 +55,14 @@ print(X_train, y_train)
 
 # The 'obvious'
 
+model = Sequential([
+    Dense(25, activation='relu'),
+    Dense(15, activation='relu'),
+    Dense(4, activation='softmax')
+])
+
+model.compile(
+    loss=tf.keras.losses.SparseCategoricalCrossentropy(),
+    optimizer=tf.keras.optimizers.Adam(0.001)
+)
+
