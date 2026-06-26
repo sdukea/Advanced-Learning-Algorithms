@@ -87,3 +87,27 @@ print(p[:2])
 print("largest value", np.max(p), "smallest value", np.min(p))
 
 # preferred implementation
+
+pref_model = tf.keras.Sequential([
+    tf.keras.layers.Dense(25, activation='relu'),
+    tf.keras.layers.Dense(15, activation='relu'),
+    tf.keras.layers.Dense(4, activation='linear') # <- change
+])
+
+pref_model.compile(
+    loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+    optimizer=tf.keras.optimizers.Adam(0.001)
+)
+
+pref_model.fit(X_train, y_train, epochs=10)
+
+p_pref = pref_model.predict(X_train)
+
+print(f"Two example output vectors: {p_pref[:2]}")
+print("largest value", np.max(p_pref), "smallest value", np.min(p_pref))
+
+sm_pref = tf.nn.softmax(p_pref).numpy()
+
+print(f"two example output vectors:\n {sm_pref[:2]}")
+print("largest value", np.max(sm_pref), "smallest value", np.min(sm_pref))
+
