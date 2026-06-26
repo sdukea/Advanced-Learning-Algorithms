@@ -38,6 +38,9 @@ X_train, y_train = cast(
 
 print(X_train, y_train)
 
+# X_train -> (2000, 2)
+# has 2000 examples, each containing 2 features
+
 # multiclass - one example is attributed to only ONE class out of a collection of many classes
 # multilabel - one example is attributed can belong to multiple classes simultaneously
 # NOTE: in multilabel classification, say photo tagging:
@@ -63,6 +66,8 @@ model = tf.keras.Sequential([
     tf.keras.layers.Dense(4, activation='softmax')
 ])
 
+# There are four classes in our case we initialize
+
 model.compile(
     loss=tf.keras.losses.SparseCategoricalCrossentropy(),
     optimizer=tf.keras.optimizers.Adam(learning_rate=0.001)
@@ -74,4 +79,11 @@ model.fit(X_train, y_train, epochs=10)
 
 p = model.predict(X_train)
 
-print(p)
+# p -> (2000, 4)
+# each prediction is a probability vector with 4 probabilities that add up to 1 and
+# the highest of the probabilities are attributed as the preferred class
+
+print(p[:2])
+print("largest value", np.max(p), "smallest value", np.min(p))
+
+# preferred implementation
