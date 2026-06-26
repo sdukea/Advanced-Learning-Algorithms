@@ -3,8 +3,10 @@ import matplotlib.pyplot as plt
 plt.style.use('./deeplearning.mplstyle')
 import tensorflow as tf
 
-from tensorflow.python.keras.models import Sequential
-from tensorflow.python.keras.layers import Dense
+# from tensorflow.python.keras.models import Sequential
+# from tensorflow.python.keras.layers import Dense
+# from tensorflow.python.keras.losses import SparseCategoricalCrossentropy
+
 from sklearn.datasets import make_blobs
 
 import logging
@@ -55,16 +57,21 @@ print(X_train, y_train)
 
 # The 'obvious'
 
-model = Sequential([
-    Dense(25, activation='relu'),
-    Dense(15, activation='relu'),
-    Dense(4, activation='softmax')
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(25, activation='relu'),
+    tf.keras.layers.Dense(15, activation='relu'),
+    tf.keras.layers.Dense(4, activation='softmax')
 ])
 
 model.compile(
     loss=tf.keras.losses.SparseCategoricalCrossentropy(),
-    optimizer=tf.keras.optimizers.Adam(0.001)
+    optimizer=tf.keras.optimizers.Adam(learning_rate=0.001)
 )
 
 model.fit(X_train, y_train, epochs=10)
 
+# working
+
+p = model.predict(X_train)
+
+print(p)
