@@ -32,6 +32,34 @@ print(X_train[:5])
 print("Y_train")
 print(y_train[:5])
 
+# see data
+
+plt.figure(figsize=(7, 6))
+
+plt.scatter(
+    X_train[:,0],
+    X_train[:,1],
+    c=y_train,
+    cmap='viridis',
+    s=60
+)
+
+plt.scatter(
+    cent[:,0],
+    cent[:,1],
+    c='red',
+    marker='X',
+    s=250,
+    label='Centers'
+)
+
+
+plt.legend()
+plt.xlabel("Feature 1")
+plt.ylabel("Feature 2")
+plt.title("Training Data with Cluster Centers")
+plt.show()
+
 
 # show unique classes
 print(f"Unique classes: {np.unique(y_train)}")
@@ -60,4 +88,7 @@ l1 = model.get_layer('L1')
 W1, b1 = l1.get_weights()
 
 # these are W1_(1) and b1_(1)
+
+l2 = model.get_layer('L2')
+W2, b2 = l2.get_weights()
 
