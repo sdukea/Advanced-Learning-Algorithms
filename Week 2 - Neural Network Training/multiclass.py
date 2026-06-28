@@ -91,3 +91,5 @@ W1, b1 = l1.get_weights()
 
 l2 = model.get_layer('L2')
 W2, b2 = l2.get_weights()
+
+
