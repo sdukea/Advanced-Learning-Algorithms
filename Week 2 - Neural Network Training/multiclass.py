@@ -92,4 +92,5 @@ W1, b1 = l1.get_weights()
 l2 = model.get_layer('L2')
 W2, b2 = l2.get_weights()
 
-
+# create the 'new features', the training examples after L1 transformation
+Xl2 = np.maximum(0, np.dot(X_train,W1) + b1)
