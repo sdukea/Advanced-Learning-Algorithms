@@ -61,6 +61,7 @@ plt.title("Training Data with Cluster Centers")
 plt.show()
 
 
+
 # show unique classes
 print(f"Unique classes: {np.unique(y_train)}")
 
