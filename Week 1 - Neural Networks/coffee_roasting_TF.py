@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
+plt.style.use('./deeplearning.mplstyle')
 
 from tensorflow.python.keras import Sequential
 from tensorflow.python.keras.layers import Input, Dense
@@ -598,6 +599,8 @@ X_test = np.array(
 )
 
 X_test_norm = norm_l(X_test)
+
+print(X_test_norm.shape)
 
 predictions = model.predict(X_test_norm)
 

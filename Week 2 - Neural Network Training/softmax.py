@@ -106,6 +106,8 @@ p_pref = pref_model.predict(X_train)
 print(f"Two example output vectors: {p_pref[:2]}")
 print("largest value", np.max(p_pref), "smallest value", np.min(p_pref))
 
+
+
 sm_pref = tf.nn.softmax(p_pref).numpy()
 
 print(f"two example output vectors:\n {sm_pref[:2]}")
@@ -113,3 +115,5 @@ print("largest value", np.max(sm_pref), "smallest value", np.min(sm_pref))
 
 for i in range(5):
     print(f"{p_pref[i]}, category: {np.argmax(p_pref[i])}")
+
+    
