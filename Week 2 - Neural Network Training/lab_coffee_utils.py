@@ -27,6 +27,8 @@ def load_coffee_data():
             Y[i] = 0
         i += 1
 
+        
+
     return (X, Y.reshape(-1,1))
 
 def plt_roast(X,Y):
