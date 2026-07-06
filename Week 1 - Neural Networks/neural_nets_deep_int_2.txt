@@ -14,6 +14,8 @@
 
 # hidden layer 1:
 
+
+
 # each neuron in the hidden layer 1 sees this vector x
 
 # and each neuron assigns randomly initialized weights to this input vector x (image)
