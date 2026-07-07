@@ -54,6 +54,7 @@ plt.scatter(
 )
 
 
+
 plt.legend()
 plt.xlabel("Feature 1")
 plt.ylabel("Feature 2")
