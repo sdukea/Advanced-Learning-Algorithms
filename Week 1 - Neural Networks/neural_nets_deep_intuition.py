@@ -51,6 +51,7 @@
 # neuron 1 says "I like most of the centre-column pixels to be bright"
 # and the image also seems to have bright/1 for all of the centre-column pixels
 
+
 # z3_1 = w1x1 + w2x2 + ... + w4x4 + .. w4x12 + .. w4x20 + ... w64x64
 # the pixel values in each of the terms either contribute postively or negatively
 # i.e. if pixel is valued higher/bright, and if the weight is also higher/gives larger importance
