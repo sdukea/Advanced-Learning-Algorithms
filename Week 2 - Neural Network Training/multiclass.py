@@ -36,7 +36,6 @@ print(y_train[:5])
 
 plt.figure(figsize=(7, 6))
 
-
 plt.scatter(
     X_train[:,0],
     X_train[:,1],
