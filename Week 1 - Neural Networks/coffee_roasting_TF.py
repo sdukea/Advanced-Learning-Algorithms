@@ -589,6 +589,8 @@ W2, b2 = model.get_layer('L2').get_weights()
 print("W1:\n", W1, "\nb1:", b1)
 print("W2:\n", W2, "\nb2:", b2)
 
+
+
 # make predictions now
 
 X_test = np.array(
