@@ -34,7 +34,6 @@ print(y_train[:5])
 
 # see data
 
-
 plt.figure(figsize=(7, 6))
 
 plt.scatter(
