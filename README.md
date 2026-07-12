@@ -35,23 +35,6 @@ The goal of this repository is not just to complete assignments, but to build an
 
 ---
 
-## Repository Structure
-
-```
-.
-├── Week 1/
-├── Week 2/
-├── Week 3/
-├── Week 4/
-├── Labs/
-├── Assignments/
-└── README.md
-```
-
-*(may evolve)*
-
----
-
 ## Course
 
 This work follows:
