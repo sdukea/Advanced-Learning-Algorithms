@@ -1,6 +1,7 @@
 # Advanced Learning Algorithms
 
-![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Andrew%20Ng-orange)
+![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-FF6F00?logo=tensorflow&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 ---
@@ -51,21 +52,6 @@ The goal of this repository is not just to complete assignments, but to build an
 
 ---
 
-## Learning Objectives
-
-This repository is intended to strengthen understanding of:
-
-- Building neural networks from scratch
-- Training deep learning models
-- Feature engineering
-- Preventing overfitting
-- Improving model performance
-- Decision tree algorithms
-- Ensemble learning methods
-- Practical machine learning workflows
-
----
-
 ## Course
 
 This work follows:
@@ -88,5 +74,3 @@ Please do not submit these solutions directly for any graded coursework.
 ## Author
 
 **Syon Duke Abraham**
-
-AI • Machine Learning • Robotics
