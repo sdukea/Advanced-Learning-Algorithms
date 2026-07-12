@@ -16,7 +16,7 @@ The goal of this repository is not just to complete assignments, but to build an
 
 ---
 
-## Topics Covered
+## Contents
 
 | Category | Topics |
 |----------|--------|
