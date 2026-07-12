@@ -71,6 +71,4 @@ Please do not submit these solutions directly for any graded coursework.
 
 ---
 
-## Author
-
 **Syon Duke Abraham**
