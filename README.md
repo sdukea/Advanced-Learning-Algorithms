@@ -3,7 +3,7 @@
 > Implementation of machine learning algorithms from the **Advanced Learning Algorithms** course in Andrew Ng's Machine Learning Specialization.
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
-![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Andrew%20Ng-orange)
+![Stanford University](https://img.shields.io/badge/Machine%20Learning-Andrew%20Ng-orange)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 ---
