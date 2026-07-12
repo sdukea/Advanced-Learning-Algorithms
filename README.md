@@ -18,20 +18,11 @@ The goal of this repository is not just to complete assignments, but to build an
 
 ## Topics Covered
 
-- Neural Networks
-- TensorFlow
-- Forward Propagation
-- Backpropagation
-- Binary Classification
-- Multi-class Classification
-- Activation Functions
-- Model Training
-- Loss Functions
-- Regularization
-- Model Evaluation
-- Decision Trees
-- Random Forests
-- Gradient Boosting
+| Neural Networks | TensorFlow | Backpropagation |
+|-----------------|------------|-----------------|
+| Forward Propagation | Binary Classification | Multi-class Classification |
+| Decision Trees | Random Forests | Gradient Boosting |
+| Model Evaluation | Regularization | Hyperparameter Tuning |
 
 ---
 
