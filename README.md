@@ -18,7 +18,16 @@ The goal of this repository is not just to complete assignments, but to build an
 
 ## Topics Covered
 
-**Neural Networks** • **TensorFlow** • **Forward & Backpropagation** • **Binary & Multi-class Classification** • **Decision Trees** • **Random Forests** • **Gradient Boosting** • **Regularization**
+```text
+Neural Networks
+TensorFlow
+Forward & Backpropagation
+Binary & Multi-class Classification
+Decision Trees
+Random Forests
+Gradient Boosting
+Regularization
+```
 
 ---
 
