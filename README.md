@@ -50,17 +50,7 @@ The goal of this repository is not just to complete assignments, but to build an
 └── README.md
 ```
 
-*(Structure may evolve as more material is completed.)*
-
----
-
-## Technologies Used
-
-- Python
-- NumPy
-- TensorFlow
-- Matplotlib
-- Jupyter Notebook
+*(may evolve)*
 
 ---
 
@@ -84,30 +74,9 @@ This repository is intended to strengthen understanding of:
 This work follows:
 
 **Machine Learning Specialization**
-- Andrew Ng
+
 - DeepLearning.AI
-- Coursera
-
----
-
-## Purpose
-
-This repository serves as:
-
-- A personal learning journal
-- A collection of implementations
-- A reference for future machine learning projects
-- Documentation of my progress through the specialization
-
----
-
-## Future Improvements
-
-- Add detailed explanations for each notebook
-- Include mathematical derivations
-- Improve visualizations
-- Add additional experiments
-- Compare different model architectures
+- Stanford University
 
 ---
 
