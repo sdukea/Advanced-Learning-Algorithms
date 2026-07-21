@@ -1,50 +1,14 @@
-# Advanced Learning Algorithms
-
-![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-FF6F00?logo=tensorflow&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green)
-
----
-
-## Overview
-
-This repository contains my implementations, exercises, and experiments completed while studying the **Advanced Learning Algorithms** course.
-
-The focus is on understanding how modern machine learning models are built and trained, beginning with neural networks and extending to practical techniques for improving model performance.
-
-The goal of this repository is not just to complete assignments, but to build an intuitive understanding of the underlying mathematics and algorithms.
-
----
-
-## Contents
-
-| Category | Topics |
-|----------|--------|
-| **Neural Networks** | Forward Propagation, Backpropagation, Activation Functions |
-| **Deep Learning** | TensorFlow, Model Training, Neural Network Implementation |
-| **Classification** | Binary Classification, Multi-class Classification |
-| **Tree-Based Learning** | Decision Trees, Random Forests, Gradient Boosting |
-| **Model Improvement** | Regularization, Hyperparameter Tuning, Model Evaluation |
-
----
-
-## Course
-
-This work follows:
-
-**Machine Learning Specialization**
-
-- DeepLearning.AI
-- Stanford University
-
----
-
-## License
-
-This repository is intended for educational purposes.
-
-Please do not submit these solutions directly for any graded coursework.
-
----
-
-**Syon Duke Abraham**
+- [x] Neural Networks
+- [x] Forward Propagation
+- [x] TensorFlow
+- [x] Neural Network Training
+- [x] Activation Functions
+- [x] Multiclass Classification
+- [x] Softmax Regression
+- [x] Adam Optimization
+- [ ] Backpropagation
+- [ ] Decision Trees
+- [ ] Tree Ensembles
+- [ ] Random Forests
+- [ ] Gradient Boosted Trees
+- [ ] XGBoost
